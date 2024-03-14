@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클리닉게시판</title>
+
+  <style>
+    /* CSS 스타일링은 여기에 작성하세요 */
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h3>클리닉게시판</h3>
+    <div class="search-container">
+      <input type="text" id="searchW" placeholder="검색어 입력">
+      <button type="button" id="btn1W">검색</button>
+    </div>
+    <table class="board">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>분류</th>
+          <th>제목</th>
+          <th>날짜</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Thymeleaf를 사용하여 서버에서 데이터를 동적으로 추가 -->
+        <tr th:each="post : ${posts}">
+          <td th:text="${post.id}"></td>
+          <td th:text="${post.category}"></td>
+          <td><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></td>
+          <td th:text="${post.date}"></td>
+          <td>
+            <button class="btn">수정</button>
+            <button class="btn">삭제</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: right; margin-top: 10px;">
+      <button class="btn">클리닉 등록</button>
+    </div>
+  </div>
+
+  <!-- 게시물 관리 모달 -->
+  <div id="manageModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>게시물 관리</h2>
+      <!-- 게시물 관리 내용은 여기에 추가될 예정 -->
+    </div>
+  </div>
+
+  <script>
+
+    
+  </script>
+
+</body>
+</html>
