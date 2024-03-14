@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<th:block th:fragment="setContent(content)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/baselayout.css}">
+</head>
+    <body>
+    <div class="main-bar">
+        <div class="main-logo">
+            <a class="logo"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> university</a>
+        </div>
+        <div class="main-user">
+            <p>홍길동</p>
+            <i class="ri-user-line"></i>
+        </div>
+    </div>
+    <div class="title-bar">
+        <div class="univer-name">
+            <h4>Medics <span style="color: #d7c37a; font-size: 14px;">보건시스템</span></h4>
+        </div>
+        <div class="small-title">
+            <h4>이용자 관리</h4>
+            <h4>진료차트</h4>
+        </div>
+    </div>
+    <div class="mid">
+        <div class="left-bar">
+            <div class="sidebarOption sidebarOption__active">
+                <h3>진료</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>커뮤니티</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>클리닉</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>대여</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>Sent</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>Drafts</h3>
+            </div>
+
+            <div class="sidebarOption">
+                <h3>More</h3>
+            </div>
+        </div>
+        <div class="right">
+            <!-- 내용 들어가는곳-->
+            <th:block th:replace="${content}">
+
+            </th:block>
+
+
+        </div>
+    </div>
+
+</body>
+</th:block>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+ <!-- content -->
+ <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-m } )}">
+
+<div class="div-m">
+    <h3>이용자 정보검색</h3>
+
+    <div class="search-wrap-m">
+        <div class="info-search-m">
+            <p>이름</p><input type="text" name="">
+            <p>번호</p><input type="text" name="">
+            <p>진료기간</p>
+            <input type="text" class="picdate">
+            <p>-</p>
+            <input type="text" class="picdate">
+        </div>
+        <button type="button" id="searchBtn-m">검색</button>
+    </div>
+
+    <h3 style="padding-right: 71px;">이용자 정보</h3>
+    <div class="table-wrap">
+        <table class="head-line" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>이름</th>
+                <th>학번</th>
+                <th>소속학과</th>
+                <th>이메일</th>
+                <th>연락처</th>
+                <th>성별</th>
+                <th>생년월일</th>
+                <th>학년</th>
+                <th>상태구분</th>
+                <th>이용자구분</th>
+            </tr>
+            </thead>
+        </table>
+        <div class="table-content">
+            <table cellpadding="0" cellspacing="0">
+                <tbody class="body-line">
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>201401230</td>
+                    <td>컴퓨터공학</td>
+                    <td>aa122@naver.com</td>
+                    <td>010-1234-5678</td>
+                    <td>남</td>
+                    <td>001214</td>
+                    <td>4</td>
+                    <td>졸업</td>
+                    <td>학생</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <h3 style="padding-right: 91px;">진료내역</h3>
+    <div class="recode-wrap-m">
+        <div class="recode-table-m">
+            <div class="table-wrap">
+                <table class="head-line" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>진료일</th>
+                        <th>증상</th>
+                        <th>질병</th>
+                        <th>조취</th>
+                        <th>특이사항</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="table-content">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody class="body-line">
+                        <tr>
+                            <td>2024-03-13</td>
+                            <td>기침나옴</td>
+                            <td>감기</td>
+                            <td>휴식</td>
+                            <td></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="recode-aria-m">
+            <div class="table-wrap">
+                <table class="head-line" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>처치</th>
+                        <th>투약</th>
+                        <th>투여량</th>
+                        <th>비고</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="table-content">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody class="body-line">
+                        <tr>
+                            <td></td>
+                            <td>아스피린</td>
+                            <td>3정</td>
+                            <td>3정줌</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>타이레놀</td>
+                            <td>3정</td>
+                            <td>3정줌</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>아스피린</td>
+                            <td>3정</td>
+                            <td>3정줌</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+ </th:block>
+
+</body>
+</html>
