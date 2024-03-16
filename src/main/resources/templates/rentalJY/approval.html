@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	 <!-- content -->
+	 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-jy } )}">
+
+     <div class="div-jy">
+	<h3>대여승인요청</h3>
+    <div id="box2">
+        <form id="searchItemForm">
+            <label for="searchDateTime">신청일시:</label>
+            <input type="datetime-local" id="searchDateTime" name="searchDateTime">
+            <button type="submit" id="btn3">검색</button>
+        </form>
+    </div>
+    <div id="itemStock">
+        <form id="addItemForm" action="/rentalJY/approval" method="post">
+            <label for="itemName">물품명:</label>
+            <input type="text" id="itemName" name="itemName" required>
+            <label for="itemDescription">물품코드:</label>
+            <input type="text" id="itemDescription" name="itemDescription" required>
+            <label for="itemQuantity">수량:</label>
+            <input type="number" id="itemQuantity" name="itemQuantity" required min="0">
+            <label for="customerName">학번:</label>
+            <input type="text" id="customerName" name="customerName" readonly>
+            <label for="rentalDateTime">대여일시:</label>
+            <input type="datetime-local" id="rentalDateTime" name="rentalDateTime" required><br>
+            <label for="returnDateTime">반납일시:</label>
+            <input type="datetime-local" id="returnDateTime" name="returnDateTime" required>
+            <label for="rentalStatus">대여상태:</label>
+            <select id="rentalStatus" name="rentalStatus">
+                <option value="대여중">대여중</option>
+                <option value="대여가능">반품완료</option>
+            </select><br>
+            <button type="submit" id="btn4">승인</button>
+            <button type="submit" id="btn5">저장</button>
+            <button type="submit" id="btn6">취소</button>
+        </form>
+    </div>
+    <h3>대여신청 승인요청리스트</h3>
+    <div class="box3">
+        <table class="approvalRequestList" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+            	<th>선택</th>
+                <th>물품명</th>
+                <th>물품코드</th>
+                <th>수량</th>
+                <th>학번</th>
+                <th>대여일시</th>
+                <th>반납일시</th>
+                <th>대여상태</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="resul">
+        <table cellpadding="0" cellspacing="0">
+            <tbody class="boc-line">
+            <tr>
+            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+                <td>목발</td>
+                <td>HM-0000</td>
+                <td>8EA</td>
+                <td>240315</td>
+                <td>2024-03-15</td>
+                <td>2024-04-15</td>
+                <td>대여중</td>
+            </tr>
+            <tr>
+            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+                <td>목발</td>
+                <td>HM-0000</td>
+                <td>8EA</td>
+                <td>240315</td>
+                <td>2024-03-15</td>
+                <td>2024-04-15</td>
+                <td>대여중</td>
+            </tr>
+             <tr>
+            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+                <td>목발</td>
+                <td>HM-0000</td>
+                <td>8EA</td>
+                <td>240315</td>
+                <td>2024-03-15</td>
+                <td>2024-04-15</td>
+                <td>대여중</td>
+            </tr>
+             <tr>
+            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+                <td>목발</td>
+                <td>HM-0000</td>
+                <td>8EA</td>
+                <td>240315</td>
+                <td>2024-03-15</td>
+                <td>2024-04-15</td>
+                <td>대여중</td>
+            </tr>
+             <tr>
+            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+                <td>목발</td>
+                <td>HM-0000</td>
+                <td>8EA</td>
+                <td>240315</td>
+                <td>2024-03-15</td>
+                <td>2024-04-15</td>
+                <td>대여중</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>  
+</div>
+</th:block>
+</body>
+</html>
