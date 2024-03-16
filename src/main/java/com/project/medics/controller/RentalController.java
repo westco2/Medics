@@ -1,21 +1,24 @@
 package com.project.medics.controller;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Component
-@RequestMapping("/Rental")
+@Controller
+@RequestMapping("/rentalJY")
 public class RentalController {
 	@GetMapping("/rentalApp")
 	public String rentalApp() {
-		return "Rental/rentalApp";
+		return "rentalJY/rentalApp";
 	}
 	
-	@GetMapping("/mana")
-	public String mana() {
-		return "Rental/mana";
+	@GetMapping("/rentalList")
+	public String rentalList() {
+		return "rentalJY/rentalList";
 	}
 	
-	@GetMapping("/Approval")
+	@GetMapping("/approval")
+	public String approval() {
+		return "rentalJY/approval";
+	}
 }
