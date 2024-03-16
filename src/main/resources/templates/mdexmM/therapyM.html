@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- content -->
+<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .divt-m } )}">
+
+    <div class="divt-m">
+        <h3 style="padding-right: 60px;">처치물품 검색</h3>
+
+        <div class="search-wrap-m">
+            <div class="info-search-m">
+                <p>코드</p><input type="text" name="" style="width: 70px;">
+                <p>처치명</p><input type="text"  name="">
+                <p>남은수량</p><input type="number" style="width: 40px;"  name="">
+            </div>
+            <div>
+                <button type="button" id="choiBtn-m">추가</button>
+                <button type="button" id="searchBtn-m">검색</button>
+            </div>
+        </div>
+
+        <h3 style="padding-right: 47px;">처치물품 리스트</h3>
+        <div class="table-wrap">
+            <table class="head-line" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 40px;"><input type="checkbox"></th>
+                    <th>코드</th>
+                    <th>처치명</th>
+                    <th style="width: 40px; padding-right: 20px;">재고</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="table-content wi-up-m">
+                <table cellpadding="0" cellspacing="0">
+                    <tbody class="body-line">
+                    <tr>
+                        <td style="width: 20px;"><input type="checkbox"></td>
+                        <td>F7552</td>
+                        <td>밴드</td>
+                        <td style="width: 40px; padding-right: 25px;">3개</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="submit-wrap-m">
+            <input type="submit" value="삭제">
+        </div>
+
+
+        <!-- 이용자 정보검색 모달창 -->
+
+
+
+
+
+        <div id="modalcho" class="hidden">
+            <div id="modalcontentt">
+                <div class="modal-wrap-m">
+                    <h3>처치 등록</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>처치코드</p>
+                                <input type="text" class="code-m" style="width: 50px;">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>처치명</p>
+                                <input type="text" class="pa-name-m" style="width: 70px;">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>수량</p>
+                                <input type="text" class="pa-num-m" style="width: 20px;"   name="">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button" id="regbtn">추가</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="head-line" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>코드</th>
+                                <th>처치명</th>
+                                <th>수량</th>
+                                <th class="last-cm"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content wids-m widst-m sts-m-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line sds-m">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="close-wrap-m">
+                        <button type="button" id="clsf">등록</button>
+                        <button type="button" id="clch" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</th:block>
+
+
+<script>
+
+    var modalch = document.getElementById("modalcho");
+
+
+    document.getElementById("choiBtn-m").addEventListener('click', ()=>{
+        modalch.classList.remove('hidden');
+    })
+    document.getElementById("clch").addEventListener('click', ()=>{
+        modalch.classList.add('hidden');
+    })
+
+    modalwrap = document.querySelector(".sts-m-m");
+    modalwrap.addEventListener('click',(e)=>{
+        if(e.target.tagName != "BUTTON") return;
+        e.target.parentElement.parentElement.remove();
+
+
+    })
+
+    regbtn = document.getElementById("regbtn");
+    regbtn.addEventListener('click',()=>{
+        console.log("1");
+        var codeD = document.querySelector(".code-m").value;
+        var nameD = document.querySelector(".pa-name-m").value;
+        var numD = document.querySelector(".pa-num-m").value;
+        var trM = document.createElement("tr");
+        var tdo = document.createElement("td");
+        var tdt = document.createElement("td");
+        var tdtt = document.createElement("td");
+        var tdr = document.createElement("td");
+        var inp = document.createElement("input");
+        inp.type = 'number';
+        inp.style.width = '30px';
+        inp.value = numD;
+        tdo.innerHTML = codeD;
+        tdt.innerHTML = nameD;
+        tdtt.appendChild(inp);
+        tdr.classList.add('last-cm');
+        tdr.innerHTML = "<button type='button' class='delbtnt-m'>삭제</button>"
+        trM.appendChild(tdo);
+        trM.appendChild(tdt);
+        trM.appendChild(tdtt);
+        trM.appendChild(tdr);
+        document.querySelector(".sds-m").appendChild(trM);
+        document.querySelector(".code-m").value = '';
+        document.querySelector(".pa-name-m").value = '';
+        document.querySelector(".pa-num-m").value = '';
+
+    })
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
