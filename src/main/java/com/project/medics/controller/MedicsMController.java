@@ -11,4 +11,24 @@ public class MedicsMController {
     public String checkM(){
         return "mdexmM/checkM";
     }
+
+    @GetMapping("/chartM")
+    public String chartM(){
+        return "mdexmM/chartM";
+    }
+
+    @GetMapping("/dssM")
+    public String dssM(){
+        return "mdexmM/dssM";
+    }
+
+    @GetMapping("/therapyM")
+    public String therapyM(){
+        return "mdexmM/therapyM";
+    }
+
+    @GetMapping("wrhsM")
+    public String wrhsM(){
+        return "mdexmM/wrhsM";
+    }
 }
