@@ -1,10 +1,166 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <body>
 
+<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
+
+  <div class="div-w">
+  	<div>
+	    <h3 style="padding-right: 71px;">나의 후기페이지</h3>
+    </div>
+    
+    <div class="search-wrap-w">
+        <div class="info-search-w">
+            <input type="text" placeholder="검색어 입력">
+       		<button type="button" id="searchBtn-w">검색</button>
+        </div>
+    </div>
+
+    <div class="table-wrap-w">
+        <table class="head-line-w" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>학번</th>
+                <th>학과</th>
+                <th>내용</th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+       <div class="table-content-w">
+           <table cellpadding="0" cellspacing="0">
+               <tbody class="body-line-w">
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               <tr>
+                   <td>1</td>
+                   <td>홍길동</td>
+                   <td>20240013</td>
+                   <td>사회체육과</td>
+                   <td>유익한 클리닉이었습니다.</td>
+                   <td>
+                   	<button id="searchBtn-w">수정</button>
+                   	<button id="searchBtn-w">삭제</button>
+                   </td>
+               </tr>
+               
+               </tbody>
+           </table>
+       </div>
+       <div style="text-align: right; margin-top: 10px;">
+           <button id="searchBtn-w">삭제</button>
+       </div>
+    </th:block>
 </body>
 </html>
