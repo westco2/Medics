@@ -1,0 +1,639 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- content -->
+<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .divt-m } )}">
+
+    <div class="divt-m">
+        <h3 style="padding-right: 88px;">기본 정보</h3>
+
+        <div class="searcht-wrap-m">
+            <div class="infoto-m">
+                <div class="user-pic-m">
+                    <i class="ri-user-3-fill"></i>
+                </div>
+                <div class="info-search-m alstart-m">
+                    <div class="show-wrap-m">
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <p>이름</p>
+                            </div>
+                            <div class="line-content-m">
+                                <p>학과</p>
+                            </div>
+                            <div class="line-content-m">
+                                <p>이용자구분</p>
+                            </div>
+                        </div>
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <div class="name-m"><span>홍길동</span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m" style="width: 120px;"><span>반도체소재공학과</span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m"><span>학생</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show-wrap-m">
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <p>학번</p>
+                            </div>
+                            <div class="line-content-m">
+                                <p>이메일</p>
+                            </div>
+                        </div>
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <div class="name-m" style="width: 100px;"><span>201809311</span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m" style="width: 170px;"><span>aaa1234@naver.com</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show-wrap-m">
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <p>연락처</p>
+                            </div>
+                            <div class="line-content-m">
+                                <p>성별</p>
+                            </div>
+                        </div>
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <div class="name-m" style="width: 130px;"><span>010-1234-5678</span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m"><span>남</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show-wrap-m">
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <p>상태구분</p>
+                            </div>
+                            <div class="line-content-m">
+                                <p>생년월일</p>
+                            </div>
+                        </div>
+                        <div class="show-m">
+                            <div class="line-content-m">
+                                <div class="name-m"><span>재학</span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m" style="width: 100px;"><span>990818</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-wrap-m">
+                <button type="button" id="searchBtnt-m">조회</button>
+            </div>
+        </div>
+
+        <h3 style="padding-right: 88px;">증상 기록</h3>
+        <div class="pation-wrap-m">
+            <div class="pation-name-m">
+                <p>주요증상</p>
+                <input type="text" name="pation">
+            </div>
+            <div class="pation-content-m">
+                <p>특이사항</p>
+                <textarea></textarea>
+            </div>
+        </div>
+
+
+        <h3 style="padding-right: 88px;">투약 기록</h3>
+        <div class="recode-wrap-m">
+            <div class="recode-table-m gap-m">
+                <div class="table-wrap">
+                    <table class="head-line" cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>질병코드</th>
+                            <th>이름</th>
+                            <th class="plus-m" id="tooabtn-m"><i class="ri-add-line"></i></th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="table-content">
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody class="body-line">
+                            <tr>
+                                <td>A584</td>
+                                <td>두통</td>
+                                <td><button id="dleb">삭제</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="recode-table-m gap-m">
+                <div class="table-wrap">
+                    <table class="head-line" cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>처치코드</th>
+                            <th>이름</th>
+                            <th>수량</th>
+                            <th class="plus-m" id="fixbtn-m"><i class="ri-add-line"></i></th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="table-content">
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody class="body-line">
+                            <tr>
+                                <td>T4fj</td>
+                                <td>밴드</td>
+                                <td>1개</td>
+                                <td><button id="dleb">삭제</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="recode-table-m gap-m">
+                <div class="table-wrap">
+                    <table class="head-line" cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>약품코드</th>
+                            <th>이름</th>
+                            <th>투여량</th>
+                            <th class="plus-m" id="medbtn-m"><i class="ri-add-line"></i></th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="table-content">
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody class="body-line">
+                            <tr>
+                                <td>E782</td>
+                                <td>아스피린</td>
+                                <td>2정</td>
+                                <td><button id="dleb">삭제</button></td>
+                            </tr>
+                            <tr>
+                                <td>G5382</td>
+                                <td>타이레놀</td>
+                                <td>1정</td>
+                                <td><button id="dleb">삭제</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="recode-table-m gap-m">
+                <div class="table-wrap">
+                    <table class="head-line" cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>조취</th>
+                            <th></th>
+
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="table-content">
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody class="body-line">
+                            <tr>
+                                <td>휴식</td>
+                                <td><input type="checkbox"></td>
+
+                            </tr>
+                            <tr>
+                                <td>투약</td>
+                                <td><input type="checkbox"></td>
+
+                            </tr>
+                            <tr>
+                                <td>처치</td>
+                                <td><input type="checkbox"></td>
+
+                            </tr>
+                            <tr>
+                                <td>이송</td>
+                                <td><input type="checkbox"></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="submit-wrap-m">
+            <input type="submit" value="등록">
+        </div>
+
+        <!-- 이용자 정보검색 모달창 -->
+
+
+        <div id="modalone" class="hidden">
+            <div id="modalcontent">
+                <div class="modal-wrap-m">
+                    <h3>이용자 조회</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>이름</p>
+                                <input type="text">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>번호</p>
+                                <input type="text" style="width: 120px;">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap scr-m">
+                        <table class="head-line wid-m" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>학번</th>
+                                <th>소속학과</th>
+                                <th>이메일</th>
+                                <th>연락처</th>
+                                <th>성별</th>
+                                <th>생년월일</th>
+                                <th>학년</th>
+                                <th>상태구분</th>
+                                <th>이용자구분</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content widss-m wids-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line">
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                <tr>
+                                    <td>홍길동</td>
+                                    <td>201401230</td>
+                                    <td>컴퓨터공학</td>
+                                    <td>aa122@naver.com</td>
+                                    <td>010-1234-5678</td>
+                                    <td>남</td>
+                                    <td>001214</td>
+                                    <td>4</td>
+                                    <td>졸업</td>
+                                    <td>학생</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="close-wrap-m">
+                        <button type="button" id="cls">선택</button>
+                        <button type="button" id="cl" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코드 검색 모달창 -->
+
+        <div id="modaltwo" class="hidden">
+            <div id="modalcontentt">
+                <div class="modal-wrap-m">
+                    <h3>질병 조회</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>질병코드</p>
+                                <input type="text">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>질병명</p>
+                                <input type="text" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="head-line" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>코드</th>
+                                <th>질병명</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content wids-m widst-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line">
+                                <tr>
+                                    <td>A584</td>
+                                    <td>두통</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="close-wrap-m">
+                        <button type="button" id="clst">선택</button>
+                        <button type="button" id="clt" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modaltree" class="hidden">
+            <div id="modalcontentt">
+                <div class="modal-wrap-m">
+                    <h3>처치 조회</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>처치코드</p>
+                                <input type="text">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>처치명</p>
+                                <input type="text" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="head-line" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>코드</th>
+                                <th>처치명</th>
+                                <th>재고</th>
+                                <th class="last-cm">수량</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content wids-m widst-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line">
+                                <tr>
+                                    <td>T4fj</td>
+                                    <td>밴드</td>
+                                    <td>33개</td>
+                                    <td class="last-cm"><input class="num-m" type="number"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="close-wrap-m">
+                        <button type="button" id="clsr">선택</button>
+                        <button type="button" id="clr" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modalfour" class="hidden">
+            <div id="modalcontentt">
+                <div class="modal-wrap-m">
+                    <h3>약품 조회</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>약품코드</p>
+                                <input type="text">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>약품명</p>
+                                <input type="text" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="head-line" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>코드</th>
+                                <th>약품명</th>
+                                <th>재고</th>
+                                <th class="last-cm">수량</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content wids-m widst-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line">
+                                <tr>
+                                    <td>E782</td>
+                                    <td>아스피린</td>
+                                    <td>16개</td>
+                                    <td class="last-cm"><input class="num-m" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>G5382</td>
+                                    <td>타이레놀</td>
+                                    <td>20개</td>
+                                    <td class="last-cm"><input class="num-m" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>U84</td>
+                                    <td>모르핀(500ml)</td>
+                                    <td>30개</td>
+                                    <td class="last-cm"><input class="num-m" type="number"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="close-wrap-m">
+                        <button type="button" id="clsf">선택</button>
+                        <button type="button" id="clf" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</th:block>
+
+<script th:inline="javascript">
+    var modal = document.getElementById("modalone");
+    var modalt = document.getElementById("modaltwo");
+    var modalr = document.getElementById("modaltree");
+    var modalf = document.getElementById("modalfour");
+
+
+    document.getElementById("searchBtnt-m").addEventListener('click', ()=>{
+        modal.classList.remove('hidden');
+    })
+    document.getElementById("cl").addEventListener('click', ()=>{
+        modal.classList.add('hidden');
+    })
+
+
+
+
+    document.getElementById("tooabtn-m").addEventListener('click', ()=>{
+        modalt.classList.remove('hidden');
+    })
+    document.getElementById("clt").addEventListener('click', ()=>{
+        modalt.classList.add('hidden');
+    })
+
+    document.getElementById("fixbtn-m").addEventListener('click', ()=>{
+        modalr.classList.remove('hidden');
+    })
+    document.getElementById("clr").addEventListener('click', ()=>{
+        modalr.classList.add('hidden');
+    })
+
+    document.getElementById("medbtn-m").addEventListener('click', ()=>{
+        modalf.classList.remove('hidden');
+    })
+    document.getElementById("clf").addEventListener('click', ()=>{
+        modalf.classList.add('hidden');
+    })
+
+
+
+</script>
+
+</body>
+</html>

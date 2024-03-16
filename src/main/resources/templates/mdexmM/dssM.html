@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<!-- content -->
+<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .divt-m } )}">
+
+    <div class="divt-m">
+        <h3 style="padding-right: 88px;">질병 검색</h3>
+
+        <div class="search-wrap-m">
+            <div class="info-search-m">
+                <p>코드</p><input type="text" name="" style="width: 70px;">
+                <p>질병명</p><input type="text"  name="">
+            </div>
+            <div>
+                <button type="button" id="choiBtn-m">추가</button>
+                <button type="button" id="searchBtn-m">검색</button>
+            </div>
+        </div>
+
+        <h3 style="padding-right: 75px;">질병 리스트</h3>
+        <div class="table-wrap">
+            <table class="head-line" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 40px;"><input type="checkbox"></th>
+                    <th>코드</th>
+                    <th>질병명</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="table-content wi-up-m">
+                <table cellpadding="0" cellspacing="0">
+                    <tbody class="body-line">
+                    <tr>
+                        <td style="width: 20px;"><input type="checkbox"></td>
+                        <td>F742</td>
+                        <td>두통</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="submit-wrap-m">
+            <input type="submit" value="삭제">
+        </div>
+
+        <!-- 이용자 정보검색 모달창 -->
+
+
+
+
+
+        <div id="modalcho" class="hidden">
+            <div id="modalcontentt">
+                <div class="modal-wrap-m">
+                    <h3>질병 등록</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>질병코드</p>
+                                <input type="text" class="code-m">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>질병명</p>
+                                <input type="text" class="pa-name-m" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="modal-searchBtn-m">
+                            <button type="button" id="regbtn">추가</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="head-line" cellpadding="0" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>코드</th>
+                                <th>질병명</th>
+                                <th class="last-cm"></th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="table-content wids-m widst-m sts-m-m">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody class="body-line sds-m">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="close-wrap-m">
+                        <button type="button" id="clsf">등록</button>
+                        <button type="button" id="clch" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</th:block>
+
+<script>
+
+    var modalch = document.getElementById("modalcho");
+
+
+    document.getElementById("choiBtn-m").addEventListener('click', ()=>{
+        modalch.classList.remove('hidden');
+    })
+    document.getElementById("clch").addEventListener('click', ()=>{
+        modalch.classList.add('hidden');
+    })
+
+    modalwrap = document.querySelector(".sts-m-m");
+    modalwrap.addEventListener('click',(e)=>{
+        if(e.target.tagName != "BUTTON") return;
+        e.target.parentElement.parentElement.remove();
+
+
+    })
+
+    regbtn = document.getElementById("regbtn");
+    regbtn.addEventListener('click',()=>{
+        console.log("1");
+        var codeD = document.querySelector(".code-m").value;
+        var nameD = document.querySelector(".pa-name-m").value;
+        var trM = document.createElement("tr");
+        var tdo = document.createElement("td");
+        var tdt = document.createElement("td");
+        var tdr = document.createElement("td");
+        tdo.innerHTML = codeD;
+        tdt.innerHTML = nameD;
+        tdr.classList.add('last-cm');
+        tdr.innerHTML = "<button type='button' class='delbtnt-m'>삭제</button>"
+        trM.appendChild(tdo);
+        trM.appendChild(tdt);
+        trM.appendChild(tdr);
+        document.querySelector(".sds-m").appendChild(trM);
+        document.querySelector(".code-m").value = '';
+        document.querySelector(".pa-name-m").value = '';
+
+    })
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
