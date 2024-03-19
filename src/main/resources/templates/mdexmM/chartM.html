@@ -7,6 +7,7 @@
 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .divt-m } )}">
 
     <div class="divt-m">
+        <form class="divt-mm" action="regChart" name="chartForm" method="post">
         <h3 style="padding-right: 88px;">기본 정보</h3>
 
         <div class="searcht-wrap-m">
@@ -29,13 +30,13 @@
                         </div>
                         <div class="show-m">
                             <div class="line-content-m">
-                                <div class="name-m"><span>홍길동</span></div>
+                                <div class="name-m"><span id="1"></span></div>
                             </div>
                             <div class="line-content-m">
-                                <div class="name-m" style="width: 120px;"><span>반도체소재공학과</span></div>
+                                <div class="name-m" style="width: 120px;"><span id="3"></span></div>
                             </div>
                             <div class="line-content-m">
-                                <div class="name-m"><span>학생</span></div>
+                                <div class="name-m"><span id="10"></span></div>
                             </div>
                         </div>
                     </div>
@@ -47,13 +48,20 @@
                             <div class="line-content-m">
                                 <p>이메일</p>
                             </div>
+                            <div class="line-content-m">
+                                <p>학년</p>
+                            </div>
                         </div>
                         <div class="show-m">
                             <div class="line-content-m">
-                                <div class="name-m" style="width: 100px;"><span>201809311</span></div>
+                                <div class="name-m" style="width: 100px;"><span id="2"></span></div>
+                                <input type="hidden" name="studentid" id="std-id-m">
                             </div>
                             <div class="line-content-m">
-                                <div class="name-m" style="width: 170px;"><span>aaa1234@naver.com</span></div>
+                                <div class="name-m" style="width: 170px;"><span id="4"></span></div>
+                            </div>
+                            <div class="line-content-m">
+                                <div class="name-m"><span id="8"></span></div>
                             </div>
                         </div>
                     </div>
@@ -68,10 +76,10 @@
                         </div>
                         <div class="show-m">
                             <div class="line-content-m">
-                                <div class="name-m" style="width: 130px;"><span>010-1234-5678</span></div>
+                                <div class="name-m" style="width: 130px;"><span id="6"></span></div>
                             </div>
                             <div class="line-content-m">
-                                <div class="name-m"><span>남</span></div>
+                                <div class="name-m"><span id="5"></span></div>
                             </div>
                         </div>
                     </div>
@@ -86,10 +94,10 @@
                         </div>
                         <div class="show-m">
                             <div class="line-content-m">
-                                <div class="name-m"><span>재학</span></div>
+                                <div class="name-m"><span id="9"></span></div>
                             </div>
                             <div class="line-content-m">
-                                <div class="name-m" style="width: 100px;"><span>990818</span></div>
+                                <div class="name-m" style="width: 100px;"><span id="7"></span></div>
                             </div>
                         </div>
                     </div>
@@ -104,11 +112,11 @@
         <div class="pation-wrap-m">
             <div class="pation-name-m">
                 <p>주요증상</p>
-                <input type="text" name="pation">
+                <input type="text" name="mdexm_cdt">
             </div>
             <div class="pation-content-m">
                 <p>특이사항</p>
-                <textarea></textarea>
+                <textarea name="excptn_mttr"></textarea>
             </div>
         </div>
 
@@ -128,12 +136,8 @@
                     </table>
                     <div class="table-content">
                         <table cellpadding="0" cellspacing="0">
-                            <tbody class="body-line">
-                            <tr>
-                                <td>A584</td>
-                                <td>두통</td>
-                                <td><button id="dleb">삭제</button></td>
-                            </tr>
+                            <tbody class="body-line dd-in-m">
+
                             </tbody>
                         </table>
                     </div>
@@ -154,13 +158,8 @@
                     </table>
                     <div class="table-content">
                         <table cellpadding="0" cellspacing="0">
-                            <tbody class="body-line">
-                            <tr>
-                                <td>T4fj</td>
-                                <td>밴드</td>
-                                <td>1개</td>
-                                <td><button id="dleb">삭제</button></td>
-                            </tr>
+                            <tbody class="body-line ty-in-m">
+
                             </tbody>
                         </table>
                     </div>
@@ -181,19 +180,8 @@
                     </table>
                     <div class="table-content">
                         <table cellpadding="0" cellspacing="0">
-                            <tbody class="body-line">
-                            <tr>
-                                <td>E782</td>
-                                <td>아스피린</td>
-                                <td>2정</td>
-                                <td><button id="dleb">삭제</button></td>
-                            </tr>
-                            <tr>
-                                <td>G5382</td>
-                                <td>타이레놀</td>
-                                <td>1정</td>
-                                <td><button id="dleb">삭제</button></td>
-                            </tr>
+                            <tbody class="body-line wr-in-m">
+
                             </tbody>
                         </table>
                     </div>
@@ -216,22 +204,22 @@
                             <tbody class="body-line">
                             <tr>
                                 <td>휴식</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="mdexm_act" value="휴식"></td>
 
                             </tr>
                             <tr>
                                 <td>투약</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="mdexm_act" value="투약"></td>
 
                             </tr>
                             <tr>
                                 <td>처치</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="mdexm_act" value="처치"></td>
 
                             </tr>
                             <tr>
                                 <td>이송</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="mdexm_act" value="이송"></td>
 
                             </tr>
                             </tbody>
@@ -246,7 +234,7 @@
         <div class="submit-wrap-m">
             <input type="submit" value="등록">
         </div>
-
+        </form>
         <!-- 이용자 정보검색 모달창 -->
 
 
@@ -258,28 +246,28 @@
                         <div class="search-left-wrap">
                             <div class="modal-name-m">
                                 <p>이름</p>
-                                <input type="text">
+                                <input type="text" class="search-name-mm">
                             </div>
                             <div class="modal-name-m">
                                 <p>번호</p>
-                                <input type="text" style="width: 120px;">
+                                <input type="text" style="width: 120px;" class="search-code-mm">
                             </div>
                         </div>
                         <div class="modal-searchBtn-m">
-                            <button type="button">검색</button>
+                            <button type="button" id="searchstd-m">검색</button>
                         </div>
                     </div>
 
                     <div class="table-wrap scr-m">
                         <table class="head-line wid-m" cellpadding="0" cellspacing="0">
-                            <thead>
+                            <thead class="content-std-m">
                             <tr>
                                 <th>이름</th>
                                 <th>학번</th>
                                 <th>소속학과</th>
                                 <th>이메일</th>
+                                <th style="width: 75px;">성별</th>
                                 <th>연락처</th>
-                                <th>성별</th>
                                 <th>생년월일</th>
                                 <th>학년</th>
                                 <th>상태구분</th>
@@ -289,115 +277,8 @@
                         </table>
                         <div class="table-content widss-m wids-m">
                             <table cellpadding="0" cellspacing="0">
-                                <tbody class="body-line">
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
-                                <tr>
-                                    <td>홍길동</td>
-                                    <td>201401230</td>
-                                    <td>컴퓨터공학</td>
-                                    <td>aa122@naver.com</td>
-                                    <td>010-1234-5678</td>
-                                    <td>남</td>
-                                    <td>001214</td>
-                                    <td>4</td>
-                                    <td>졸업</td>
-                                    <td>학생</td>
-                                </tr>
+                                <tbody class="body-line suif-m sel-m">
+
                                 </tbody>
                             </table>
                         </div>
@@ -405,7 +286,7 @@
                     </div>
 
                     <div class="close-wrap-m">
-                        <button type="button" id="cls">선택</button>
+                        <button type="button" id="cls-std">선택</button>
                         <button type="button" id="cl" style="background-color: #82b099;">닫기</button>
                     </div>
                 </div>
@@ -422,15 +303,15 @@
                         <div class="search-left-wrap">
                             <div class="modal-name-m">
                                 <p>질병코드</p>
-                                <input type="text">
+                                <input type="text" class="search-code-mmd">
                             </div>
                             <div class="modal-name-m">
                                 <p>질병명</p>
-                                <input type="text" style="width: 100px;">
+                                <input type="text" style="width: 100px;" class="search-name-mmd">
                             </div>
                         </div>
                         <div class="modal-searchBtn-m">
-                            <button type="button">검색</button>
+                            <button type="button" id="searchdss-m">검색</button>
                         </div>
                     </div>
 
@@ -438,6 +319,7 @@
                         <table class="head-line" cellpadding="0" cellspacing="0">
                             <thead>
                             <tr>
+                                <th style="width: 40px; padding-right: 10px">번호</th>
                                 <th>코드</th>
                                 <th>질병명</th>
                             </tr>
@@ -445,18 +327,15 @@
                         </table>
                         <div class="table-content wids-m widst-m">
                             <table cellpadding="0" cellspacing="0">
-                                <tbody class="body-line">
-                                <tr>
-                                    <td>A584</td>
-                                    <td>두통</td>
-                                </tr>
+                                <tbody class="body-line dssif-m sel-md">
+
                                 </tbody>
                             </table>
                         </div>
 
                     </div>
                     <div class="close-wrap-m">
-                        <button type="button" id="clst">선택</button>
+                        <button type="button" id="cls-dss">선택</button>
                         <button type="button" id="clt" style="background-color: #82b099;">닫기</button>
                     </div>
                 </div>
@@ -472,15 +351,15 @@
                         <div class="search-left-wrap">
                             <div class="modal-name-m">
                                 <p>처치코드</p>
-                                <input type="text">
+                                <input type="text" class="search-code-mmt">
                             </div>
                             <div class="modal-name-m">
                                 <p>처치명</p>
-                                <input type="text" style="width: 100px;">
+                                <input type="text" style="width: 100px;" class="search-name-mmt">
                             </div>
                         </div>
                         <div class="modal-searchBtn-m">
-                            <button type="button">검색</button>
+                            <button type="button" id="searchty-m">검색</button>
                         </div>
                     </div>
 
@@ -488,6 +367,7 @@
                         <table class="head-line" cellpadding="0" cellspacing="0">
                             <thead>
                             <tr>
+                                <th style="width: 40px; padding-right: 10px">번호</th>
                                 <th>코드</th>
                                 <th>처치명</th>
                                 <th>재고</th>
@@ -497,20 +377,15 @@
                         </table>
                         <div class="table-content wids-m widst-m">
                             <table cellpadding="0" cellspacing="0">
-                                <tbody class="body-line">
-                                <tr>
-                                    <td>T4fj</td>
-                                    <td>밴드</td>
-                                    <td>33개</td>
-                                    <td class="last-cm"><input class="num-m" type="number"></td>
-                                </tr>
+                                <tbody class="body-line tyif-m sel-mt sss-m">
+
                                 </tbody>
                             </table>
                         </div>
 
                     </div>
                     <div class="close-wrap-m">
-                        <button type="button" id="clsr">선택</button>
+                        <button type="button" id="cls-ty">선택</button>
                         <button type="button" id="clr" style="background-color: #82b099;">닫기</button>
                     </div>
                 </div>
@@ -534,7 +409,7 @@
                             </div>
                         </div>
                         <div class="modal-searchBtn-m">
-                            <button type="button">검색</button>
+                            <button type="button" id="searchwr-m">검색</button>
                         </div>
                     </div>
 
@@ -551,32 +426,15 @@
                         </table>
                         <div class="table-content wids-m widst-m">
                             <table cellpadding="0" cellspacing="0">
-                                <tbody class="body-line">
-                                <tr>
-                                    <td>E782</td>
-                                    <td>아스피린</td>
-                                    <td>16개</td>
-                                    <td class="last-cm"><input class="num-m" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td>G5382</td>
-                                    <td>타이레놀</td>
-                                    <td>20개</td>
-                                    <td class="last-cm"><input class="num-m" type="number"></td>
-                                </tr>
-                                <tr>
-                                    <td>U84</td>
-                                    <td>모르핀(500ml)</td>
-                                    <td>30개</td>
-                                    <td class="last-cm"><input class="num-m" type="number"></td>
-                                </tr>
+                                <tbody class="body-line sel-mw wrif-m sss-m">
+
                                 </tbody>
                             </table>
                         </div>
 
                     </div>
                     <div class="close-wrap-m">
-                        <button type="button" id="clsf">선택</button>
+                        <button type="button" id="cls-wr">선택</button>
                         <button type="button" id="clf" style="background-color: #82b099;">닫기</button>
                     </div>
                 </div>
@@ -594,42 +452,454 @@
 </th:block>
 
 <script th:inline="javascript">
+    var msg = `[[${msg}]]`;
+    msg = JSON.parse(msg)
+    if(msg !== null) {
+        alert(msg);
+    }
+
+</script>
+
+<script th:inline="javascript">
     var modal = document.getElementById("modalone");
     var modalt = document.getElementById("modaltwo");
     var modalr = document.getElementById("modaltree");
     var modalf = document.getElementById("modalfour");
+    var amount = 0;
+    var crr = null;
+    var infostd = [];
+
+    function getinfo(searchCode, searchName, num){
+        $.ajax({
+            type: "post",
+            url: "/getstdInfo",
+            dataType: "json",
+            data: JSON.stringify({
+                searchCode:searchCode,
+                searchName:searchName,
+                searchNum : num
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let i of data){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${i.korn_flnm}</td>
+                                    <td>${i.studentid}</td>
+                                    <td>${i.scsbjt_nm}</td>
+                                    <td>${i.mbr_eml_addr}</td>
+                                    <td style="padding-left: 15px; width: 75px; padding-right: 0">${i.gndr_nm}</td>
+                                    <td>${i.idfr_telno}</td>
+                                    <td>생년월일</td>
+                                    <td>${i.grade}</td>
+                                    <td>${i.enrollment}</td>
+                                    <td>학생</td>`;
+                    $(".suif-m").append(tr);
+
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        });
+
+    }
+
+    function getdss(searchCode, searchName){
+        $.ajax({
+            type: "post",
+            url: "/getdss",
+            dataType: "json",
+            data: JSON.stringify({
+                searchCode:searchCode,
+                searchName:searchName
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let i in data){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td style="width: 40px">${parseInt(i)+1}</td>
+                                    <td>${data[i].dss_no}</td>
+                                    <td>${data[i].dss_nm}</td>`;
+                    $(".dssif-m").append(tr);
+
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        });
+
+    }
+
+    function getty(searchCode, searchName){
+        $.ajax({
+            type: "post",
+            url: "/getty",
+            dataType: "json",
+            data: JSON.stringify({
+                searchCode:searchCode,
+                searchName:searchName
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let i in data){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td style="width: 40px">${parseInt(i)+1}</td>
+                                    <td>${data[i].mdcn_code}</td>
+                                    <td>${data[i].mdcn_nm}</td>
+                                    <td>${data[i].mdcn_qty}</td>
+                                    <td class="last-cm"><input class="num-m" id="num-mmm" type="text"></td>`;
+                    $(".tyif-m").append(tr);
+
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        });
+
+    }
+
+    function getwr(searchCode, searchName){
+        $.ajax({
+            type: "post",
+            url: "/getwr",
+            dataType: "json",
+            data: JSON.stringify({
+                searchCode:searchCode,
+                searchName:searchName
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let i in data){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td style="width: 40px">${parseInt(i)+1}</td>
+                                    <td>${data[i].mdcn_code}</td>
+                                    <td>${data[i].mdcn_nm}</td>
+                                    <td>${data[i].mdcn_qty}</td>
+                                    <td class="last-cm"><input class="num-m" id="num-mmm" type="text"></td>`;
+                    $(".wrif-m").append(tr);
+
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        });
+
+    }
+
+    var sname = '';
+    var scode = '';
+
+
+    $(".search-name-mm").change(()=>{sname=$(".search-name-mm").val(); console.log(sname)});
+    $(".search-code-mm").change(()=>{scode=$(".search-code-mm").val(); console.log(scode) });
+    $(".search-name-mmd").change(()=>{sname=$(".search-name-mmd").val(); console.log(sname)});
+    $(".search-code-mmd").change(()=>{scode=$(".search-code-mmd").val(); console.log(scode) });
+    $(".search-name-mmt").change(()=>{sname=$(".search-name-mmt").val(); console.log(sname)});
+    $(".search-code-mmt").change(()=>{scode=$(".search-code-mmt").val(); console.log(scode) });
+    $("#searchstd-m").click(function (){
+
+        $(".suif-m").empty();
+        getinfo(scode,sname);
+
+
+    });
+    $("#searchdss-m").click(function (){
+        $(".dssif-m").empty();
+        getdss(scode,sname);
+
+    });
+    $("#searchty-m").click(function (){
+        $(".tyif-m").empty();
+        getty(scode,sname);
+
+    });
+    $("#searchwr-m").click(function (){
+        $(".wrif-m").empty();
+        getwr(scode,sname);
+
+    });
+
 
 
     document.getElementById("searchBtnt-m").addEventListener('click', ()=>{
+        getinfo();
         modal.classList.remove('hidden');
     })
     document.getElementById("cl").addEventListener('click', ()=>{
         modal.classList.add('hidden');
+        $(".suif-m").empty();
+        $(".search-name-mm").val('');
+        $(".search-code-mm").val('');
+        infostd = [];
     })
 
 
 
 
     document.getElementById("tooabtn-m").addEventListener('click', ()=>{
+        if($("#std-id-m").val() == ''){
+            alert("이용자를 선택해주세요");
+            return;
+        }
+        getdss();
         modalt.classList.remove('hidden');
     })
     document.getElementById("clt").addEventListener('click', ()=>{
+
         modalt.classList.add('hidden');
+        $(".dssif-m").empty();
+        $(".search-name-mmd").val('');
+        $(".search-code-mmd").val('');
+        infostd=[];
     })
 
+
+
+
     document.getElementById("fixbtn-m").addEventListener('click', ()=>{
+        if($("#std-id-m").val() == ''){
+            alert("이용자를 선택해주세요");
+            return;
+        }
+        getty();
         modalr.classList.remove('hidden');
     })
     document.getElementById("clr").addEventListener('click', ()=>{
         modalr.classList.add('hidden');
+        $(".tyif-m").empty();
+        $(".search-name-mmd").val('');
+        $(".search-code-mmd").val('');
+        infostd=[];
     })
 
+
+
     document.getElementById("medbtn-m").addEventListener('click', ()=>{
+        if($("#std-id-m").val() == ''){
+            alert("이용자를 선택해주세요");
+            return;
+        }
+        getwr();
         modalf.classList.remove('hidden');
     })
     document.getElementById("clf").addEventListener('click', ()=>{
         modalf.classList.add('hidden');
+        $(".wrif-m").empty();
+        $(".search-name-mmw").val('');
+        $(".search-code-mmw").val('');
+        infostd=[];
     })
+
+
+
+    $(".sel-m").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m");
+            infostd = [];// 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+        for(let i of $(e.target).closest("tr").children()){
+            console.log($(i).text());
+            if(i == 4){
+                infostd.push($(i).find("input").val());
+            }
+            infostd.push($(i).text());
+        }
+        console.log(infostd);
+        crr = e.currentTarget;
+
+    })
+    $(".sel-md").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m");
+            infostd = [];// 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+        for(let i of $(e.target).closest("tr").children()){
+            console.log($(i).text());
+            infostd.push($(i).text());
+        }
+        console.log(infostd);
+        crr = e.currentTarget;
+
+    })
+    $(".sel-mt").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m");
+            infostd = [];// 이전 선택 요소에서 클래스 제거
+        }
+
+        $(e.target).closest("tr").addClass("select-content-m");
+        for(let i of $(e.target).closest("tr").children()){
+            console.log($(i).text());
+            infostd.push($(i).text());
+        }
+        console.log(infostd);
+        crr = e.currentTarget;
+
+    })
+    $(".sel-mw").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m");
+            infostd = [];// 이전 선택 요소에서 클래스 제거
+        }
+
+        $(e.target).closest("tr").addClass("select-content-m");
+        for(let i of $(e.target).closest("tr").children()){
+            console.log($(i).text());
+            infostd.push($(i).text());
+        }
+        console.log(infostd);
+        crr = e.currentTarget;
+
+    })
+
+
+
+
+
+
+
+
+
+    $("#cls-std").click(function (){
+        for (let i in infostd) {
+            $("#" + (parseInt(i) + 1)).html(infostd[i]);
+        }
+        $("#std-id-m").val(infostd[1]);
+        infostd=[];
+        crr = null;
+        modal.classList.add('hidden');
+        $(".suif-m").empty();
+        $(".search-name-mm").val('');
+        $(".search-code-mm").val('');
+    })
+
+    $("#cls-dss").click(function (){
+        if(infostd[0] === undefined) {
+            alert("질병을 선택해주세요");
+            return;
+        }
+        var tr = document.createElement("tr");
+        tr.innerHTML= `<tr><td>${infostd[1]}</td>
+            <td>${infostd[2]}</td>
+            <td><button type="button" id="dleb">삭제</button></td>
+            <input type="hidden" name="dss_no" value="${infostd[1]}" >
+            </tr>`;
+        $(".dd-in-m").append(tr);
+
+        infostd=[];
+        crr = null;
+        modalt.classList.add('hidden');
+        $(".dssif-m").empty();
+        $(".search-name-mmd").val('');
+        $(".search-code-mmd").val('');
+    })
+
+    $("#cls-ty").click(function (){
+        if(infostd[0] === undefined) {
+            alert("처치물품을 선택해주세요");
+            return;
+        }
+        var list =  $(".ty-in-m").children("tr").toArray();
+        for(var i in list){
+            if($(list[i]).find("td").html() == infostd[1]){
+                if(confirm("중복된 처치용품이 있습니다 수정하시겠습니까?")){
+                    $(list[i]).remove();
+                    break;
+                }else{
+                    return;
+                }
+            }
+
+        }
+        var tr = document.createElement("tr");
+        tr.innerHTML= `<tr><td>${infostd[1]}</td>
+            <input type="hidden" name="mdcn_code" value="${infostd[1]}">
+            <td>${infostd[2]}</td>
+            <td>${amount}</td>
+            <input type="hidden" name="flctn_qty" value="${amount}">
+            <td><button type="button" id="dleb">삭제</button></td>
+            </tr>`;
+        $(".ty-in-m").append(tr);
+
+
+
+        infostd=[];
+        crr = null;
+        modalr.classList.add('hidden');
+        $(".tyif-m").empty();
+        $(".search-name-mmt").val('');
+        $(".search-code-mmt").val('');
+    })
+
+    $("#cls-wr").click(function (){
+        if(infostd[0] === undefined) {
+            alert("처치물품을 선택해주세요");
+            return;
+        }
+        var list =  $(".wr-in-m").children("tr").toArray();
+        for(var i in list){
+            if($(list[i]).find("td").html() == infostd[1]){
+                if(confirm("중복된 약품이 있습니다 수정하시겠습니까?")){
+                    $(list[i]).remove();
+                    break;
+                }else{
+                    return;
+                }
+            }
+
+        }
+        var tr = document.createElement("tr");
+        tr.innerHTML= `<tr><td>${infostd[1]}</td>
+            <input type="hidden" name="mdcn_code" value="${infostd[1]}">
+            <td>${infostd[2]}</td>
+            <td>${amount}</td>
+            <input type="hidden" name="flctn_qty" value="${amount}">
+            <td><button type="button" id="dleb">삭제</button></td>
+            </tr>`;
+        $(".wr-in-m").append(tr);
+
+
+
+        infostd=[];
+        crr = null;
+        modalf.classList.add('hidden');
+        $(".wrif-m").empty();
+        $(".search-name-mmw").val('');
+        $(".search-code-mmw").val('');
+    })
+
+    $(".body-line").on('click',"button", function (e){
+        $(this).closest("tr").remove();
+    })
+    $(".sss-m").on('keyup', "input", function(e) {
+
+        var value = $(this).val();
+        if (isNaN(value)) {
+            $(this).val("");
+        }
+        if(parseInt($(this).val()) > infostd[3]){
+            alert("수량을 확인해주세요")
+            $(this).val("");
+            $(this).focus;
+        }
+        amount = parseInt($(this).val());
+
+    });
+
+
 
 
 
