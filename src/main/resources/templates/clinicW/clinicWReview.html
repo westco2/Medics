@@ -12,8 +12,8 @@
     
     <div class="search-wrap-w">
         <div class="info-search-w">
-            <input type="text" placeholder="검색어 입력">
-       		<button type="button" id="searchBtn-w">검색</button>
+			<input type="text" id="input-w" placeholder="이름 입력">
+			<button type="button" class="Btn-w" id="Btn-w">검색</button>
         </div>
     </div>
 
@@ -25,6 +25,7 @@
                 <th>이름</th>
                 <th>학번</th>
                 <th>학과</th>
+                <th>제목</th>
                 <th>내용</th>
                 <th></th>
             </tr>
@@ -34,133 +35,63 @@
            <table cellpadding="0" cellspacing="0">
                <tbody class="body-line-w">
                <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
+                   <td>[[${vo.cli_sn}]]</td>
+                   <td>[[${vo.korn_flnm}]]</td>
+                   <td>[[${vo.studentid}]]</td>
+                   <td>[[${vo.scsbjt_nm}]]</td>
+                   <td>[[${cli_wri_ttl}]]</td>
+                   <td>[[${cli_wri_cn}]]</td>
                    <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
+					    <div class="applyBtn-w">
+					        <button class="Btn-w" id="deleteBtn-w">삭제</button>
+					    </div>
                    </td>
                </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               <tr>
-                   <td>1</td>
-                   <td>홍길동</td>
-                   <td>20240013</td>
-                   <td>사회체육과</td>
-                   <td>유익한 클리닉이었습니다.</td>
-                   <td>
-                   	<button id="searchBtn-w">수정</button>
-                   	<button id="searchBtn-w">삭제</button>
-                   </td>
-               </tr>
-               
+              
                </tbody>
            </table>
        </div>
-       <div style="text-align: right; margin-top: 10px;">
-           <button id="searchBtn-w">삭제</button>
-       </div>
     </th:block>
+    
+    <script>
+   	//검색버튼(제목)
+	var searchBtn = document.getElementById('Btn-w');
+
+	// 검색 버튼 클릭 시 실행될 함수를 연결합니다.
+	searchBtn.addEventListener('click', function() {
+		// 검색어를 가져옵니다.
+		var searchInput = document.querySelector('#input-w').value
+				.toLowerCase(); // 검색어 입력란의 값
+
+		// 모든 테이블 행을 가져옵니다.
+		var rows = document.querySelectorAll('.body-line-w tr');
+
+		// 각 행을 순회하며 검색어와 일치하는 것만 보여줍니다.
+		rows.forEach(function(row) {
+			// 각 행의 제목 셀을 가져옵니다.
+			var titleCell = row.querySelector('td:nth-child(2)'); // 검색 대상 필드의 위치
+			var titleText = titleCell.textContent.toLowerCase(); // 제목 텍스트를 소문자로 변환합니다.
+
+			// 검색어가 포함되어 있으면 해당 행을 표시합니다.
+			if (titleText.includes(searchInput)) {
+				row.style.display = ''; // 보이도록 설정합니다.
+			} else {
+				row.style.display = 'none'; // 숨깁니다.
+			}
+		});
+	});
+	
+	/////
+        
+        //삭제버튼
+    	var deleteBtn = document.getElemtentById("deleteBtn-w")
+    	deleteBtn.onclick = function(){
+    		event.proventDefault();
+    		if(confirm("삭제 후에는 데이터 복구가 불가합니다.") == false){
+    		}
+    		document.actionForm.action = "deleteForm";
+    		document.actionForm.submit();
+    	}
+	</script>
 </body>
 </html>
