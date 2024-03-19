@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Item Management</title>
+</head>
+<body>
+    <h2>대여승인요청</h2>
+    <form id="searchItemForm">
+      <label for="searchDateTime">신청일시:</label><br>
+      <input type="datetime-local" id="searchDateTime" name="searchDateTime">
+      <button type="submit">검색</button>
+    </form>
+    <div id="itemStock"></div>
+    <form id="addItemForm">
+        <label for="itemName">물품명:</label>
+        <input type="text" id="itemName" name="itemName" required><br>
+        <label for="itemDescription">물품코드:</label>
+        <input type="text" id="itemDescription" name="itemDescription" required><br>
+        <label for="itemQuantity">수량:</label>
+        <input type="number" id="itemQuantity" name="itemQuantity" required min="0"><br>
+        <label for="customerName">학번:</label>
+        <input type="text" id="customerName" name="customerName" readonly>
+        <label for="rentalStatus">대여상태:</label>
+        <select id="rentalStatus" name="rentalStatus"><br>
+            <option value="대여중">대여중</option>
+            <option value="대여가능">반품완료</option>
+        </select><br>
+        <label for="rentalDateTime">대여일시:</label>
+        <input type="datetime-local" id="rentalDateTime" name="rentalDateTime" required><br>
+        <label for="returnDateTime">반납일시:</label>
+        <input type="datetime-local" id="returnDateTime" name="returnDateTime" required><br>
+        <button type="submit1">저장</button>
+        <button type="submit2">삭제</button>
+    </form>
+
+    <h3>대여신청 승인 요청 리스트</h3>
+    <ul id="approvalRequestList"></ul>
+
+    <script>
+        const searchItemForm = document.getElementById('searchItemForm');
+        const itemStock = document.getElementById('itemStock');
+        const approvalRequestList = document.getElementById('approvalRequestList');
+
+        // 대여신청 승인 요청 리스트를 받아와서 출력하는 함수
+        function displayApprovalRequestList(searchParams = {}) {
+            const queryString = new URLSearchParams(searchParams).toString();
+            fetch(`/rental-requests/approval-list?${queryString}`)
+                .then(response => response.json())
+                .then(data => {
+                    approvalRequestList.innerHTML = ''; // 기존 목록 초기화
+                    data.forEach(request => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `물품명: ${request.itemName}, 학번: ${request.requestedBy}, 수량: ${request.quantity}, 대여일시: ${request.rentalDateTime}, 반납일시: ${request.returnDateTime}, 연락처: ${request.contact}`;
+                        approvalRequestList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching approval request list:', error));
+        }
+
+        // 페이지 로드 시 대여신청 승인 요청 리스트 출력
+        displayApprovalRequestList();
+
+        // 검색 폼 제출 시
+        searchItemForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchDateTime = document.getElementById('searchDateTime').value;
+            const searchParams = {
+                rentalDateTime: searchDateTime
+            };
+            displayApprovalRequestList(searchParams);
+        });
+    </script>
+</body>
+</html>

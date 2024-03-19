@@ -20,8 +20,11 @@ td{padding: 10px; }
 .info-search-w{display: flex; justify-content: right; gap: 20px; align-items: center;}
 .info-search-w p{margin: 0; font-size: 11px; font-weight: 600;}
 
-input[type='text'].picdate{width: 60px;}
-#searchBtn-w{padding: 7px 13px; background-color: #395346; font-size: 10px; color: #ffffff; border: none; border-radius: 2px; font-weight: 600; cursor: pointer;}
+input[type='text'].picdate{width: 100%;}
+input, textaea{border: none; outline: none;}
+textarea{width: 100%; height: 450px;}
+.Btn-w{padding: 7px 13px; background-color: #395346; font-size: 10px; color: #ffffff; border: none; border-radius: 2px; font-weight: 600; cursor: pointer;}
+#clinicBtn-w {float: right; margin-top: 10px;}
 
 .recode-wrap-w{display: flex; justify-content: space-between; align-items: start; }
 .recode-table-w{flex-basis: 70%; width: 100%;}
