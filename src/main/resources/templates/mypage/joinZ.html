@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/loginM.css}">
+
+</head>
+<body style="background-color: #dbe4e0;" >
+<div class="main-bar">
+    <div class="main-logo">
+        <a class="logo" href="mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+    </div>
+    <div class="main-user">
+        <p></p>
+<!--        <i class="ri-user-line"></i>-->
+    </div>
+</div>
+<div class="login-wrap-m">
+    <div class="login-wrap-mt">
+        <div class="login-title">
+            <div class="login-icon-m">
+                <i class="ri-rotate-lock-fill"></i>
+            </div>
+            <div class="login-text-m">
+                <h3>SIGNIN</h3>
+                <p>통합계정생성</p>
+            </div>
+            <div class="login-con-m">
+                <p>메딕스대학교 보건 서비스를 이용을 위해 통합계정을 생성하여야합니다.<br>
+                    서비스 이용 후 반드시 로그아웃 하시기 바랍니다.</p>
+            </div>
+        </div>
+        <div class="login-mmm">
+            <form action="/mypage/joinFormZ" method="post">
+                <div class="lg-wrap-m">
+                    <div class="lg-lg-lg">
+                        <input type="text" name="username" class="log-mt" placeholder="학생/교직원번호">
+                        <i class="ri-shield-user-line"></i>
+                    </div>
+                    <div class="lg-lg-lg">
+                        <input type="password" name="password" class="log-mt" placeholder="비밀번호">
+                        <i class="ri-lock-2-line"></i>
+                    </div>
+                    <div class="lg-lg-lg">
+                        <input type="text" name="KORN_FLNM" class="log-mt" placeholder="이름">
+                        <i class="ri-lock-2-line"></i>
+                    </div>
+                    <div class="lg-lg-lg">
+                        <select name="role" class="log-mt">
+                            <option value="ROLE_USER">학생</option>
+                            <option value="ROLE_ADMIN">관리자</option>
+                            <option value="ROLE_TESTER">테스터</option>
+                        </select>
+                        <i class="ri-lock-2-line"></i>
+                    </div>
+                </div>
+                <div class="login-button-wrap" style="margin-top: 13px">
+                    <input type="submit" class="loginbtn" value="회원가입">
+                </div>
+            </form>
+        </div>
+        <div class="jojojo-m" style="height: 20px;">
+            <a href="/mypage/loginM">돌아가기<i class="ri-account-circle-line" style="margin-left: 5px; font-size: 18px;"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

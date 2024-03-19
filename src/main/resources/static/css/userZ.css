@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 
-/*.container-h {*/
-/*    margin-bottom: 20px;*/
-/*    position: relative;*/
-/*}*/
-/*.header-h {*/
-/*    font-size: 15px;*/
-/*    border-bottom: 1px solid gray;*/
-/*}*/
+
 .popup-z {
     display: none;
     position: fixed;
@@ -26,14 +19,11 @@ button {
     padding: 5px 5px;
     font-size: 10px;
 }
-thead th {
-    z-index: 1; /* 다른 요소 위에 렌더링하기 위해 z-index 지정 */
+.makeZ{
+    height: 100px;
 }
-
-.table-content { height: 100px}
-
 /* 모달 스타일 */
-.modal {
+.modalZ {
     display: none; /* 초기에는 숨김 */
     position: fixed; /* 위치 고정 */
     z-index: 1; /* 위에 표시 */
@@ -44,12 +34,15 @@ thead th {
     overflow: auto;
     background-color: rgba(0,0,0,0.4); /* 배경 어둡게 */
 }
-.modal-content {
+.modal-contentZ {
     background-color: #fefefe;
     margin: 15% auto; /* 중앙 정렬 */
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
+}
+#modalafterZ{
+    border-top: 1px solid #d8dfda; padding: 7px;  font-weight: 700; background-color: #f4f2f2;
 }
 .close {
     color: #aaa;

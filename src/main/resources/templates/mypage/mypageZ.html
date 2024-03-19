@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 
 <body>
 
 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .container-h})}">
 <div class="container-h" >
     <div class="div-m">
-    <h3 style="padding-right: 71px;">진료내역</h3>
+    <h2 sec:authorize="isAuthenticated()">[[${#authentication.principal.KORN_FLNM}]]님의 마이페이지</h2>
+    <h3 style="padding-right: 71px;" > 진료내역</h3>
     <div class="table-wrap">
         <table class="head-line" cellpadding="0" cellspacing="0">
             <thead>
@@ -24,7 +25,7 @@
             </tr>
             </thead>
         </table>
-        <div class="table-content ">
+        <div class="table-content makeZ">
             <table cellpadding="0" cellspacing="0">
                 <tbody class="body-line">
                 <tr>
@@ -111,30 +112,7 @@
                     <td>졸업</td>
                     <td>학생</td>
                 </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -161,7 +139,7 @@
             </tr>
             </thead>
         </table>
-        <div class="table-content">
+        <div class="table-content makeZ">
             <table cellpadding="0" cellspacing="0">
                 <tbody class="body-line">
                 <tr>
@@ -298,7 +276,7 @@
             </tr>
             </thead>
         </table>
-        <div class="table-content">
+        <div class="table-content makeZ">
             <table cellpadding="0" cellspacing="0">
                 <tbody class="body-line">
                 <tr>
@@ -420,13 +398,15 @@
 </div>
 </th:block>
 <!--modal 기준 디자인에 맞춰 변경 해야함-->
-<div class="modal" id="myModal">
-    <div class="modal-content">
+
+<div class="modalZ" id="myModal">
+    <div class="modal-contentZ">
         <span class="close">&times;</span>
         <!-- 후기 작성 폼 -->
-        <h2>후기 작성</h2>
+        <h3 id="modalafterZ" style="padding-right: 71px;">진료내역</h3>
         <form id="reviewForm">
             <!-- 평가 항목 추가 -->
+            <label for="rating">클리닉 이름:</label><br>
             <label for="rating">평가:</label>
             <select id="rating" name="rating">
                 <option value="5">★★★★★</option>
@@ -438,7 +418,7 @@
             <br>
             <!-- 내용 작성 -->
             <label for="reviewContent">후기 내용:</label><br>
-            <textarea id="reviewContent" name="reviewContent" rows="4" cols="50"></textarea>
+            <textarea id="reviewContent" name="reviewContent" rows="10" cols="55"></textarea>
             <br>
             <!-- 제출 버튼 -->
             <button type="submit">제출</button>
