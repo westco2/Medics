@@ -10,11 +10,11 @@
         <h3 style="padding-right: 60px;">처치물품 검색</h3>
 
         <div class="search-wrap-m">
-            <div class="info-search-m">
-                <p>코드</p><input type="text" name="" style="width: 70px;">
-                <p>처치명</p><input type="text"  name="">
-                <p>남은수량</p><input type="number" style="width: 40px;"  name="">
-            </div>
+            <form class="info-search-m" name="searchForm" action="therapyM" method="get">
+                <p>코드</p><input type="text" name="searchCode" style="width: 70px;" th:value="${cri.searchCode}">
+                <p>물품명</p><input type="text"  name="searchName" th:value="${cri.searchName}">
+                <p>남은수량</p><input type="number" style="width: 40px;"  name="searchNum" th:value="${cri.searchNum}">
+            </form>
             <div>
                 <button type="button" id="choiBtn-m">추가</button>
                 <button type="button" id="searchBtn-m">검색</button>
@@ -26,29 +26,31 @@
             <table class="head-line" cellpadding="0" cellspacing="0">
                 <thead>
                 <tr>
-                    <th style="width: 40px;"><input type="checkbox"></th>
+                    <th style="width: 40px;">번호</th>
                     <th>코드</th>
-                    <th>처치명</th>
+                    <th>처치물품명</th>
                     <th style="width: 40px; padding-right: 20px;">재고</th>
                 </tr>
                 </thead>
             </table>
             <div class="table-content wi-up-m">
                 <table cellpadding="0" cellspacing="0">
-                    <tbody class="body-line">
-                    <tr>
-                        <td style="width: 20px;"><input type="checkbox"></td>
-                        <td>F7552</td>
-                        <td>밴드</td>
-                        <td style="width: 40px; padding-right: 25px;">3개</td>
-                    </tr>
+                    <tbody class="body-line sel-m">
+                    <th:block th:each="list,status : ${list}">
+                        <tr>
+                            <td style="width: 20px;">[[${status.count}]]</td>
+                            <td>[[${list.mdcn_code}]]</td>
+                            <td>[[${list.mdcn_nm}]]</td>
+                            <td style="width: 40px; padding-right: 25px;">[[${list.mdcn_qty}]]</td>
+                        </tr>
+                    </th:block>
                     </tbody>
                 </table>
             </div>
 
         </div>
         <div class="submit-wrap-m">
-            <input type="submit" value="삭제">
+            <input type="submit" id="del-mt" value="삭제">
         </div>
 
 
@@ -59,7 +61,7 @@
 
 
         <div id="modalcho" class="hidden">
-            <div id="modalcontentt">
+            <div id="modalcontentt" style="height: 150px">
                 <div class="modal-wrap-m">
                     <h3>처치 등록</h3>
                     <div class="modal-search-m justy-m">
@@ -69,7 +71,7 @@
                                 <input type="text" class="code-m" style="width: 50px;">
                             </div>
                             <div class="modal-name-m">
-                                <p>처치명</p>
+                                <p>물품명</p>
                                 <input type="text" class="pa-name-m" style="width: 70px;">
                             </div>
                             <div class="modal-name-m">
@@ -77,36 +79,48 @@
                                 <input type="text" class="pa-num-m" style="width: 20px;"   name="">
                             </div>
                         </div>
-                        <div class="modal-searchBtn-m">
-                            <button type="button" id="regbtn">추가</button>
-                        </div>
-                    </div>
-
-                    <div class="table-wrap">
-                        <table class="head-line" cellpadding="0" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>코드</th>
-                                <th>처치명</th>
-                                <th>수량</th>
-                                <th class="last-cm"></th>
-                            </tr>
-                            </thead>
-                        </table>
-                        <div class="table-content wids-m widst-m sts-m-m">
-                            <table cellpadding="0" cellspacing="0">
-                                <tbody class="body-line sds-m">
-
-                                </tbody>
-                            </table>
-                        </div>
 
                     </div>
+
                     <div class="close-wrap-m">
                         <button type="button" id="clsf">등록</button>
                         <button type="button" id="clch" style="background-color: #82b099;">닫기</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="modaldel" class="hidden">
+            <div id="modalcontentd" style="height: 150px">
+                <form class="modal-wrap-m" action="" name="delForm" method="post">
+                    <h3>물품 폐기</h3>
+                    <div class="modal-search-m justy-m">
+                        <div class="search-left-wrap">
+                            <div class="modal-name-m">
+                                <p>처치코드</p>
+                                <input type="text" class="code-m" name="mdcn_code" style="width: 50px;">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>물품명</p>
+                                <input type="text" class="pa-name-m" name="mdcn_nm" style="width: 70px;">
+                            </div>
+                            <div class="modal-name-m">
+                                <p>수량</p>
+                                <input type="text" class="pa-num-m dln-m" name="flctn_qty" style="width: 20px;"  >
+                            </div>
+                            <div class="modal-name-m">
+                                <p>영구삭제</p>
+                                <input type="checkbox" class="pa-ck-m" style="width: 20px;"  >
+                            </div>
+                            <input type="hidden" name="hidden_qty">
+                        </div>
+
+                    </div>
+
+                    <div class="close-wrap-m">
+                        <button type="button" id="clsd">삭제</button>
+                        <button type="button" id="clcd" style="background-color: #82b099;">닫기</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -119,16 +133,8 @@
 
 <script>
 
-    var modalch = document.getElementById("modalcho");
 
-
-    document.getElementById("choiBtn-m").addEventListener('click', ()=>{
-        modalch.classList.remove('hidden');
-    })
-    document.getElementById("clch").addEventListener('click', ()=>{
-        modalch.classList.add('hidden');
-    })
-
+    /*
     modalwrap = document.querySelector(".sts-m-m");
     modalwrap.addEventListener('click',(e)=>{
         if(e.target.tagName != "BUTTON") return;
@@ -149,7 +155,7 @@
         var tdtt = document.createElement("td");
         var tdr = document.createElement("td");
         var inp = document.createElement("input");
-        inp.type = 'number';
+        inp.type = 'text';
         inp.style.width = '30px';
         inp.value = numD;
         tdo.innerHTML = codeD;
@@ -166,10 +172,147 @@
         document.querySelector(".pa-name-m").value = '';
         document.querySelector(".pa-num-m").value = '';
 
+     */
+
+        /* 처치 등록*/
+
+    $("#clsf").on('click',function(e) {
+
+
+        var mdcn_code = $(".code-m").val();
+        var mdcn_nm = $(".pa-name-m").val();
+        var mdcn_qty = parseInt($(".pa-num-m").val());
+
+
+        var jsondata = {
+            "mdcn_code": mdcn_code,
+            "mdcn_nm": mdcn_nm,
+            "mdcn_qty": mdcn_qty,
+            "mdcn_tp": "처치"
+        };
+
+
+        $.ajax({
+            type: "post",
+            url: "/regmdcn",
+            data: JSON.stringify(jsondata),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                $(".sds-m").empty();
+                window.location.href = "therapyM";
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("등록에 실패했습니다.");
+            }
+        });
+    });
+
+
+    var choi = '';
+    var choiname = '';
+    var choinum = 0;
+    var crr = null;
+
+    $(".sel-m").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+        choi = $(e.target).closest("tr").find("td").next().html();
+        choiname = $(e.target).closest("tr").find("td").next().next().html();
+        choinum = parseInt($(e.target).closest("tr").find("td").next().next().next().html());
+        crr = e.currentTarget;
+        console.log(choi);
     })
 
 
 
+
+    $("#searchBtn-m").click(function (){
+        $("form[name='searchForm']").submit();
+    })
+
+
+    var modalch = document.getElementById("modalcho");
+
+
+    document.getElementById("choiBtn-m").addEventListener('click', ()=>{
+        modalch.classList.remove('hidden');
+
+        $(".code-m").val(choi);
+        $(".pa-name-m").val(choiname);
+
+
+
+    })
+    document.getElementById("clch").addEventListener('click', ()=>{
+        if (crr !== null) {
+            crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+            crr = null;
+        }
+        $(".code-m").val("");
+        $(".pa-name-m").val("");
+        choi = '';
+        choiname = '';
+        choinum = 0;
+        modalch.classList.add('hidden');
+    })
+
+
+    var modaldel = document.getElementById("modaldel");
+
+    $("#clcd").click(function (){
+        if (crr !== null) {
+            crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+            crr = null;
+        }
+        $(".code-m").val("");
+        $(".pa-name-m").val("");
+        choi = '';
+        choiname = '';
+        choinum = 0;
+        modaldel.classList.add('hidden');
+    })
+
+    $("#del-mt").click(function (){
+
+        if(choi === '') {
+            alert("처치물품을 선택해주세요");
+            return;
+        }
+        console.log(choinum);
+        modaldel.classList.remove('hidden');
+        $(".code-m").val(choi);
+        $(".pa-name-m").val(choiname);
+    })
+
+    $("#clsd").click(function (){
+        var dn = parseInt($(".dln-m").val());
+        if(choinum < dn){
+            alert("재고보다 많은 양입니다. 수량을 확인해주세요");
+            return;
+        }
+        if($(".pa-ck-m").prop("checked")) {
+            document.delForm.flctn_qty.value = choinum;
+            document.delForm.action="delmdcn";
+            document.delForm.submit();
+        }
+        else {
+            if($(".dln-m").val()==''){
+                alert("수량을 입력해주세요");
+                $(".dln-m").focus();
+                return;
+            }
+            var qty = choinum-dn;
+            document.delForm.hidden_qty.value=qty;
+            document.delForm.action="updatemdcn";
+            document.delForm.submit();
+        }
+
+
+    })
 
 
 

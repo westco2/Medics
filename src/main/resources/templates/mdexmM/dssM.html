@@ -10,10 +10,10 @@
         <h3 style="padding-right: 88px;">질병 검색</h3>
 
         <div class="search-wrap-m">
-            <div class="info-search-m">
-                <p>코드</p><input type="text" name="" style="width: 70px;">
-                <p>질병명</p><input type="text"  name="">
-            </div>
+            <form class="info-search-m" action="dssM" name="searchForm" method="get">
+                <p>코드</p><input type="text" name="searchCode" th:value="${cri.searchCode}" style="width: 70px;">
+                <p>질병명</p><input type="text"  name="searchName" th:value="${cri.searchName}">
+            </form>
             <div>
                 <button type="button" id="choiBtn-m">추가</button>
                 <button type="button" id="searchBtn-m">검색</button>
@@ -25,7 +25,7 @@
             <table class="head-line" cellpadding="0" cellspacing="0">
                 <thead>
                 <tr>
-                    <th style="width: 40px;"><input type="checkbox"></th>
+                    <th style="width: 40px;">번호</th>
                     <th>코드</th>
                     <th>질병명</th>
                 </tr>
@@ -33,19 +33,22 @@
             </table>
             <div class="table-content wi-up-m">
                 <table cellpadding="0" cellspacing="0">
-                    <tbody class="body-line">
-                    <tr>
-                        <td style="width: 20px;"><input type="checkbox"></td>
-                        <td>F742</td>
-                        <td>두통</td>
-                    </tr>
+                    <tbody class="body-line sel-m">
+                    <th:block th:each="list,status : ${list}">
+                        <tr>
+                            <td style="width: 20px;">[[${status.count}]]</td>
+                            <td>[[${list.dss_no}]]</td>
+                            <td>[[${list.dss_nm}]]</td>
+                        </tr>
+                    </th:block>
+
                     </tbody>
                 </table>
             </div>
 
         </div>
         <div class="submit-wrap-m">
-            <input type="submit" value="삭제">
+            <input type="submit" id="del-mt" value="삭제">
         </div>
 
         <!-- 이용자 정보검색 모달창 -->
@@ -149,6 +152,62 @@
         document.querySelector(".pa-name-m").value = '';
 
     })
+
+
+    /* 질병 등록 */
+    $("#clsf").click(function(e) {
+        var jsondata = [];
+
+        $(".sds-m tr").each(function() {
+            var dss_no = $(this).find("td:eq(0)").text();
+            var dss_nm = $(this).find("td:eq(1)").text();
+
+            jsondata.push({
+                "dss_no": dss_no,
+                "dss_nm": dss_nm
+            });
+        });
+
+        $.ajax({
+            type: "post",
+            url: "/regdss",
+            data: JSON.stringify(jsondata),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                $(".sds-m").empty();
+                window.location.href = "dssM";
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("등록에 실패했습니다.");
+            }
+        });
+    });
+    //선택
+    //토글 색변경 and 삭제
+    var choi = '';
+    var crr = null;
+
+    $(".sel-m").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+        choi = $(e.target).closest("tr").find("td").next().html();
+        crr = e.currentTarget;
+        console.log(choi);
+    })
+
+    $("#del-mt").click(function (){
+        window.location.href = `dssdel/${choi}`;
+    })
+
+
+    $("#searchBtn-m").click(function (){
+        $("form[name='searchForm']").submit();
+    })
+
 
 
 
