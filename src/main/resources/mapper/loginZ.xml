@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 인터페이스 위치, 인터페이스 위에는 @Mapper명시 -->
+<mapper namespace="com.project.medics.loginZ.service.LoginZMapper">
+    <insert id="join">
+        insert into login_user_table values (#{username}
+                                            ,#{password}
+                                            ,#{KORN_FLNM}
+                                            ,#{role})
+    </insert>
+</mapper>

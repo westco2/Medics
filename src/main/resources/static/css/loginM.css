@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+.main-bar{height: 50px; background-color: #98b9a4; display: flex; justify-content: space-between;}
+.main-logo{color: #7a817d; text-align: center; padding: 15px 20px;}
+.main-logo a{font-weight: 500; color: #ffffff;}
+.main-bar .main-user{display: flex; justify-content: center; align-items: center; padding: 20px 50px 15px 20px; gap: 20px;}
+.main-bar .main-user p{font-size: 13px; font-weight: 700; margin: 0; color: #e1f1de;}
+.main-bar .main-user i {color: #ffffff; font-size: 15px; cursor: pointer;}
+.main-bar .main-user i:hover{color: #b6dcc4;}
+
+a.logo {
+    text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+    color: inherit; /* 부모 요소의 색상 상속 */
+}
+a.logo span {
+    color: #ffffff; /* 흰색으로 설정 */
+}
+a.logo:hover {
+    color: inherit; /* 부모 요소의 색상 상속 */
+}
+
+.login-wrap-m{
+
+    width: 100%;
+
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.login-wrap-mt{
+    vertical-align: middle;
+    width: 760px;
+
+    background-color: #fff;
+    margin-top: 30px;
+    box-shadow: 0 0 5px 4px rgb(79, 79, 79, 0.1);
+    padding: 40px 60px 40px 60px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+.login-icon-m i{
+    font-size: 80px;
+    color: #8cad9d;
+}
+.login-title{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    border-bottom: #e0e0e0 solid 1px;
+    padding-bottom: 25px;
+}
+.login-text-m{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+.login-text-m h3{font-size: 40px; margin: 0; padding-top: 4px;}
+.login-text-m p{font-size: 15px; font-weight: 800; margin: 0;letter-spacing: 11px;}
+.login-con-m p{margin-top: 25px; line-height: 22px; font-size: 13px;}
+.login-mmm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: #e0e0e0 solid 1px;
+    padding-bottom: 40px;
+    gap: 20px;
+}
+.lg-wrap-m{display:  flex; flex-direction: column; gap: 12px;}
+.log-mt{ width: 300px; border-radius: 5px; border: 1px solid #c0c0c0; padding: 12px 10px 12px 50px; font-size: 15px;}
+.lg-lg-lg{position: relative;}
+.lg-lg-lg i{position: absolute; top: 8px; left: 8px; font-size: 27px; color:  #8cad9d;}
+
+.login-check-m{
+    display: flex;
+    margin: 0;
+    font-size: 13px;
+}
+
+.ck-ck-m{border-radius: 30px;}
+
+.loginbtn{
+    color: #fff;
+    background-color: #789587;
+    border: none;
+    padding: 12px 160px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    font-weight: 600;
+}
+.loginbtn:hover {opacity: 1; transition: all 0.2s ease-in-out;}
+
+.jojojo-m{
+    display: flex;
+
+    justify-content: end;
+}
+.jojojo-m a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #466556;
+    font-weight: 800;
+}
+.lg-lg-lg select {
+    width: 361.6px;
+    border-radius: 5px;
+    border: 1px solid #c0c0c0;
+    padding: 12px 10px 12px 50px;
+    font-size: 15px;
+    background-color: #fff; /* 배경색 추가 */
+    color: #333; /* 글자색 추가 */
+}

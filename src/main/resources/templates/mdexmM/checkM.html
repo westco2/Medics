@@ -8,17 +8,17 @@
 <div class="div-m">
     <h3>이용자 정보검색</h3>
 
-    <div class="search-wrap-m">
+    <form class="search-wrap-m" action="/mdexmM/checkM" method="get">
         <div class="info-search-m">
-            <p>이름</p><input type="text" name="">
-            <p>번호</p><input type="text" name="">
+            <p>이름</p><input type="text" style="width: 70px" class="search-name-mm" name="searchName">
+            <p>번호</p><input type="text" style="width: 90px" class="search-code-mm" name="searchCode">
             <p>진료기간</p>
-            <input type="text" class="picdate">
-            <p>-</p>
-            <input type="text" class="picdate">
+            <input type="text" class="picdate search-st-mm" style="width: 60px" name="startDate">
+            <p style="font-size: 15px">-</p>
+            <input type="text" class="picdate search-ed-mm" style="width: 60px" name="endDate">
         </div>
-        <button type="button" id="searchBtn-m">검색</button>
-    </div>
+        <input type="submit" value="검색" style="width: 50px" id="searchBtn-m">
+    </form>
 
     <h3 style="padding-right: 71px;">이용자 정보</h3>
     <div class="table-wrap">
@@ -28,9 +28,9 @@
                 <th>이름</th>
                 <th>학번</th>
                 <th>소속학과</th>
-                <th>이메일</th>
-                <th>연락처</th>
+                <th style="width: 160px">이메일</th>
                 <th>성별</th>
+                <th>연락처</th>
                 <th>생년월일</th>
                 <th>학년</th>
                 <th>상태구분</th>
@@ -40,115 +40,21 @@
         </table>
         <div class="table-content">
             <table cellpadding="0" cellspacing="0">
-                <tbody class="body-line">
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
+                <tbody class="body-line suif-m">
+                <th:block th:each="i : ${std}" >
+                    <tr>
+                        <td style="padding-left: 0">[[${i.korn_flnm}]]</td>
+                        <td style="padding-left: 0">[[${i.studentid}]]</td>
+                        <td style="padding-left: 0">[[${i.scsbjt_nm}]]</td>
+                        <td style="padding-left: 0; width: 140px">[[${i.mbr_eml_addr}]]</td>
+                        <td>[[${i.gndr_nm}]]</td>
+                        <td style="padding-left: 0">[[${i.idfr_telno}]]</td>
+                        <td style="padding-left: 0">생년월일</td>
+                        <td style="padding-left: 0">[[${i.grade}]]</td>
+                        <td style="padding-left: 0">[[${i.enrollment}]]</td>
+                        <td style="padding-left: 0">학생</td>
+                    </tr>
+                </th:block>
                 </tbody>
             </table>
         </div>
@@ -171,14 +77,8 @@
                 </table>
                 <div class="table-content">
                     <table cellpadding="0" cellspacing="0">
-                        <tbody class="body-line">
-                        <tr>
-                            <td>2024-03-13</td>
-                            <td>기침나옴</td>
-                            <td>감기</td>
-                            <td>휴식</td>
-                            <td></td>
-                        </tr>
+                        <tbody class="body-line mdmd-m">
+
 
                         </tbody>
                     </table>
@@ -200,25 +100,8 @@
                 </table>
                 <div class="table-content">
                     <table cellpadding="0" cellspacing="0">
-                        <tbody class="body-line">
-                        <tr>
-                            <td></td>
-                            <td>아스피린</td>
-                            <td>3정</td>
-                            <td>3정줌</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>타이레놀</td>
-                            <td>3정</td>
-                            <td>3정줌</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>아스피린</td>
-                            <td>3정</td>
-                            <td>3정줌</td>
-                        </tr>
+                        <tbody class="body-line fl-mf">
+
                         </tbody>
                     </table>
                 </div>
@@ -229,6 +112,112 @@
 </div>
 
  </th:block>
+
+
+<script>
+
+    var choi = '';
+    var crr = null;
+    var crrt = null;
+
+    $(".suif-m").on('click','tr',function (e) {
+        if (crr !== null) {
+            crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+
+        choi = $(e.target).closest("tr").find("td").next().html();
+
+        crr = e.currentTarget;
+        console.log(choi);
+        $(".mdmd-m").empty();
+        getflu(choi);
+
+    })
+
+
+    $(".mdmd-m").on('click','tr',function (e) {
+        if (crrt !== null) {
+            crrt.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
+        }
+        $(e.target).closest("tr").addClass("select-content-m");
+
+        var a = $(e.target).closest("tr").find("input").val();
+
+        crrt = e.currentTarget;
+        console.log(a);
+        $(".fl-mf").empty();
+        getflt(a);
+
+
+    })
+
+
+
+
+
+
+
+
+    function getflu(stdid){
+        $.ajax({
+            type: "post",
+            url: "/getflu",
+            dataType: "json",
+            data: JSON.stringify({
+                studentid:stdid
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let item of data) {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${item.mdexm_ymd.replace('T', ' ')}</td>
+                    <td>${item.mdexm_cdt}</td>
+                    <td>${item.dss_nm}</td>
+                    <td>${item.mdexm_act}</td>
+                    <td>${item.excptn_mttr}</td>
+                    <input type="hidden" class="hid-mmd" value="${item.mdexm_no}">`;
+                    $(".mdmd-m").append(tr);
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        })
+
+    }
+
+    function getflt(mdxno){
+        $.ajax({
+            type: "post",
+            url: "/getflt",
+            dataType: "json",
+            data: JSON.stringify({
+                mdexm_no:mdxno
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                for (let item of data) {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${item.flctn_tp != '약품'?mdcn_nm:''}</td>
+                    <td>${item.flctn_tp == '약품'?mdcn_nm:''}</td>
+                    <td>${item.flctn_qty}</td>
+                    <td></td>`;
+                    $(".fl-mf").append(tr);
+                }
+            },
+            error: function(err, status) {
+                console.log(err, status);
+                alert("정보를 불러올 수 없습니다.");
+            }
+        })
+
+    }
+
+</script>
 
 </body>
 </html>

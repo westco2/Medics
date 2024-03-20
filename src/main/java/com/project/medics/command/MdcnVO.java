@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class clinicWVO {
+public class MdcnVO {
 
-	private String name;	
+    private String mdcn_code;
+    private String mdcn_nm;
+    private Integer mdcn_qty;
+    private String mdcn_tp;
 }

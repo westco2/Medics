@@ -6,6 +6,10 @@
 #modalcontentt{position: absolute; background-color: #ffffff; width: 450px; height: 620px; padding: 15px;}
 #modaltwo.hidden{display: none;}
 
+#modaldel{width: 100%; height: 100%; position: fixed; top: 0; left: 0; display: flex; justify-content: center; align-items: center; background-color: rgb(0,0,0,0.5); }
+#modalcontentd{position: absolute; background-color: #ffffff; width: 483px; height: 620px; padding: 15px;}
+#modaldel.hidden{display: none;}
+
 #modaltree{width: 100%; height: 100%; position: fixed; top: 0; left: 0; display: flex; justify-content: center; align-items: center; background-color: rgb(0,0,0,0.5); }
 #modaltree.hidden{display: none;}
 
@@ -36,11 +40,14 @@
 
 
 .widt-m{width: 100%;}
-.wid-m{width: 1200px;}
-.widss-m{width: 1200px;}
+.wid-m{width: 1400px;}
+.widss-m{width: 1400px;}
 .widss-m td{padding-left: 5px;}
 
 .widst-m td{padding-left: 5px;}
+
+
+.select-content-m{background-color: #e9e9e9;}
 
 
 
@@ -48,13 +55,14 @@
 .close-wrap-m button{padding: 7px 13px; background-color: #466556; font-size: 10px; color: #ffffff; border: none; border-radius: 2px; font-weight: 600; cursor: pointer;}
 
 .divt-m{display: flex; flex-direction: column; align-items: start; justify-content: start; width: 100%;}
+.divt-mm{display: flex; flex-direction: column; align-items: start; justify-content: start; width: 100%;}
 .divt-m h3{font-size: 14px; font-weight: 700; margin: 0; padding: 10px 40px 10px 0px; border-bottom: 3px solid #31483d;}
 .show-wrap-m{display: flex; justify-content: start; gap: 10px; align-items: start;}
 .show-m{display: flex; flex-direction: column; justify-content: start; align-items: start;}
 
 .line-content-m{margin: 8px;}
 .line-content-m p{margin: 0;  padding: 3px; font-size: 12px;}
-.line-content-m .name-m{width: 60px; background-color: #ffffff; height: 20px; font-size: 12px;  display: flex; justify-content: center; align-items: center; padding: 1px; border-radius: 2px;}
+.line-content-m .name-m{width: 60px; background-color: #ffffff; height: 20px; font-size: 12px;  display: flex; justify-content: start; align-items: center; padding: 1px 0 1px 4px; border-radius: 2px;}
 
 .searcht-wrap-m{display: flex; justify-content:space-between; padding: 20px; flex-basis: 100%; width: 98%; background-color: #f4f2f2; margin-top: 10px;}
 .btn-wrap-m{display: flex; height: 27px}
@@ -107,3 +115,7 @@
 
 /* 약품 */
 .inout-m-wrap{display: flex; justify-content: start; gap: 10px;}
+
+.res-m-wrap{display: flex; justify-content: start; gap: 32px; padding: 0 0 15px 15px; align-items: center; background-color: #f4f2f2 }
+.res-m-wrap p{margin: 0; font-size: 12px; font-weight: 600}
+.res-m-wrap input{padding: 3px; font-size: 12px;}

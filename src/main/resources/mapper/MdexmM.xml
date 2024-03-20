@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 인터페이스 위치, 인터페이스 위에는 @Mapper명시 -->
+<mapper namespace="com.project.medics.mdexmM.service.MdexmMMapper">
+
+
+    <!-- 질병 -->
+    <insert id="regdss" parameterType="java.util.List">
+        INSERT INTO DSS (dss_no, dss_nm) VALUES
+        <foreach collection="list" item="vo" separator=",">
+            (#{vo.dss_no}, #{vo.dss_nm})
+        </foreach>
+    </insert>
+
+
+    <select id="getdssList" resultType="DssVO">
+        select * from DSS
+        <where>
+            <if test="searchCode != null and searchCode != ''">
+                and dss_no like concat('%',#{searchCode},'%')
+            </if>
+            <if test="searchName != null and searchName != ''">
+                and dss_nm like concat('%',#{searchName},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="dssdel">
+        delete from DSS where dss_no = #{dss_no}
+    </delete>
+
+    <!-- 의약품 등록 -->
+
+
+
+
+    <insert id="regmdcn" >
+        INSERT INTO MDCN (mdcn_code, mdcn_nm, mdcn_qty, mdcn_tp) VALUES
+        (#{mdcn_code}, #{mdcn_nm}, #{mdcn_qty}, #{mdcn_tp})
+        ON DUPLICATE KEY UPDATE
+        mdcn_qty = mdcn_qty + #{mdcn_qty}
+    </insert>
+
+
+
+
+    <select id="getTherapyList" resultType="MdcnVO">
+        select * from MDCN
+        where mdcn_tp = "처치"
+            <if test="searchCode != null and searchCode != ''">
+                and mdcn_code like concat('%',#{searchCode},'%')
+            </if>
+            <if test="searchName != null and searchName != ''">
+                and mdcn_nm like concat('%',#{searchName},'%')
+            </if>
+            <if test="searchNum != null and searchNum != ''">
+                <![CDATA[ and mdcn_qty <= #{searchNum} ]]>
+            </if>
+
+    </select>
+
+    <select id="getWrhsList" resultType="MdcnVO">
+        select * from MDCN
+        where mdcn_tp = "약품"
+        <if test="searchCode != null and searchCode != ''">
+            and mdcn_code like concat('%',#{searchCode},'%')
+        </if>
+        <if test="searchName != null and searchName != ''">
+            and mdcn_nm like concat('%',#{searchName},'%')
+        </if>
+        <if test="searchNum != null and searchNum != ''">
+            <![CDATA[ and mdcn_qty <= #{searchNum} ]]>
+        </if>
+
+    </select>
+
+    <select id="getflctnList" resultType="FlctnVO">
+        select f1.*, m1.mdcn_nm
+        from FLCTN f1
+        left join MDCN m1
+        on f1.mdcn_code = m1.mdcn_code
+        where m1.mdcn_tp = "약품"
+        order by f1.flctn_ymd desc
+    </select>
+
+
+    <delete id="delmdcn">
+        delete from MDCN where mdcn_code = #{mdcn_code}
+    </delete>
+
+    <update id="updatemdcn">
+        update MDCN set mdcn_qty = #{hidden_qty}  where mdcn_code = #{mdcn_code}
+    </update>
+
+
+
+    <insert id="regflctn">
+        insert into FLCTN(mdcn_code, flctn_tp, flctn_qty)
+        values (#{mdcn_code}, "입고", #{mdcn_qty})
+    </insert>
+
+    <insert id="changeflctn">
+        INSERT INTO FLCTN (MDCN_CODE, FLCTN_TP, MDEXM_NO, FLCTN_QTY, FLCTN_RSN)
+        VALUES (#{mdcn_code}, '출고', #{mdexm_no}, #{flctn_qty}, #{flctn_rsn});
+    </insert>
+
+
+    <!-- 학생정보조회 -->
+    <select id="getstdInfo" resultType="StudentVO">
+        select * from STUDENT
+        <where>
+            <if test="searchCode != null and searchCode != ''">
+                and studentid like concat('%',#{searchCode},'%')
+            </if>
+            <if test="searchName != null and searchName != ''">
+                and korn_flnm like concat('%',#{searchName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getusrInfo" resultType="StudentVO">
+
+        select a1.*
+        from STUDENT a1
+        join
+        (SELECT m1.studentid
+        FROM STUDENT s1
+        LEFT JOIN mdexm m1 ON m1.studentid = s1.studentid
+        <where>
+            <if test="searchCode != null and searchCode != ''">
+                and m1.studentid like concat('%',#{searchCode},'%')
+            </if>
+            <if test="searchName != null and searchName != ''">
+                and korn_flnm like concat('%',#{searchName},'%')
+            </if>
+            <if test="startDate != '' and startDate != null">
+                <![CDATA[ and str_to_date(mdexm_ymd, '%Y-%m-%d') >= str_to_date(#{startDate}, '%Y-%m-%d') ]]>
+            </if>
+            <if test="endDate != '' and endDate != null">
+                <![CDATA[ and str_to_date(mdexm_ymd, '%Y-%m-%d') <= str_to_date(#{endDate}, '%Y-%m-%d') ]]>
+            </if>
+        </where>
+        GROUP BY studentid) a2
+        on a1.studentid = a2.studentid;
+    </select>
+
+
+
+    <insert id="regChart">
+        insert into MDEXM(excptn_mttr, studentid, mdexm_act, mdexm_cdt, dss_no)
+        values (#{excptn_mttr}, #{studentid}, #{mdexm_act}, #{mdexm_cdt}, #{dss_no})
+    </insert>
+
+    <insert id="mdexmFlctnreg">
+        <selectKey resultType="int" keyProperty="mdexm_no" order="BEFORE">
+            select max(mdexm_no) from MDEXM
+        </selectKey>
+        insert into FLCTN(mdexm_no, mdcn_code, flctn_tp, flctn_qty, flctn_rsn)
+        values (#{mdexm_no}, #{mdcn_code}, "출고", #{flctn_qty}, "처방")
+    </insert>
+
+    <update id="updateMdcns">
+        update MDCN set mdcn_qty = mdcn_qty - #{flctn_qty} where mdcn_code = #{mdcn_code}
+    </update>
+
+
+    <select id="getmdx" resultType="MdexmMVO">
+        select m1.*, d1.dss_nm
+        from MDEXM m1
+        left join DSS d1
+        on m1.dss_no = d1.dss_no
+        where studentid = #{studentid};
+    </select>
+
+    <select id="getfll" resultType="FlctnVO">
+        select *
+        from MDEXM a1
+        left join
+        (select *
+        from FLCTN f1
+        left join MDCN m1
+        on m1.mdcn_code = f1.mdcn_code)b1
+        on a1.medxm_no = b1.mdexm_no
+        where medxm_no = #{mdexm_no};
+    </select>
+
+</mapper>
