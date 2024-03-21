@@ -15,3 +15,4 @@ public class LoginZVO {
     private String KORN_FLNM;
     private String role;
 }
+

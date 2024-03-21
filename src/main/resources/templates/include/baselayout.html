@@ -24,12 +24,12 @@
     <body>
     <div class="main-bar">
         <div class="main-logo">
-            <a class="logo"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> university</a>
+            <a class="logo" href="../mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
         </div>
         <div class="main-user">
             <p sec:authorize="isAuthenticated()">[[${#authentication.principal.KORN_FLNM}]] 님</p>
-            <i class="ri-logout-box-r-line logout_icon"></i>
             <i class="ri-user-line mypage_icon"></i>
+            <i class="ri-logout-box-r-line logout_icon"></i>
         </div>
     </div>
     <div class="title-bar">
@@ -43,31 +43,31 @@
     <div class="mid">
         <div class="left-bar">
             <th:block th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption1">
                 <h3>진료</h3>
             </div>
             </th:block>
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption2">
                 <h3>커뮤니티</h3>
             </div>
 
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption3">
                 <h3>클리닉</h3>
             </div>
 
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption4">
                 <h3>대여</h3>
             </div>
             <th:block th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption5">
                 <h3>코드관리</h3>
             </div>
             </th:block>
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption6">
                 <h3>contact</h3>
             </div>
 
-            <div class="sidebarOption">
+            <div class="sidebarOption sidebarOption7">
                 <h3>More</h3>
             </div>
         </div>
@@ -88,16 +88,22 @@
         if (sessionStorage.getItem('smallTitleContent')) {
             smallTitleZ.innerHTML = sessionStorage.getItem('smallTitleContent');
         }
-        const communityOption1 = document.querySelector('.sidebarOption:nth-child(1)');
-        const communityOption2 = document.querySelector('.sidebarOption:nth-child(2)');
-        const communityOption3 = document.querySelector('.sidebarOption:nth-child(3)');
-        const communityOption4 = document.querySelector('.sidebarOption:nth-child(4)');
+
+        const communityOption1 = document.querySelector('.sidebarOption1');
+        const communityOption2 = document.querySelector('.sidebarOption2');
+        const communityOption3 = document.querySelector('.sidebarOption3');
+        const communityOption4 = document.querySelector('.sidebarOption4')
+        const communityOption5 = document.querySelector('.sidebarOption5');
+        const communityOption6 = document.querySelector('.sidebarOption6');
+        const communityOption7 = document.querySelector('.sidebarOption7');
         const mypageicon = document.querySelector('.mypage_icon');
         const logouticonZ = document.querySelector('.logout_icon');
+
+        if(communityOption1 != null){
         communityOption1.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
-                <h4>이용자 관리</h4>
-                <h4>진료차트</h4>
+                <a class="logo" href="/mdexmM/checkM"><h4>이용자 정보</h4></a>
+                <a class="logo" href="/mdexmM/chartM"><h4>차트등록</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -105,10 +111,11 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption1.classList.add('sidebarOption__active');
-            window.location.href = '/mdexmM/chartM';
+            window.location.href = '/mdexmM/checkM';
         });
-
+        }
         communityOption2.addEventListener('click', function() {
+            console.log(communityOption2);
             smallTitleZ.innerHTML = `
                 <h4>공지사항</h4>
                 <h4>후기 보기</h4>
@@ -119,6 +126,7 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption2.classList.add('sidebarOption__active');
+            window.location.href = '/postY/index';
         });
 
         communityOption3.addEventListener('click', function() {
@@ -133,11 +141,11 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption3.classList.add('sidebarOption__active');
-            window.location.href = '/clinicWPage';
+            window.location.href = '/clinicW/ClinicWPage';
         });
 
         communityOption4.addEventListener('click', function() {
-                smallTitleZ.innerHTML = `
+            smallTitleZ.innerHTML = `
                 <h4>대여신청</h4>
                 <h4>대여승인요청</h4>
                 <h4>물품재고관리</h4>
@@ -150,7 +158,22 @@
             communityOption4.classList.add('sidebarOption__active');
             window.location.href = '/rentalJY/rentalApp';
         });
-
+        if(communityOption5 != null){
+        communityOption5.addEventListener('click', function() {
+            smallTitleZ.innerHTML = `
+                <a class="logo" href="/mdexmM/dssM"><h4>질병코드 관리</h4></a>
+                <a class="logo" href="/mdexmM/therapyM"><h4>처치물품</h4></a>
+                <a class="logo" href="/mdexmM/wrhsM"><h4>약품관리</h4></a>
+            `;
+            sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
+            const sidebarOptions = document.querySelectorAll('.sidebarOption');
+            sidebarOptions.forEach(option => {
+                option.classList.remove('sidebarOption__active');
+            });
+            communityOption5.classList.add('sidebarOption__active');
+            window.location.href = '/mdexmM/dssM';
+        });
+        }
         mypageicon.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
                 <h4>마이페이지</h4>
@@ -161,7 +184,7 @@
 
         logouticonZ.addEventListener('click', function () {
             window.location.href = '/logout';
-        })
+        });
 
     });
     </script>

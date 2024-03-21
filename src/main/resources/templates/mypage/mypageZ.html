@@ -6,116 +6,40 @@
 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .container-h})}">
 <div class="container-h" >
     <div class="div-m">
+
     <h2 sec:authorize="isAuthenticated()">[[${#authentication.principal.KORN_FLNM}]]님의 마이페이지</h2>
-    <h3 style="padding-right: 71px;" > 진료내역</h3>
+
+    <h3 style="padding-right: 71px;" > 진료내역 </h3>
     <div class="table-wrap">
         <table class="head-line" cellpadding="0" cellspacing="0">
             <thead>
             <tr>
                 <th>이름</th>
                 <th>학번</th>
-                <th>소속학과</th>
-                <th>이메일</th>
-                <th>연락처</th>
-                <th>성별</th>
-                <th>생년월일</th>
-                <th>학년</th>
-                <th>상태구분</th>
-                <th>이용자구분</th>
+                <th>방문일자</th>
+                <th>증상</th>
+                <th>처방</th>
+                <th>질병명</th>
             </tr>
             </thead>
         </table>
         <div class="table-content makeZ">
             <table cellpadding="0" cellspacing="0">
                 <tbody class="body-line">
+                <th:block th:each=" mdexmMVOZ : ${mdexmMVOZ}">
                 <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
+                    <td th:text="${#authentication.principal.KORN_FLNM}"></td>
+                    <td th:text="${mdexmMVOZ.studentid}"></td>
+                    <td th:text="${mdexmMVOZ.mdexm_ymd}"></td>
+                    <td th:text="${mdexmMVOZ.excptn_mttr}"></td>
+                    <td th:text="${mdexmMVOZ.mdexm_act}"></td>
+                    <td th:text="${mdexmMVOZ.dss_nm}"></td>
                 </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
-
+                </th:block>
                 </tbody>
             </table>
         </div>
+
 
     </div>
 
@@ -190,18 +114,7 @@
                     <td>졸업</td>
                     <td>학생</td>
                 </tr>
-                <tr>
-                    <td>홍길동</td>
-                    <td>201401230</td>
-                    <td>컴퓨터공학</td>
-                    <td>aa122@naver.com</td>
-                    <td>010-1234-5678</td>
-                    <td>남</td>
-                    <td>001214</td>
-                    <td>4</td>
-                    <td>졸업</td>
-                    <td>학생</td>
-                </tr>
+
                 <tr>
                     <td>홍길동</td>
                     <td>201401230</td>
@@ -397,7 +310,7 @@
 
 </div>
 </th:block>
-<!--modal 기준 디자인에 맞춰 변경 해야함-->
+
 
 <div class="modalZ" id="myModal">
     <div class="modal-contentZ">
