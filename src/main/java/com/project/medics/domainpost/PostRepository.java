@@ -1,4 +1,4 @@
-package com.project.medics.domain.post;
+package com.project.medics.domainpost;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

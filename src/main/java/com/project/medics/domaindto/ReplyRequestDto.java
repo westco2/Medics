@@ -1,4 +1,4 @@
-package com.project.medics.domain.dto;
+package com.project.medics.domaindto;
 
 import lombok.Getter;
 import lombok.Setter;

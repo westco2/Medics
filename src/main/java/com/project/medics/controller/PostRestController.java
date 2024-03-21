@@ -12,9 +12,9 @@ import com.project.medics.postY.service.PostService;
 
 import lombok.RequiredArgsConstructor; // Lombok의 RequiredArgsConstructor 임포트 추가
 
-import com.project.medics.domain.dto.PostDetailResponseDto;
-import com.project.medics.domain.dto.PostRequestDto;
-import com.project.medics.domain.dto.PostSimpleResponseDto;
+import com.project.medics.domaindto.PostDetailResponseDto;
+import com.project.medics.domaindto.PostRequestDto;
+import com.project.medics.domaindto.PostSimpleResponseDto;
 import java.util.List;
 
 @RestController

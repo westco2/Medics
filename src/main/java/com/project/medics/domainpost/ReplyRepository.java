@@ -1,4 +1,4 @@
-package com.project.medics.domain.post;
+package com.project.medics.domainpost;
 
 import java.util.List;
 

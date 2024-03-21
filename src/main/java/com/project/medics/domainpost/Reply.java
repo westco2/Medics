@@ -1,4 +1,4 @@
-package com.project.medics.domain.post;
+package com.project.medics.domainpost;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.project.medics.domain.Timestamped;
-import com.project.medics.domain.dto.ReplyRequestDto;
+import com.project.medics.domaindto.ReplyRequestDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

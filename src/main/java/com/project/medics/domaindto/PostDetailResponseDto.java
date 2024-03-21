@@ -1,8 +1,8 @@
-package com.project.medics.domain.dto;
+package com.project.medics.domaindto;
 
 import java.time.LocalDateTime;
 
-import com.project.medics.domain.post.Post;
+import com.project.medics.domainpost.Post;
 
 import lombok.Getter;
 

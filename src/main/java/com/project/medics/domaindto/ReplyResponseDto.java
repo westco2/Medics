@@ -1,6 +1,6 @@
-package com.project.medics.domain.dto;
+package com.project.medics.domaindto;
 
-import com.project.medics.domain.post.Reply;
+import com.project.medics.domainpost.Reply;
 
 import lombok.Getter;
 

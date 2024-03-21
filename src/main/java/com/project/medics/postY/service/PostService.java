@@ -3,11 +3,11 @@ package com.project.medics.postY.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.medics.domain.dto.PostDetailResponseDto;
-import com.project.medics.domain.dto.PostRequestDto;
-import com.project.medics.domain.dto.PostSimpleResponseDto;
-import com.project.medics.domain.post.Post;
-import com.project.medics.domain.post.PostRepository;
+import com.project.medics.domaindto.PostDetailResponseDto;
+import com.project.medics.domaindto.PostRequestDto;
+import com.project.medics.domaindto.PostSimpleResponseDto;
+import com.project.medics.domainpost.Post;
+import com.project.medics.domainpost.PostRepository;
 
 import lombok.RequiredArgsConstructor;
 

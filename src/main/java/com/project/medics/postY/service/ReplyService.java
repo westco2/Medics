@@ -7,10 +7,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.project.medics.domain.dto.ReplyRequestDto;
-import com.project.medics.domain.dto.ReplyResponseDto;
-import com.project.medics.domain.post.Reply;
-import com.project.medics.domain.post.ReplyRepository;
+import com.project.medics.domaindto.ReplyRequestDto;
+import com.project.medics.domaindto.ReplyResponseDto;
+import com.project.medics.domainpost.Reply;
+import com.project.medics.domainpost.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 
