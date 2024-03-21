@@ -28,7 +28,42 @@ public class RentalItemServiceImpl implements RentalItemService {
     public List<RentalVO> updateItem() {
         return rentalJYMapper.appovalc();
     }
+    
+    @Override
+    public void saveRentalApp(RentalVO rental) {
+        rentalJYMapper.insertRentalApp(rental);
+    }
 
+	@Override
+	public void insertRentalApp(RentalVO rental) {
+		rentalJYMapper.insertRentalApp(rental); // RentalVO 객체를 DB에 저장하는 메소드 호출
+	    // 해당 수량 감소 메소드 호출
+	    rentalJYMapper.decreaseQuantity(rental);
+	}
+	
+	@Override
+    public void sarental(RentalVO rental) {
+        rentalJYMapper.appolist(rental);
+    }
+	
+	@Override
+    public void sarebds(RentalVO rental) {
+        rentalJYMapper.apprabs(rental);
+    }
+
+	@Override
+	public void appolist(RentalVO rental) {
+		rentalJYMapper.appolist(rental);
+		rentalJYMapper.listapp(rental);
+	}
+
+	@Override
+	public void listapp(RentalVO rental) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+    
 
 
 }

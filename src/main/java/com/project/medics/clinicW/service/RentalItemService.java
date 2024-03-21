@@ -12,5 +12,10 @@ public interface RentalItemService {
     List<RentalVO> getAllItems();
     List<RentalVO> getItemById();
     List<RentalVO> updateItem();
-
+	void insertRentalApp(RentalVO rental);
+	void saveRentalApp(RentalVO rental);
+	void appolist(RentalVO rental);
+	void sarental(RentalVO rental);
+	void listapp(RentalVO rental);
+	void sarebds(RentalVO rental);
 }
