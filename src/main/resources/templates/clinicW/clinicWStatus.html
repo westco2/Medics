@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <body>
-
-	<th:block
-		th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
 		<div class="div-w">
 			<h3 style="padding-right: 71px;">신청학생정보</h3>
 			<div class="search-wrap-w">
@@ -17,6 +18,7 @@
 				<table class="head-line-w" cellpadding="0" cellspacing="0">
 					<thead>
 						<tr>
+							<th>번호</th>
 							<th>이름</th>
 							<th>학번</th>
 							<th>학과</th>
@@ -32,13 +34,14 @@
 				<div class="table-content-w" style="height: 300px;">
 					<table cellpadding="0" cellspacing="0">
 						<tbody class="body-line-w">
-							<tr th:each="vo : ${status}">
-								<td>[[${vo.status.count}]]</td>
+							<tr th:each="vo, status : ${status}">
+								<td>[[${status.count}]]</td>
+								<td>[[${vo.korn_flnm}]]</td> 
 								<td>[[${vo.studentid}]]</td>
 								<td>[[${vo.scsbjt_nm}]]</td>
 								<td>[[${vo.mbr_eml_addr}]]</td>
 								<td>[[${vo.idfr_telno}]]</td>
-								<td>[[${vo.gndr_nm}]]</td> <!-- 표출값에따라 삼항연삭식으로 표기 -->
+								<td>[[${vo.gndr_nm}]]</td>
 								<td>[[${vo.user_brdt}]]</td>
 								<td>[[${vo.grade}]]</td>
 								<td>[[${vo.enrollment}]]</td>
@@ -72,7 +75,7 @@
 								<td>[[${vo.cli_ntc_ymd}]]</td>
 								<td>[[${vo.studentid}]]</td>
 								<td>
-									<button type="button" class="Btn-w" id="deleteBtn=w">취소</button>
+									<button type="button" class="Btn-w" id="deleteBtn-w">삭제</button>
 								</td>
 							</tr>
 						</tbody>
@@ -82,47 +85,34 @@
 	
 	<script>
 	
+	/////////////////////////////////////////////
 	//검색버튼(제목)
 	var searchBtn = document.getElementById('Btn-w');
-
-	// 검색 버튼 클릭 시 실행될 함수를 연결합니다.
 	searchBtn.addEventListener('click', function() {
-		// 검색어를 가져옵니다.
-		var searchInput = document.querySelector('#input-w').value
-				.toLowerCase(); // 검색어 입력란의 값
-
-		// 모든 테이블 행을 가져옵니다.
+		var searchInput = document.querySelector('#input-w').value.toLowerCase();
 		var rows = document.querySelectorAll('.body-line-w tr');
-
-		// 각 행을 순회하며 검색어와 일치하는 것만 보여줍니다.
 		rows.forEach(function(row) {
-			// 각 행의 제목 셀을 가져옵니다.
-			var titleCell = row.querySelector('td:nth-child(1)'); // 검색 대상 필드의 위치
-			var titleText = titleCell.textContent.toLowerCase(); // 제목 텍스트를 소문자로 변환합니다.
-
-			// 검색어가 포함되어 있으면 해당 행을 표시합니다.
+			var titleCell = row.querySelector('td:nth-child(3)');
+			var titleText = titleCell.textContent.toLowerCase();
 			if (titleText.includes(searchInput)) {
-				row.style.display = ''; // 보이도록 설정합니다.
+				row.style.display = '';
 			} else {
-				row.style.display = 'none'; // 숨깁니다.
+				row.style.display = 'none';
 			}
 		});
 	});
-
-	/////
-	
-	var deleteBtn = document.getElemtentById("deleteBtn-w")
-	deleteBtn.onclick = function(){
-		event.proventDefault();
-		if(confirm("삭제 후에는 데이터 복구가 불가합니다.") == false){
-			
+	/////////////////////////////////////////////
+	//삭제버튼
+	var deleteBtn = document.getElementById("deleteBtn-w");
+	deleteBtn.onclick = function() {
+		event.preventDefault();
+		if(confirm("삭제하시겠습니까?") == false ) {
+			return;
 		}
-		
 		document.actionForm.action = "deleteForm";
 		document.actionForm.submit();
 	}
-	
-	
+	/////////////////////////////////////////////
 	</script>
 	
 </body>

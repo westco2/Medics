@@ -34,4 +34,9 @@ public interface MdexmMService {
 
     public List<MdexmMVO> getmdx(StudentVO vo);
     public List<FlctnVO> getfll(FlctnVO vo);
+
+    public List<TotalMVO> weekvi();
+    public List<TotalMVO> mdcnbest();
+
+    public List<TotalMVO> totalInfo();
 }

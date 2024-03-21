@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.medics.clinicW.service.ClinicWService;
 import com.project.medics.command.ClinicWVO;
@@ -21,68 +23,94 @@ public class ClinicWController {
 	@Qualifier("clinicWService")
 	private ClinicWService clinicWService;
 	
-	//클리닉게시판 메인페이지
-	//관리자 권한, 학생 권한 둘 다 입장 가능. 단, 보여지는 화면은 다름
-	//권한설정자께서는 둘 다 입장가능하게 구현해주시면 됨
-	@GetMapping("/ClinicWPage")
+	@GetMapping("/clinicWPage")
 	public String clinicWPage(Model model) {
-		ArrayList<ClinicWVO> page = clinicWService.getPage();
-		model.addAttribute("Page", page);
-		return "clinicW/ClinicWPage";
+		ArrayList<ClinicWVO> list = clinicWService.getList();
+		model.addAttribute("list", list);
+		return "clinicW/clinicWPage";
 	}
 	
-	//관리자 권한 : 클리닉 등록 or 수정페이지(클리닉등록 버튼클릭 or 수정 버튼클릭시 해당페이지로 이동됨)
-	//관리자 권한, 학생 권한 둘 다 입장 가능. 단, 보여지는 화면은 다름
-	//권한설정자께서는 둘 다 입장가능하게 구현해주시면 됨
-
-//	@GetMapping("/ClinicWDetailPage")
-//	public String clinicWDetailPage(@RequestParam("cli_ntc_sn") int cli_nte_sn,
-//									Model model) {
-//		ClinicWVO vo = clinicWService.getDetail(cli_nte_sn);
-//		return "clinicW/ClinicWDetailPage";
-//	}
-	@GetMapping("/ClinicWDetailPage")
+	@GetMapping("/clinicWApply")
+	public String clinicWApply(@RequestParam("cli_ntc_sn") int cli_ntc_sn,
+								Model model) {
+		ClinicWVO vo = clinicWService.getDetail(cli_ntc_sn);
+		model.addAttribute("vo", vo);
+		return "clinicW/clinicWApply";
+	}
+	
+	//클리닉 신청Form
+	@PostMapping("/ApplyWForm")
+	public String ApplyWForm(ClinicWVO vo, RedirectAttributes re) {
+		int result = clinicWService.apply(vo);
+		if(result == 1) {
+			re.addFlashAttribute("msg", "신청완료");
+		} else {
+			re.addFlashAttribute("msg", "신청실패");
+		}
+		return "redirect:/clinicW/clinicWPage";
+	}
+	
+	@GetMapping("/clinicWDetailPage")
 	public String clinicWDetailPage() {
-		return "clinicW/ClinicWDetailPage";
+		return "clinicW/clinicWDetailPage";
 	}
 	
-	// 클리닉 등록 처리
-    @PostMapping("clinicW/ClinicWDetailPageInsertForm")
-    public String clinicWInsert(@ModelAttribute("clinic") ClinicWVO vo) {
-        // 클리닉을 저장하는 로직
-        return "redirect:/clinicW/ClinicWPage"; // 등록 후 목록 페이지로 리다이렉트
-    	}
-    
-    // 클리닉 수정 처리
-    @PostMapping("clinicW/ClinicWDetailPageUpdateForm")
-    public String clinicWUpdate(@RequestParam("cli_ntc_sn") int cli_ntc_sn,
-    										  Model model) {
-    	ClinicWVO vo = clinicWService.getClinicWUpdate(cli_ntc_sn);
-    	model.addAttribute("vo", vo);
-        return "redirect:/clinicW/ClinicWPage"; // 수정 후 목록 페이지로 리다이렉트
-    	}
-	
-	//DB구문 확인 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	@GetMapping("/ClinicWStatus")
-	public String clinicWStatus(Model model) {
-		ArrayList<ClinicWVO> status = clinicWService.getStatus();
-		model.addAttribute("Status", status);
-		return "clinicW/ClinicWStatus";
-	}
-
-	//DB구문 확인 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	@GetMapping("/ClinicWReview")
-	public String clinicWReview(Model model) {
-		ArrayList<ClinicWVO> review = clinicWService.getReview();
-		model.addAttribute("Status", review);
-		return "clinicW/ClinicWReview";
+	//클리닉 등록Form
+	@PostMapping("/InsertWForm")
+	public String InsertWForm(ClinicWVO vo, RedirectAttributes re) {
+		int result = clinicWService.regist(vo);
+		if(result == 1) {
+			re.addFlashAttribute("msg", "등록완료");
+		} else {
+			re.addFlashAttribute("msg", "등록실패");
+		}
+		return "redirect:/clinicW/clinicWPage";
 	}
 	
-	//삭제요청
+	@GetMapping("/clinicWUpdate")
+	public String clinicWUpdate(@RequestParam("cli_ntc_sn") int cli_ntc_sn,
+								Model model) {
+		ClinicWVO vo = clinicWService.getDetail(cli_ntc_sn);
+		model.addAttribute("vo", vo);
+		return "clinicW/clinicWUpdate";
+	}
+	
+	//클리닉 수정Form
+	@PostMapping("/updateWForm")
+	public String updateWForm(ClinicWVO vo, RedirectAttributes re) {
+		int result = clinicWService.update(vo);
+		if(result == 1) {
+			re.addFlashAttribute("msg", "수정완료");
+		} else {
+			re.addFlashAttribute("msg", "수정실패");
+		}
+		return "redirect:/clinicW/clinicWPage";
+	}
+	
+	//클리닉 삭제Form
 	@PostMapping("/deleteForm")
 	public String deleteForm(@RequestParam("cli_ntc_sn") int cli_ntc_sn) {
-		return "redirect:/clinicW/ClinicWPage";
+		clinicWService.delete(cli_ntc_sn);
+		return "redirect:/clinicW/clinicWPage";
 	}
 	
+	@GetMapping("/clinicWStatus")
+	public String clinicWStatus(Model model) {
+		ArrayList<ClinicWVO> status = clinicWService.getStatus();
+		
+		model.addAttribute("Status", status);
+		
+//		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+//		System.out.println(status.toString());
+		
+		return "clinicW/clinicWStatus";
+	}
+
+	@GetMapping("/clinicWReview")
+	public String clinicWReview(Model model) {
+		ArrayList<ClinicWVO> review = clinicWService.getReview();
+		model.addAttribute("review", review);
+		return "clinicW/clinicWReview";
+	}
 	
 }

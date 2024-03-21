@@ -12,17 +12,17 @@ import java.sql.Date;
 @Builder
 public class RentalVO {
 
-    private String key;
-    private String proNo;
-    private String field;
-    private String key2;
-    private Date resYMD;
-    private String loanStatus;
-    private String appStatus;
-    private Long studentId;
-    private String proQty;
-    private String proNm;
-    private String resCnt;
+	private String pro_No;
+    private String pro_Qty;
+    private String pro_Nm;
+    private Integer loan_No;
+    private Date ret_YMD;
+    private String loan_Status;
+    private String app_Status;
+    private String pro_No_Approval;
+    private String studentId;
+    private Integer ren_No;
+    private String ren_Status;
     
 }
 

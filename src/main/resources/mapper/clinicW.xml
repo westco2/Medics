@@ -11,31 +11,61 @@
 								 cli_ntc_cn,
 								 cli_use_plc_nm,
 								 cli_prgrs_hr,
-								 cli-now_nope,
+								 cli_now_nope,
 								 cli_man_nope,
 								 cli_instr_nm )
-		values( #(cli_clsf_nm),
-				#(cli_ntc_ttl),
-				#(cli_ntc_cn),
-				#(cli_use_plc_nm),
-				#(cli_prgrs_hr),
-				#(cli-now_nope),
-				#(cli_man_nope),
-				#(cli_instr_nm))
+		values( #{cli_clsf_nm},
+				#{cli_ntc_ttl},
+				#{cli_ntc_cn},
+				#{cli_use_plc_nm},
+				#{cli_prgrs_hr},
+				#{cli-now_nope},
+				#{cli_man_nope},
+				#{cli_instr_nm})
 	</insert>
 	
-	<select id="getPage" resultType="ClinicWVO">
+	<select id="getList" resultType="ClinicWVO">
 		select * from CLINICREGIST
-		order by cli_ntc_sn desc
+		order by cli_ntc_sn ASC  
 	</select>
 	
-	<select id="getClinicWUpdate" resultType="ClinicWVO">
+	<select id="getDetail" resultType="ClinicWVO">
 		select * from CLINICREGIST
 		where cli_ntc_sn = #{cli_ntc_sn}
 	</select>
 	
+	<update id="update">
+		update CLINICREGIST set
+		cli_clsf_nm = #{cli_clsf_nm},
+		cli_instr_nm = #{cli_instr_nm},
+		cli_ntc_ttl = #{cli_ntc_ttl},
+		cli_ntc_ymd = #{cli_ntc_ymd},
+		cli_prgrs_hr = #{cli_prgrs_hr},
+		cli_use_plc_nm = #{cli_use_plc_nm},
+		cli_now_nope = #{cli_now_nope},
+		cli_max_nope = #{cli_max_nope},
+		cli_ntc_cn = #{cli_ntc_cn}
+		where cli_ntc_sn = #{cli_ntc_sn}
+	</update>
+	
+	<delete id="delete">
+		delete from CLINICREGIST
+		where cli_ntc_sn = #{cli_ntc_sn}
+	</delete>
+	
+	<insert id="apply">
+		insert into CLINICAPPLY(cli_sn,
+								cli_ntc_sn,
+								studentid,
+								cli_status )
+		values( #{cli_sn},
+				#{cli_ntc_sn},
+				#{studentid},
+				#{cli_status})
+	</insert>
+		
 	<select id="getStatus" resultType="ClinicWVO">
-		select (cli_sn,
+		select  cli_sn,
 				korn_flnm,
 				studentid,
 				scsbjt_nm,
@@ -48,27 +78,14 @@
 				cli_clsf_nm,
 				cli_ntc_ttl,
 				cli_ntc_ymd,
-				cli_status) 
+				cli_status
 		from CLINICAPPLY
-		where cli_sn = #{cli_sn}
-		order by cli_sn desc
+		order by cli_sn DESC
 	</select>
 	
 	<select id="getReview" resultType="ClinicWVO">
 		select * from CLINICREVIEW
-		where cli_sn = #{cli_sn} and studentid = #{studentid}
+		order by cli_sn DESC
 	</select>
 	
-	<!-- 적용 table과 컬럼이 맞는지 확인!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- 	<select id="getDetail" resultType="ClinicWVO"> -->
-<!-- 		select * from CLINICREGIST -->
-<!-- 		where cli_ntc_sn = #{cli_ntc_sn} -->
-<!-- 	</select> -->
-	
-	<!-- 클리닉신청상태와 클리닉후기작성이 둘 다 삭제될 확률도 기억 -->
-	<delete id="delete">
-		delete from CLINICAPPLY
-		where cli_sn = #{cli_sn}
-	</delete>
-
 </mapper>

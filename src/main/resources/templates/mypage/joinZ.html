@@ -1,5 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .modalZ{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0; left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0,0,0,0.5);
+    }
+    .modal-contentZ{
+        position: absolute;
+        background-color: #ffffff;
+        width: 350px;
+        height: 150px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* 모달 창 닫기 버튼 스타일 */
+    .closeZ {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .closeZ:hover,
+    .closeZ:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +106,42 @@
         </div>
     </div>
 </div>
+<div>
 
+</div>
+<!-- 모달 창 -->
+
+<div th:if="${checkIDZ == 0}">
+    <div id="myModal0" class="modalZ" >
+        <!-- 모달 내용 -->
+        <div class="modal-contentZ">
+            <span class="closeZ">&times;</span><br>
+            <p style="font-family: 'Arial', sans-serif; font-size: 18px; text-align: center;">
+                학번/교직원번호가 존재하지 않습니다.<br><br>아이디를 확인해주세요</p>
+        </div>
+    </div>
+</div>
+
+
+<script th:inline="javascript">
+    /* 모달 창 닫기 기능 */
+    var modalZ0 = document.getElementById("myModal0");
+
+    var spanZ0 = document.getElementsByClassName("closeZ")[0];
+
+
+    spanZ0.onclick = function() {
+        modalZ0.style.display = "none";
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modalZ0) {
+            modalZ0.style.display = "none";
+        }
+    };
+
+
+</script>
 
 
 </body>

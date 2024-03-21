@@ -5,11 +5,11 @@
 	 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-jy } )}">
 
      <div class="div-jy">
-	<h3>대여승인요청</h3>
+	<h3>대여리스트</h3>
     <div id="box2">
         <form id="searchItemForm">
             <label for="searchDateTime">신청일시:</label>
-            <input type="datetime-local" id="searchDateTime" name="searchDateTime">
+            <input type="date" id="searchDateTime" name="searchDateTime">
             <button type="submit" id="btn3">검색</button>
         </form>
     </div>
@@ -23,21 +23,18 @@
             <input type="number" id="itemQuantity" name="itemQuantity" required min="0">
             <label for="customerName">학번:</label>
             <input type="text" id="customerName" name="customerName" readonly>
-            <label for="rentalDateTime">대여일시:</label>
-            <input type="datetime-local" id="rentalDateTime" name="rentalDateTime" required><br>
             <label for="returnDateTime">반납일시:</label>
-            <input type="datetime-local" id="returnDateTime" name="returnDateTime" required>
+            <input type="date" id="returnDateTime" name="returnDateTime" required>
             <label for="rentalStatus">대여상태:</label>
             <select id="rentalStatus" name="rentalStatus">
                 <option value="대여중">대여중</option>
+                <option value="대여중">대여취소</option>
                 <option value="대여가능">반품완료</option>
             </select><br>
-            <button type="submit" id="btn4">승인</button>
-            <button type="submit" id="btn5">저장</button>
-            <button type="submit" id="btn6">취소</button>
+            <button type="submit" id="btn5">업데이트</button>
         </form>
     </div>
-    <h3>대여신청 승인요청리스트</h3>
+    <h3>대여신청리스트</h3>
     <div class="box3">
         <table class="approvalRequestList" cellpadding="0" cellspacing="0">
             <thead>
@@ -47,7 +44,6 @@
                 <th>물품코드</th>
                 <th>수량</th>
                 <th>학번</th>
-                <th>대여일시</th>
                 <th>반납일시</th>
                 <th>대여상태</th>
             </tr>
@@ -57,60 +53,76 @@
     <div class="resul">
         <table cellpadding="0" cellspacing="0">
             <tbody class="boc-line">
-            <tr>
-            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
-                <td>목발</td>
-                <td>HM-0000</td>
-                <td>8EA</td>
-                <td>240315</td>
-                <td>2024-03-15</td>
-                <td>2024-04-15</td>
-                <td>대여중</td>
-            </tr>
-            <tr>
-            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
-                <td>목발</td>
-                <td>HM-0000</td>
-                <td>8EA</td>
-                <td>240315</td>
-                <td>2024-03-15</td>
-                <td>2024-04-15</td>
-                <td>대여중</td>
-            </tr>
-             <tr>
-            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
-                <td>목발</td>
-                <td>HM-0000</td>
-                <td>8EA</td>
-                <td>240315</td>
-                <td>2024-03-15</td>
-                <td>2024-04-15</td>
-                <td>대여중</td>
-            </tr>
-             <tr>
-            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
-                <td>목발</td>
-                <td>HM-0000</td>
-                <td>8EA</td>
-                <td>240315</td>
-                <td>2024-03-15</td>
-                <td>2024-04-15</td>
-                <td>대여중</td>
-            </tr>
-             <tr>
-            	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
-                <td>목발</td>
-                <td>HM-0000</td>
-                <td>8EA</td>
-                <td>240315</td>
-                <td>2024-03-15</td>
-                <td>2024-04-15</td>
-                <td>대여중</td>
-            </tr>
+            	 <th:block th:each="i: ${list}">
+     				 <tr>
+		             	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+		         		<td>[[${i.pro_Nm}]]</td>
+		            	<td>[[${i.pro_No}]]</td>
+		            	<td>[[${i.pro_Qty}]]</td>
+		            	<td>[[${i.studentId}]]</td>
+		            	<td>[[${i.ret_YMD}]]</td>
+		            	<td>[[${i.loan_Status}]]</td>
+		         	</tr>
+		         	</th:block>
             </tbody>
         </table>
     </div>  
 </div>
 </th:block>
+<script>
+    $(document).ready(function() {
+        // 대여일시 입력란이 변경될 때 이벤트 발생
+        $('#rentalDateTime').change(function() {
+            // 선택된 대여일시 값을 가져옴
+            var selectedDate = $(this).val();
+
+            // AJAX를 사용하여 선택된 날짜에 해당하는 데이터를 서버로부터 받아옴
+            $.ajax({
+                url: '/rentalJY/getDataByDate', // 서버 요청을 처리할 URL
+                type: 'GET',
+                data: { rentalDate: selectedDate }, // 선택된 날짜를 서버에 전달
+                dataType: 'json', // 받아올 데이터의 타입
+                success: function(response) {
+                    // 서버로부터 받아온 데이터를 처리하여 화면에 출력
+                    // 이 부분은
+                    // 예를 들어, 받아온 데이터를 테이블에 추가하거나 화면의 다른 요소에 반영하는 등의 작업을 수행할 수 있습니다.
+                    updateDataOnPage(response);
+                },
+                error: function(xhr, status, error) {
+                    // 오류 발생 시 처리
+                    console.error('Error occurred: ' + error);
+                }
+            });
+        });
+
+        // 체크박스 클릭 이벤트
+        $('input[type="checkbox"]').click(function() {
+            if($(this).is(":checked")) {
+                // 클릭한 체크박스의 부모(tr)를 찾고 그 다음 형제(tr)의 자식(td)들을 찾아서 값을 가져와 입력 칸에 채움
+                var $tr = $(this).closest('tr');
+                var proNm = $tr.find('td:eq(1)').text().trim();
+                var proNo = $tr.find('td:eq(2)').text().trim();
+                var studentId = $tr.find('td:eq(3)').text().trim();
+                var quantity = $tr.find('td:eq(4)').text().trim();
+
+                $('#selectedItem').val(proNm);
+                $('#selectedItemCode').val(proNo);
+                $('#customerName').val(studentId);
+                $('#quantity').val(quantity);
+            } else {
+                // 체크 해제 시 입력 칸 비우기
+                $('#selectedItem').val('');
+                $('#selectedItemCode').val('');
+                $('#customerName').val('');
+                $('#quantity').val('');
+            }
+        });
+    });
+
+    // 서버에서 받아온 데이터를 화면에 업데이트하는 함수
+    function updateDataOnPage(response) {
+       
+    }
+</script>
 </body>
 </html>

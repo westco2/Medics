@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
+body{margin: 0}
 
 .main-bar{height: 50px; background-color: #98b9a4; display: flex; justify-content: space-between;}
 .main-logo{color: #7a817d; text-align: center; padding: 15px 20px;}
@@ -9,6 +9,10 @@
 .main-bar .main-user i {color: #ffffff; font-size: 15px; cursor: pointer;}
 .main-bar .main-user i:hover{color: #b6dcc4;}
 
+a.logo {
+    text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+     /* 부모 요소의 색상 상속 */
+}
 
 .title-bar{width: 100%; display: flex; justify-content: start; background-color: #678376;}
 .univer-name{text-align: center; padding: 5px 10px; width: 180px; background-color: #31483d;}

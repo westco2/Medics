@@ -11,4 +11,12 @@
                                             ,#{KORN_FLNM}
                                             ,#{role})
     </insert>
+
+    <select id="checkIDZ" resultType="Integer" parameterType="String">
+        select exists(
+            select 1
+            from student
+            where STUDENTID = #{username}
+        ) as cnt;
+    </select>
 </mapper>

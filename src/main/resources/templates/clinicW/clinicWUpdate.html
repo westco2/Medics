@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w } )}">
+
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 클리닉 수정(update) 페이지 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<div class="div-w">
+		<form name="UpdateWForm" action="UpdateWForm" method="post">
+				<h3>클리닉 수정</h3>
+				<div class="table-wrap-w">
+					<table class="head-line-w" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>분류</th>
+								<th>진행자</th>
+								<th>제목</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="table-content-w" style="height: 150px;">
+						<table cellpadding="0" cellspacing="0">
+							<tbody class="body-line-w">
+								<tr>
+									<td><input type="text" name="cli_ntc_sn" th:value="${vo.cli_ntc_sn}" id="input-w" required=false></td>
+									<td><input type="text" name="cli_clsf_nm" th:value="${vo.cli_clsf_nm}" id="input-w" placeholder="분류 입력" required></td>
+									<td><input type="text" name="cli_instr_nm" th:value="${vo.cli_instr_nm}" id="input-w" placeholder="진행자 입력" required></td>
+									<td><input type="text" name="cli_ntc_ttl" th:value="${vo.cli_ntc_ttl}" id="input-w" placeholder="제목 입력" required></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<table class="head-line-w" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>날짜</th>
+								<th>시간</th>
+								<th>장소</th>
+								<th>현재인원</th>
+								<th>최대인원</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="table-content-w" style="height: 150px;">
+						<table cellpadding="0" cellspacing="0">
+							<tbody class="body-line-w">
+								<tr>
+									<td><input type="date" name="cli_ntc_ymd" th:value="${vo.cli_ntc_ymd}" readonly placeholder="날짜선택" id="input-w" required pattern="\d{4}-\d{2}-\d{2}"></td>
+									<td><input type="text" name="cli_prgrs_hr" th:value="${vo.cli_prgrs_hr}" placeholder="00:00 ~ 00:00" id="input-w" required></td>
+									<td><input type="text" name="cli_use_plc_nm" th:value="${vo.cli_use_plc_nm}" placeholder="장소 입력" id="input-w" required></td>
+									<td><input type="text" name="cli_now_nope" th:value="${vo.cli_now_nope}" placeholder="현재인원 입력" id="input-w" required pattern="\d*">명</td>
+									<td><input type="text" name="cli_max_nope" th:value="${vo.cli_max_nope}" placeholder="최대인원 입력" id="input-w" required pattern="\d*">명</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-wrap-w">
+						<div class="table-w">
+							<div class="table-wrap-w">
+								<table class="head-line-w" cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<th>상세내용</th>
+										</tr>
+									</thead>
+								</table>
+								<div class="table-content-w">
+									<table cellpadding="0" cellspacing="0">
+										<tbody class="body-line-w">
+											<tr>
+												<td><textarea name="cli_ntc_cn" th:value=${vo.cli_ntc_cn} id="textarea-w" placeholder="상세내용 입력"></textarea>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="button-container-w"	style="text-align: right; margin-top: 10px;">
+									<input type="submit" class="Btn-w" th:value="수정">
+									<button class="Btn-w" id="deleteBtn-w">삭제</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+	</th:block>
+
+	<script>
+	/////////////////////////////////////////////
+	//클리닉 수정 이벤트(URL이동)(관리자)
+	function UpdateWFormBtnw() {
+    	$("#UpdateWForm").submit();
+	}
+	/////////////////////////////////////////////
+	/////////////////////////////////////////////
+	//삭제버튼
+	var deleteBtn = document.getElementById("deleteBtn-w");
+	deleteBtn.onclick = function() {
+		event.preventDefault();
+		if(confirm("삭제하시겠습니까?") == false ) {
+			return;
+		}
+		document.actionForm.action = "deleteForm";
+		document.actionForm.submit();
+	}
+	/////////////////////////////////////////////
+	</script>
+
+</body>
+</html>

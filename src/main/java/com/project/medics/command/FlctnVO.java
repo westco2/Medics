@@ -22,6 +22,7 @@ public class FlctnVO {
     private LocalDateTime flctn_ymd;
     private String flctn_rsn;
     private String mdcn_nm;
+    private String mdcn_tp;
 
 
     private Integer hidden_qty;

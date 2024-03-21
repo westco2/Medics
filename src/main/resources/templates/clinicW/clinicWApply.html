@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+<!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
+	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w } )}">
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 클리닉 수정(update) 페이지 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<div class="div-w">
+			<form name="ApplyWForm" action="ApplyWForm" method="post">
+				<h3>클리닉 신청</h3>
+				<div class="table-wrap-w">
+					<table class="head-line-w" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>분류</th>
+								<th>진행자</th>
+								<th>제목</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="table-content-w" style="height: 150px;">
+						<table cellpadding="0" cellspacing="0">
+							<tbody class="body-line-w">
+								<tr>
+									<td><input type="text" th:field="${vo.cli_ntc_sn}" readonly/></td>
+									<td th:text="${vo.cli_clsf_nm}" readonly/>
+									<td th:text="${vo.cli_instr_nm}" readonly/>
+									<td th:text="${vo.cli_ntc_ttl}" readonly/>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<table class="head-line-w" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>날짜</th>
+								<th>시간</th>
+								<th>장소</th>
+								<th>현재인원</th>
+								<th>최대인원</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="table-content-w" style="height: 150px;">
+						<table cellpadding="0" cellspacing="0">
+							<tbody class="body-line-w">
+								<tr>
+									<td th:text="${vo.cli_ntc_ymd}" readonly/>
+									<td th:text="${vo.cli_prgrs_hr}" readonly/>
+									<td th:text="${vo.cli_use_plc_nm}" readonly/>
+									<td th:text="${vo.cli_now_nope}" readonly/>
+									<td th:text="${vo.cli_max_nope}" readonly/>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-wrap-w">
+						<div class="table-w">
+							<div class="table-wrap-w">
+								<table class="head-line-w" cellpadding="0" cellspacing="0">
+									<thead>
+										<tr>
+											<th>상세내용</th>
+										</tr>
+									</thead>
+								</table>
+								<div class="table-content-w">
+									<table cellpadding="0" cellspacing="0">
+										<tbody class="body-line-w">
+											<tr>
+												<td th:text=${vo.cli_ntc_cn} readonly/>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="text-align: right; margin-top: 10px;">
+									<input type="submit" class="Btn-w" th:value="신청">
+									<button class="Btn-w" onclick="window.history.back();">취소</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</th:block>
+
+	<script>
+		/////////////////////////////////////////////
+		//클리닉 등록 이벤트(URL이동)(관리자)
+		function ApplyWFormBtnw() {
+	    	$("#ApplyWForm").submit();
+		}
+		/////////////////////////////////////////////
+	</script>
+
+</body>
+</html>
