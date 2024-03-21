@@ -95,6 +95,21 @@ public class MdexmMServiceImpl implements MdexmMService{
 
     @Override
     public List<FlctnVO> getfll(FlctnVO vo) {
-        return null;
+        return mdexmMMapper.getfll(vo);
+    }
+
+    @Override
+    public List<TotalMVO> weekvi() {
+        return mdexmMMapper.weekvi();
+    }
+
+    @Override
+    public List<TotalMVO> mdcnbest() {
+        return mdexmMMapper.mdcnbest();
+    }
+
+    @Override
+    public List<TotalMVO> totalInfo() {
+        return mdexmMMapper.totalInfo();
     }
 }

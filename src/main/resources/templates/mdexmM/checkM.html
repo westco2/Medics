@@ -13,9 +13,9 @@
             <p>이름</p><input type="text" style="width: 70px" class="search-name-mm" name="searchName">
             <p>번호</p><input type="text" style="width: 90px" class="search-code-mm" name="searchCode">
             <p>진료기간</p>
-            <input type="text" class="picdate search-st-mm" style="width: 60px" name="startDate">
+            <input type="text" class="picdate search-st-mm"  name="startDate" readonly placeholder="날짜선택">
             <p style="font-size: 15px">-</p>
-            <input type="text" class="picdate search-ed-mm" style="width: 60px" name="endDate">
+            <input type="text" class="picdate search-ed-mm"  name="endDate" readonly placeholder="날짜선택" >
         </div>
         <input type="submit" value="검색" style="width: 50px" id="searchBtn-m">
     </form>
@@ -78,7 +78,7 @@
                 <div class="table-content">
                     <table cellpadding="0" cellspacing="0">
                         <tbody class="body-line mdmd-m">
-
+                            <div class="loader-mo" style="display: none"></div>
 
                         </tbody>
                     </table>
@@ -101,7 +101,7 @@
                 <div class="table-content">
                     <table cellpadding="0" cellspacing="0">
                         <tbody class="body-line fl-mf">
-
+                            <div class="loader-mt" style="display: none"></div>
                         </tbody>
                     </table>
                 </div>
@@ -112,7 +112,7 @@
 </div>
 
  </th:block>
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script>
 
@@ -124,6 +124,7 @@
         if (crr !== null) {
             crr.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
         }
+        $(".loader-mo").show();
         $(e.target).closest("tr").addClass("select-content-m");
 
         choi = $(e.target).closest("tr").find("td").next().html();
@@ -131,6 +132,7 @@
         crr = e.currentTarget;
         console.log(choi);
         $(".mdmd-m").empty();
+        $(".fl-mf").empty();
         getflu(choi);
 
     })
@@ -140,6 +142,7 @@
         if (crrt !== null) {
             crrt.classList.remove("select-content-m"); // 이전 선택 요소에서 클래스 제거
         }
+        $(".loader-mt").show();
         $(e.target).closest("tr").addClass("select-content-m");
 
         var a = $(e.target).closest("tr").find("input").val();
@@ -169,6 +172,7 @@
             }),
             contentType: "application/json",
             success: function(data) {
+                $(".loader-mo").hide();
                 console.log(data);
                 for (let item of data) {
                     var tr = document.createElement("tr");
@@ -184,6 +188,7 @@
             error: function(err, status) {
                 console.log(err, status);
                 alert("정보를 불러올 수 없습니다.");
+                $(".loader-mo").hide();
             }
         })
 
@@ -199,11 +204,12 @@
             }),
             contentType: "application/json",
             success: function(data) {
+                $(".loader-mt").hide();
                 console.log(data);
                 for (let item of data) {
                     var tr = document.createElement("tr");
-                    tr.innerHTML = `<td>${item.flctn_tp != '약품'?mdcn_nm:''}</td>
-                    <td>${item.flctn_tp == '약품'?mdcn_nm:''}</td>
+                    tr.innerHTML = `<td>${item.mdcn_tp != '약품'?item.mdcn_nm:''}</td>
+                    <td>${item.mdcn_tp == '약품'?item.mdcn_nm:''}</td>
                     <td>${item.flctn_qty}</td>
                     <td></td>`;
                     $(".fl-mf").append(tr);
@@ -212,10 +218,35 @@
             error: function(err, status) {
                 console.log(err, status);
                 alert("정보를 불러올 수 없습니다.");
+                $(".loader-mt").hide();
             }
         })
 
     }
+
+    $(document).ready(function () {
+        $(".picdate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+
+            changeMonth: true, // 월 변경을 허용
+            changeYear: true, // 년 변경을 허용
+            //onSelect: function(dateText, inst) {
+                // 선택한 날짜를 picdate 클래스를 가진 입력란에 입력
+            //    $(this).val(dateText);
+            //}
+        });
+        $(".picdate").prop('readonly', false); // 입력란을 읽기 전용으로 설정
+    });
+
+
+
+
+
+
+
 
 </script>
 

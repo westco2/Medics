@@ -401,11 +401,11 @@
                         <div class="search-left-wrap">
                             <div class="modal-name-m">
                                 <p>약품코드</p>
-                                <input type="text">
+                                <input type="text" class="search-code-mmw">
                             </div>
                             <div class="modal-name-m">
                                 <p>약품명</p>
-                                <input type="text" style="width: 100px;">
+                                <input type="text" style="width: 100px;" class="search-name-mmw">
                             </div>
                         </div>
                         <div class="modal-searchBtn-m">
@@ -607,6 +607,8 @@
     $(".search-code-mmd").change(()=>{scode=$(".search-code-mmd").val(); console.log(scode) });
     $(".search-name-mmt").change(()=>{sname=$(".search-name-mmt").val(); console.log(sname)});
     $(".search-code-mmt").change(()=>{scode=$(".search-code-mmt").val(); console.log(scode) });
+    $(".search-name-mmw").change(()=>{sname=$(".search-name-mmw").val(); console.log(sname)});
+    $(".search-code-mmw").change(()=>{scode=$(".search-code-mmw").val(); console.log(scode) });
     $("#searchstd-m").click(function (){
 
         $(".suif-m").empty();
