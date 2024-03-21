@@ -24,6 +24,8 @@ public class RentalVO {
     private Integer ren_No;
     private String ren_Status;
     
+    
+    
 }
 
 

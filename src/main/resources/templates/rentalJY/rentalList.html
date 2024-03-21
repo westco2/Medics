@@ -16,11 +16,14 @@
             <div id="ittock">
                 <form id="addItemForm" action="/rentalJY/rentalList" method="post">
                     <label for="itemName">물품명:</label>
-                    <input type="text" id="itemName" name="itemName" required>
+                    <input type="text" id="itemName" name="pro_Nm" required>
+                    
                     <label for="itemDescription">물품코드:</label>
-                    <input type="text" id="itemDescription" name="itemDescription" required>
+                    <input type="text" id="itemDescription" name="pro_No" required>
+                    
                     <label for="itemQuantity">수량:</label>
-                    <input type="number" id="itemQuantity" name="itemQuantity" required min="0">
+                    <input type="number" id="itemQuantity" name="pro_Qty" required min="0">
+                    
                     <button type="submit" id="btn8">업데이트</button>
                     <button type="submit" id="btn9">삭제</button>
                 </form>

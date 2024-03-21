@@ -17,7 +17,35 @@
     	select * from APPROVAL
     </select>  
     
+    <insert id="insertRentalApp" parameterType="RentalVO">
+        INSERT INTO APPROVAL ( LOAN_STATUS, PRO_NO, STUDENTID) 
+		VALUES ( '대여신청', #{pro_No}, #{studentId})
+    </insert>
     
+    <update id="decreaseQuantity">
+        UPDATE RENTALAPP
+        SET pro_Qty = pro_Qty - #{pro_Qty}
+        WHERE pro_No = #{pro_No}
+    </update>
     
-                                                                       
+    <insert id="appolist" parameterType="RentalVO">
+        select * from from APPROVAL
+    </insert>
+    
+    <update id="updateRentalApp" parameterType="RentalVO">
+        UPDATE APPROVAL
+        SET quantity = #{quantity}, rentalDateTime = #{rentalDateTime}, phoneNumber = #{phoneNumber}
+        WHERE selectedItemCode = #{selectedItemCode}
+    </update>
+    
+    <insert id="apprabs" parameterType="RentalVO">
+        select * from from APPROVAL
+    </insert>
+    
+    <update id="listapp">
+        UPDATE RENTALLIST
+        SET pro_Qty = pro_Qty + #{pro_Qty}
+        WHERE pro_No = #{pro_No}
+    </update>
+                                         
 </mapper>

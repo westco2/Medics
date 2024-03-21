@@ -8,18 +8,18 @@
     
 		    <h3>대여신청</h3>
 		    <div style="display: flex;" class="box2">
-		        <form action="/rentalJY/rentalApp" method="post" id="forma">
+		        <form action="rentalAppt" method="post" id="forma">
 		            <label for="selectedItem">물품명:</label>
-		            <input type="text" id="selectedItem" name="selectedItem" readonly>
+		            <input type="text" id="selectedItem" name="pro_Nm" readonly>
 		
 		            <label for="selectedItemCode">물품코드:</label>
-		            <input type="text" id="selectedItemCode" name="selectedItemCode" readonly>
+		            <input type="text" id="selectedItemCode" name="pro_No" readonly>
 		
 		            <label for="customerName">학번:</label>
-					<input type="text" id="customerName" name="customerName" readonly>
+					<input type="text" id="customerName" name="studentId" readonly>
 		          
 		            <label for="quantity">수량:</label>
-		            <input type="number" id="quantity" name="quantity" required min="1">
+		            <input type="number" id="quantity" name="pro_Qty" required min="1">
 		
 		            <label for="rentalDateTime">대여일시:</label>
 		            <input type="date" id="rentalDateTime" name="rentalDateTime" required><br>
