@@ -45,7 +45,7 @@ public class LoginController {
             System.out.println("loginZVO = " + loginZVO);
             loginZMapper.join(loginZVO);
             System.out.println(loginZVO);
-            return "/mypage/loginM"; //가입후 로그인페이지로
+            return "/mypage/joinZ"; //가입후 로그인페이지로
         }
         else return "/mypage/joinZ"; //가입 실패시 돌아가는 페이지
     }

@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!--<style>-->
-<!--    .modalZ{-->
-<!--        width: 100%;-->
-<!--        height: 100%;-->
-<!--        position: fixed;-->
-<!--        top: 0; left: 0;-->
-<!--        display: flex;-->
-<!--        justify-content: center;-->
-<!--        align-items: center;-->
-<!--        background-color: rgb(0,0,0,0.5);-->
-<!--    }-->
-<!--    .modal-contentZ{-->
-<!--        position: absolute;-->
-<!--        background-color: #ffffff;-->
-<!--        width: 250px;-->
-<!--        height: 150px;-->
-<!--        padding: 15px;-->
-<!--        border-radius: 10px;-->
-<!--        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
-<!--    }-->
+<style>
+    .modalZ{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0; left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0,0,0,0.5);
+    }
+    .modal-contentZ{
+        position: absolute;
+        background-color: #ffffff;
+        width: 250px;
+        height: 150px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
 
-<!--    /* 모달 창 닫기 버튼 스타일 */-->
-<!--    .closeZ {-->
-<!--        color: #aaa;-->
-<!--        float: right;-->
-<!--        font-size: 28px;-->
-<!--        font-weight: bold;-->
-<!--    }-->
+    /* 모달 창 닫기 버튼 스타일 */
+    .closeZ {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-<!--    .closeZ:hover,-->
-<!--    .closeZ:focus {-->
-<!--        color: black;-->
-<!--        text-decoration: none;-->
-<!--        cursor: pointer;-->
-<!--    }-->
+    .closeZ:hover,
+    .closeZ:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-<!--</style>-->
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@
 <body style="background-color: #dbe4e0;" >
 <div class="main-bar">
     <div class="main-logo">
-        <a class="logo" href="mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+        <a class="logo" href="/"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
     </div>
     <div class="main-user">
 <!--        <p></p>-->
@@ -99,33 +99,33 @@
     </div>
 </div>
 
-<!--&lt;!&ndash; 모달 창 &ndash;&gt;-->
-<!--<div th:if="${param.error}">-->
-<!--    <div id="myModal" class="modalZ" >-->
-<!--        &lt;!&ndash; 모달 내용 &ndash;&gt;-->
-<!--        <div class="modal-contentZ">-->
-<!--            <span class="closeZ">&times;</span><br>-->
-<!--            <p style="font-family: 'Arial', sans-serif; font-size: 18px; text-align: center;">-->
-<!--                로그인에 실패하였습니다.<br><br>다시 시도해주세요.</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<!-- 모달 창 -->
+<div th:if="${param.error}">
+    <div id="myModal" class="modalZ" >
+        <!-- 모달 내용 -->
+        <div class="modal-contentZ">
+            <span class="closeZ">&times;</span><br>
+            <p style="font-family: 'Arial', sans-serif; font-size: 18px; text-align: center;">
+                로그인에 실패하였습니다.<br><br>다시 시도해주세요.</p>
+        </div>
+    </div>
+</div>
 
-<!--<script th:inline="javascript">-->
-<!--    /* 모달 창 닫기 기능 */-->
-<!--    var modalZ = document.getElementById("myModal");-->
-<!--    var spanZ = document.getElementsByClassName("closeZ")[0];-->
+<script th:inline="javascript">
+    /* 모달 창 닫기 기능 */
+    var modalZ = document.getElementById("myModal");
+    var spanZ = document.getElementsByClassName("closeZ")[0];
 
-<!--    spanZ.onclick = function() {-->
-<!--        modalZ.style.display = "none";-->
-<!--    };-->
+    spanZ.onclick = function() {
+        modalZ.style.display = "none";
+    };
 
-<!--    window.onclick = function(event) {-->
-<!--        if (event.target == modalZ) {-->
-<!--            modalZ.style.display = "none";-->
-<!--        }-->
-<!--    };-->
-<!--</script>-->
+    window.onclick = function(event) {
+        if (event.target == modalZ) {
+            modalZ.style.display = "none";
+        }
+    };
+</script>
 
 
 </body>

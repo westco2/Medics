@@ -9,7 +9,7 @@ body{margin: 0}
 .main-bar .main-user i {color: #ffffff; font-size: 15px; cursor: pointer;}
 .main-bar .main-user i:hover{color: #b6dcc4;}
 
-a.logo {
+a {
     text-decoration: none; /* 링크 텍스트 밑줄 제거 */
      /* 부모 요소의 색상 상속 */
 }
