@@ -10,12 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
-=======
 import com.project.medics.clinicW.service.RentalItemService;
 import com.project.medics.command.RentalVO;
 
->>>>>>> 3483abd (안되면 뒤졌다)
 @Controller
 @RequestMapping("/rentalJY")
 public class RentalController  {
@@ -32,12 +29,8 @@ public class RentalController  {
 	}
 	
 	@GetMapping("/rentalList")
-<<<<<<< HEAD
-	public String rentalList() {
-=======
 	public String rentalLista(Model model) {
 		model.addAttribute("list", rentalService.getAllItems());
->>>>>>> 3483abd (안되면 뒤졌다)
 		return "rentalJY/rentalList";
 	}
 	
@@ -45,12 +38,6 @@ public class RentalController  {
 	public String approval(Model model) {
 		model.addAttribute("list", rentalService.updateItem());
 		return "rentalJY/approval";
-	}
-<<<<<<< HEAD
+	}	
 }
-=======
-	
-	
-	
-}
->>>>>>> 3483abd (안되면 뒤졌다)
+
