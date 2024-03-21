@@ -1,8 +1,9 @@
-package com.example.ourdevboard.controller;
+package com.project.medics.controller;
 
-import com.example.ourdevboard.domain.dto.*;
-import com.example.ourdevboard.security.UserDetailsImpl;
-import com.example.ourdevboard.service.ReplyService;
+import com.project.medics.domaindto.*;
+
+import com.project.medics.loginZ.service.MyUserDetailsZ;
+import com.project.medics.postY.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ReplyRestController {
 
     // 댓글 등록
     @PostMapping("")
-    public Long registerPost(@RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public Long registerPost(@RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal MyUserDetailsZ userDetails){
         requestDto.setWriter(userDetails.getUsername());
         return replyService.save(requestDto);
     }
@@ -36,14 +37,14 @@ public class ReplyRestController {
 
     // 특정 댓글 삭제
     @DeleteMapping("/{id}")
-    public Long deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public Long deletePost(@PathVariable Long id, @AuthenticationPrincipal MyUserDetailsZ userDetails){
         replyService.delete(id, userDetails.getUsername());
         return id;
     }
 
     // 특정 댓글 수정
     @PutMapping("/{id}")
-    public Long updatePost(@PathVariable Long id, @RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public Long updatePost(@PathVariable Long id, @RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal MyUserDetailsZ userDetails) {
         return replyService.update(id, requestDto, userDetails.getUsername());
     }
 

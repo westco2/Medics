@@ -98,7 +98,7 @@
           <div class="field is-grouped is-grouped-right">
   
             <p class="control">
-              <a class="button is-light" href="/">
+              <a class="button is-light" href="/static">
                 목록
               </a>
             </p>
@@ -130,7 +130,7 @@
         data: JSON.stringify(post),
         success: function(response){
           alert("게시글 "+response+" 번을 등록하였습니다.");
-          window.location.href = "/";
+          window.location.href = "/index";
         },
         error: function(e){
           alert("게시글을 조회할 수 없습니다.");

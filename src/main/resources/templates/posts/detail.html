@@ -130,7 +130,7 @@
                       <span id="writer">작성자명</span> <span class="create-date" id="create-date">2021-06-30</span>
                       <div class="field is-grouped is-grouped-right">
                           <p class="control">
-                              <a class="button is-light" href="/">
+                              <a class="button is-light" href="/static">
                                   목록
                               </a>
                           </p>
@@ -227,7 +227,7 @@
             url: `/api/posts/${current_id}`,
             success: function (response) {
                 alert("게시글 " + response + " 번이 삭제되었습니다.");
-                window.location.href = "/";
+                window.location.href = "/index";
             },
             error: function (e) {
                 alert("게시글을 조회할 수 없습니다.");
