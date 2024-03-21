@@ -179,12 +179,57 @@
         select *
         from MDEXM a1
         left join
-        (select *
+        (select f1.*,m1.mdcn_nm, m1.mdcn_tp
         from FLCTN f1
         left join MDCN m1
         on m1.mdcn_code = f1.mdcn_code)b1
-        on a1.medxm_no = b1.mdexm_no
-        where medxm_no = #{mdexm_no};
+        on a1.mdexm_no = b1.mdexm_no
+        where a1.mdexm_no = #{mdexm_no};
     </select>
+
+
+    <select id="weekvi" resultType="TotalMVO">
+        SELECT
+        DAYNAME(MDEXM_YMD) AS vals,
+        COUNT(DISTINCT STUDENTID) AS count
+        FROM
+            MDEXM
+        WHERE
+            WEEKDAY(MDEXM_YMD) BETWEEN 0 AND 4 -- 월요일부터 금요일까지
+        GROUP BY
+            vals
+    </select>
+
+    <select id="mdcnbest" resultType="TotalMVO">
+        select a.mdcn_nm as vals, count(mdcn_nm) as count from mdcn a
+        left join flctn b
+        on a.mdcn_code = b.mdcn_code
+        group by mdcn_nm
+        order by count desc
+        limit 0,3
+    </select>
+
+    <select id="totalInfo" resultType="TotalMVO">
+            (select '보건실 이용 총 인원' AS vals,count(*) as count from mdexm)
+
+            union
+
+            (select '입고된 의약품 갯수' AS vals, sum(FLCTN_QTY) as count from flctn where flctn_tp = '입고')
+
+            union
+
+            (select '출고된 의약품 갯수' AS vals, sum(FLCTN_QTY) as count from flctn where flctn_tp = '출고')
+
+            union
+
+            (select d1.dss_nm as vals, count(m1.dss_no) as count
+             from mdexm m1
+                 left join DSS d1 on m1.dss_no = d1.dss_no
+             group by m1.dss_no
+             order by count desc
+             limit 0 , 1);
+    </select>
+
+
 
 </mapper>

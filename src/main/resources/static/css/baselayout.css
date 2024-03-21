@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
+body{margin: 0}
 
 .main-bar{height: 50px; background-color: #98b9a4; display: flex; justify-content: space-between;}
 .main-logo{color: #7a817d; text-align: center; padding: 15px 20px;}

@@ -25,6 +25,15 @@ public class MedicsMController {
     private MdexmMService mService;
 
 
+    @GetMapping("/adminM")
+    public String adminM(Model model){
+        model.addAttribute("week", mService.weekvi());
+        model.addAttribute("mdcns", mService.mdcnbest());
+        model.addAttribute("total", mService.totalInfo());
+
+        return "mdexmM/adminM";
+    }
+
     @GetMapping("/checkM")
     public String checkM(Model model, CriteriaM cri ){
 
