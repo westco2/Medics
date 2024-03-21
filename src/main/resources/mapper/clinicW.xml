@@ -19,7 +19,7 @@
 				#{cli_ntc_cn},
 				#{cli_use_plc_nm},
 				#{cli_prgrs_hr},
-				#{cli-now_nope},
+				#{cli_now_nope},
 				#{cli_man_nope},
 				#{cli_instr_nm})
 	</insert>
@@ -75,12 +75,12 @@
 				user_brdt,
 				grade,
 				enrollment,
+				cli_ntc_sn,
 				cli_clsf_nm,
 				cli_ntc_ttl,
 				cli_ntc_ymd,
 				cli_status
 		from CLINICAPPLY
-		order by cli_sn DESC
 	</select>
 	
 	<select id="getReview" resultType="ClinicWVO">

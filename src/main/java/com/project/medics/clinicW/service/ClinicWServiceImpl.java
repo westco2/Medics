@@ -53,4 +53,5 @@ public class ClinicWServiceImpl implements ClinicWService{
 		return clinicWMapper.getReview();
 	}
 	
+	
 }

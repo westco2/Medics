@@ -27,7 +27,7 @@ public class ClinicWController {
 	public String clinicWPage(Model model) {
 		ArrayList<ClinicWVO> list = clinicWService.getList();
 		model.addAttribute("list", list);
-		return "clinicW/clinicWPage";
+		return "/clinicW/clinicWPage";
 	}
 	
 	@GetMapping("/clinicWApply")
@@ -97,12 +97,7 @@ public class ClinicWController {
 	@GetMapping("/clinicWStatus")
 	public String clinicWStatus(Model model) {
 		ArrayList<ClinicWVO> status = clinicWService.getStatus();
-		
-		model.addAttribute("Status", status);
-		
-//		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//		System.out.println(status.toString());
-		
+		model.addAttribute("status", status);
 		return "clinicW/clinicWStatus";
 	}
 
@@ -112,5 +107,4 @@ public class ClinicWController {
 		model.addAttribute("review", review);
 		return "clinicW/clinicWReview";
 	}
-	
 }
