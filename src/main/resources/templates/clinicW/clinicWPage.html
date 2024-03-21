@@ -3,13 +3,9 @@
 
 <body>
 
-	<th:block
-		th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
-
+	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
 		<div class="div-w">
-
 			<h3 style="padding-right: 71px;">클리닉 게시판</h3>
-
 			<div class="search-wrap-w">
 				<div class="info-search-w">
 					<input type="text" id="input-w" placeholder="제목 입력">
@@ -21,6 +17,7 @@
 				<table class="head-line-w" cellpadding="0" cellspacing="0">
 					<thead>
 						<tr>
+							<th>순서</th>
 							<th>번호</th>
 							<th>분류</th>
 							<th>제목</th>
@@ -37,155 +34,77 @@
 				<div class="table-content-w">
 					<table cellpadding="0" cellspacing="0">
 						<tbody class="body-line-w">
-							<tr th:each="vo, status : ${page}">
+							<tr th:each="vo, status : ${list}">
 								<td>[[${status.count}]]</td>
+								<td>[[${vo.cli_ntc_sn}]]</td>
 								<td>[[${vo.cli_clsf_nm}]]</td>
-								<td><a th:href="@{ClinicWDetailPage(cli_ntc_sn=${vo.cli_ntc_sn)}" style="text-decoration: none;">[[${cli_ntc_ttl}]]</a></td>
-								<!-- cli_ntc_sn으로 고정가능한지 확인 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+								<td>[[${vo.cli_ntc_ttl}]]</td>
 								<td>[[${vo.cli_ntc_ymd}]]</td>
 								<td>[[${vo.cli_use_plc_nm}]]</td>
 								<td>[[${vo.cli_prgrs_hr}]]</td>
 								<td>[[${vo.cli_instr_nm}]]</td>
-								<td>[[${vo.cli_now_nope}]]</td>
-								<td>[[${vo.cli_max_nope}]]</td>
+								<td>[[${vo.cli_now_nope}]]명</td>
+								<td>[[${vo.cli_max_nope}]]명</td>
 								<td>
+								<!-- 버튼자체에 th:if로 권한 설정예정(자동으로 숨겨진다함), onclick 추가하여 js만 설정 -->
 									<div class="editBtn-w">
-										<button class="Btn-w" id="editBtn"
-											onclick="redirectToB('update')">수정</button>
-										<button class="Btn-w" id="deleteBtn">삭제</button>
-									</div> <!-- 등록 및 수정 페이지에서 보이는 신청 및 취소 버튼 -->
-									<div class="applyBtn-w">
-										<button class="Btn-w" id="applyBtn">신청</button>
-										<button class="Btn-w" id="cancelBtn" style="display: none;">취소</button>
+										<button class="Btn-w" th:onclick="applyBtnw(`[[${vo.cli_ntc_sn}]]`)">신청</button> <!-- button th:if="${isAdmin}" class -->
+										<button class="Btn-w" th:onclick="editBtnw(`[[${vo.cli_ntc_sn}]]`)">수정</button>
 									</div>
-									</form>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div>
-					<button class="Btn-w" id="clinicBtn-w" onclick="redirectToB('insert')">클리닉 등록</button>
+				<div style="text-align: right; margin-top: 10px;">
+					<button class="Btn-w" th:onclick="insertBtnw()">클리닉 등록</button> <!-- 관리자권한 : <button th:if="${isAdmin}" class="admin-btn" onclick="adminButtonClick()">버튼</button> -->
 				</div>
 			</div>
 	</th:block>
 
-	<script>
+	<script th:inline="javascript">
+// 		var msg = '[[${msg}]]';
+// 		msg=JSON.parse(msg);
 		
+// 		if(msg != 'null') {
+// 			alert(msg);
+// 		}
 		/////////////////////////////////////////////
-	
 		//검색버튼(제목)
 		var searchBtn = document.getElementById('Btn-w');
-
-		// 검색 버튼 클릭 시 실행될 함수를 연결합니다.
 		searchBtn.addEventListener('click', function() {
-			// 검색어를 가져옵니다.
-			var searchInput = document.querySelector('#input-w').value
-					.toLowerCase(); // 검색어 입력란의 값
-
-			// 모든 테이블 행을 가져옵니다.
+			var searchInput = document.querySelector('#input-w').value.toLowerCase();
 			var rows = document.querySelectorAll('.body-line-w tr');
-
-			// 각 행을 순회하며 검색어와 일치하는 것만 보여줍니다.
 			rows.forEach(function(row) {
-				// 각 행의 제목 셀을 가져옵니다.
-				var titleCell = row.querySelector('td:nth-child(3)'); // 검색 대상 필드의 위치
-				var titleText = titleCell.textContent.toLowerCase(); // 제목 텍스트를 소문자로 변환합니다.
-
-				// 검색어가 포함되어 있으면 해당 행을 표시합니다.
+				var titleCell = row.querySelector('td:nth-child(4)');
+				var titleText = titleCell.textContent.toLowerCase();
 				if (titleText.includes(searchInput)) {
-					row.style.display = ''; // 보이도록 설정합니다.
+					row.style.display = '';
 				} else {
-					row.style.display = 'none'; // 숨깁니다.
+					row.style.display = 'none';
 				}
 			});
 		});
-
 		//////////////////////////////////////////////////
-
-		// 수정, 삭제, 신청, 취소 버튼
-		// 사용자 역할에 따라 버튼 표시 변경
-		var userRole = "1"; // 예: 관리자는 "1", 학생은 "2"
-
-		// 버튼 요소들 가져오기
-		var editBtn = document.getElementById("editBtn");
-		var deleteBtn = document.getElementById("deleteBtn");
-		var applyBtn = document.getElementById("applyBtn");
-		var cancelBtn = document.getElementById("cancelBtn");
-
-		if (userRole === "1") { // 관리자인 경우
-			editBtn.style.display = 'block';
-			deleteBtn.style.display = 'block';
-		} else if (userRole === "2") { // 학생인 경우
-			applyBtn.innerHTML = "신청";
-			applyBtn.addEventListener('click', function() {
-				applyBtn.innerHTML = "신청완료";
-				applyBtn.disabled = true; // 신청완료 후 버튼 비활성화
-				cancelBtn.style.display = 'block'; // 취소 버튼 표시
-			});
+        // 클리닉 신청 버튼 클릭 이벤(학생)
+        function applyBtnw(cli_ntc_sn) {
+            window.location.href = 'clinicWApply?cli_ntc_sn=' + cli_ntc_sn;
 		}
-
-        // 클리닉 신청 버튼 클릭 이벤트
-        document.getElementById("applyBtn").addEventListener("click", function() {
-            
-        	// 클리닉 신청 처리 로직을 작성하세요.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        	
-            // 여기서는 예시로 신청 완료 메시지만 출력합니다.
-            alert("클리닉 신청이 완료되었습니다.");
-            // 신청 버튼을 숨기고 취소 버튼을 표시합니다.
-            document.getElementById("applyBtn").style.display = "none";
-            document.getElementById("cancelBtn").style.display = "block";
-        });
-
-        // 클리닉 취소 버튼 클릭 이벤트
-        document.getElementById("cancelBtn").addEventListener("click", function() {
-            
-        	// 클리닉 취소 처리 로직을 작성하세요.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            
-        	// 여기서는 예시로 취소 완료 메시지만 출력합니다.
-            alert("클리닉 신청이 취소되었습니다.");
-            // 취소 버튼을 숨기고 신청 버튼을 표시합니다.
-            cancelBtn.style.display = "none";
-            applyBtn.style.display = "block";
-        });
+		//////////////////////////////////////////////////
 		
 		//////////////////////////////////////////////////
-		
-        // 삭제 버튼 클릭 이벤트
-        document.getElementById("deleteBtn").addEventListener("click", function() {
-            
-        	// 해당 글 삭제 처리를 수행하는 코드 작성!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!S
-        	
-            var confirmDelete = confirm("정말로 이 글을 삭제하시겠습니까?");
-            if (confirmDelete) {
-            	
-            }
-                // 삭제 동작을 수행하는 로직을 작성하세요.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                
-                console.log("글이 삭제되었습니다.");
-            });
-
-		/////////////////////////////////////////////
-
-		// 권한에 따라 클리닉 등록 버튼 표시
-		var userRole = "1"; // 예: 관리자는 "1", 학생은 "2"
-		//추후 return값으로 관리자 값 받을예정
-		if (userRole === "1") {
-			document.getElementById('clinicBtn-w').style.display = 'block'; // 보이도록 설정
-		} else {
-			document.getElementById('clinicBtn-w').style.display = 'none'; // 숨기도록 설정
+		//클리닉 등록 이벤트(URL이동)(관리자)
+		function insertBtnw() {
+			window.location.href = 'clinicWDetailPage';
 		}
-
 		//////////////////////////////////////////////////
-
-		// 버튼 요소를 가져옵니다.
-		var clinicBtn = document.getElementById("clinicBtn-w");
-	
-		//각 버튼을 누를 때마다 알맞은 Form으로 연결됨
-		function redirectToB(action) {
-            window.location.href = '/B.html?action=' + action;
-        }
-        
+		
+		//////////////////////////////////////////////////
+		//클리닉 수정 이벤트(URL이동)(관리자) //해당번호에 맞는 게시물을 보내야함
+		function editBtnw(cli_ntc_sn) {
+		    window.location.href = 'clinicWUpdate?cli_ntc_sn=' + cli_ntc_sn;
+		}
+		//////////////////////////////////////////////////
 	</script>
 </body>
 </html>
