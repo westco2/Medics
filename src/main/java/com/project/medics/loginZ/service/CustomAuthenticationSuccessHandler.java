@@ -16,7 +16,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
 
         // isAdmin 값에 따라 리디렉션할 URL을 결정합니다.
-        String redirectUrl = isAdmin ? "/mdexmM/checkM" : "/mypage/mypageZ";
+        String redirectUrl = isAdmin ? "/mdexmM/adminM" : "/mypage/mypageZ";
 
         // 결정된 URL로 리디렉션합니다.
         response.sendRedirect(request.getContextPath() + redirectUrl);
