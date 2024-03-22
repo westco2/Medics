@@ -34,8 +34,18 @@ public class ClinicWServiceImpl implements ClinicWService{
 	}
 	
 	@Override
-	public void delete(int cli_ntc_sn) {
-		clinicWMapper.delete(cli_ntc_sn);
+	public void deletewu(int cli_ntc_sn) {
+		clinicWMapper.deletewu(cli_ntc_sn);
+	}
+	
+	@Override
+	public void deletews(int cli_sn) {
+		clinicWMapper.deletews(cli_sn);
+	}
+	
+	@Override
+	public void deletewr(int cli_sn) {
+		clinicWMapper.deletewr(cli_sn);
 	}
 	
 	@Override

@@ -12,16 +12,20 @@
 								 cli_use_plc_nm,
 								 cli_prgrs_hr,
 								 cli_now_nope,
-								 cli_man_nope,
-								 cli_instr_nm )
+								 cli_max_nope,
+								 cli_instr_nm,
+								 cli_ntc_ymd
+								 )
 		values( #{cli_clsf_nm},
 				#{cli_ntc_ttl},
 				#{cli_ntc_cn},
 				#{cli_use_plc_nm},
 				#{cli_prgrs_hr},
 				#{cli_now_nope},
-				#{cli_man_nope},
-				#{cli_instr_nm})
+				#{cli_max_nope},
+				#{cli_instr_nm},
+				#{cli_ntc_ymd}
+				)
 	</insert>
 	
 	<select id="getList" resultType="ClinicWVO">
@@ -48,9 +52,19 @@
 		where cli_ntc_sn = #{cli_ntc_sn}
 	</update>
 	
-	<delete id="delete">
+	<delete id="deletewu">
 		delete from CLINICREGIST
 		where cli_ntc_sn = #{cli_ntc_sn}
+	</delete>
+	
+	<delete id="deletews">
+		delete from CLINICAPPLY
+		where cli_sn = #{cli_sn}
+	</delete>
+	
+	<delete id="deletewr">
+		delete from CLINICREVIEW
+		where cli_sn = #{cli_sn}
 	</delete>
 	
 	<insert id="apply">
