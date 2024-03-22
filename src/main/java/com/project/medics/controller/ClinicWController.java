@@ -47,7 +47,7 @@ public class ClinicWController {
 		} else {
 			re.addFlashAttribute("msg", "신청실패");
 		}
-		return "redirect:/clinicW/clinicWPage";
+		return "redirect:/clinicWPage";
 	}
 	
 	@GetMapping("/clinicWDetailPage")
@@ -58,13 +58,14 @@ public class ClinicWController {
 	//클리닉 등록Form
 	@PostMapping("/InsertWForm")
 	public String InsertWForm(ClinicWVO vo, RedirectAttributes re) {
+		System.out.println(vo);
 		int result = clinicWService.regist(vo);
 		if(result == 1) {
 			re.addFlashAttribute("msg", "등록완료");
 		} else {
 			re.addFlashAttribute("msg", "등록실패");
 		}
-		return "redirect:/clinicW/clinicWPage";
+		return "redirect:/clinicWPage";
 	}
 	
 	@GetMapping("/clinicWUpdate")
@@ -76,22 +77,36 @@ public class ClinicWController {
 	}
 	
 	//클리닉 수정Form
-	@PostMapping("/updateWForm")
-	public String updateWForm(ClinicWVO vo, RedirectAttributes re) {
+	@PostMapping("/UpdateWForm")
+	public String UpdateWForm(ClinicWVO vo, RedirectAttributes re) {
 		int result = clinicWService.update(vo);
 		if(result == 1) {
 			re.addFlashAttribute("msg", "수정완료");
 		} else {
 			re.addFlashAttribute("msg", "수정실패");
 		}
-		return "redirect:/clinicW/clinicWPage";
+		return "redirect:/clinicWPage";
 	}
 	
 	//클리닉 삭제Form
-	@PostMapping("/deleteForm")
-	public String deleteForm(@RequestParam("cli_ntc_sn") int cli_ntc_sn) {
-		clinicWService.delete(cli_ntc_sn);
-		return "redirect:/clinicW/clinicWPage";
+	@PostMapping("/DeleteWUForm")
+	public String DeleteWUForm(@RequestParam("cli_ntc_sn") int cli_ntc_sn) {
+		clinicWService.deletewu(cli_ntc_sn);
+		return "redirect:/clinicWPage";
+	}
+	
+	//클리닉 신청학생 삭제Form
+	@PostMapping("/DeleteWSForm")
+	public String DeleteWSForm(@RequestParam("cli_sn") int cli_sn) {
+		clinicWService.deletews(cli_sn);
+		return "redirect:/clinicWPage";
+	}
+	
+	//클리닉 리뷰 삭제Form
+	@PostMapping("/DeleteWRForm")
+	public String DeleteWRForm(@RequestParam("cli_sn") int cli_sn) {
+		clinicWService.deletewr(cli_sn);
+		return "redirect:/clinicWPage";
 	}
 	
 	@GetMapping("/clinicWStatus")

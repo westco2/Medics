@@ -7,7 +7,7 @@
 <!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
 	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
 		<div class="div-w">
-		<form action="deleteForm" method="post">
+		<form name="DeleteWSForm" action="DeleteWSForm" method="post">
 			<h3 style="padding-right: 71px;">신청학생정보</h3>
 			<div class="search-wrap-w">
 				<div class="info-search-w">
@@ -112,8 +112,8 @@
 		if(confirm("삭제하시겠습니까?") == false ) {
 			return;
 		}
-		document.actionForm.action = "deleteForm";
-		document.actionForm.submit();
+		document.DeleteWSForm.action = "DeleteWSForm";
+		document.DeleteWSForm.submit();
 	}
 	/////////////////////////////////////////////
 	
