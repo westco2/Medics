@@ -29,7 +29,8 @@ public class SecurityConfig {
         http.csrf().disable();  //csrf 토큰을 사용 안함
         http
                 .authorizeRequests()
-                    .antMatchers("/css/**", "/js/**").permitAll()
+                    .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                    .antMatchers("/homeH").permitAll()
                     .antMatchers("/mypage/**").permitAll()
                     .antMatchers("/mypage/joinFormZ").permitAll()
                     .antMatchers("/mypage/loginM").permitAll() // 로그인 페이지 접근 허용

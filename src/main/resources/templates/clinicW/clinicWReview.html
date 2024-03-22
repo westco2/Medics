@@ -7,13 +7,14 @@
 <!-- 권한 : 관리자, 학생 --><!-- 권한 : 관리자, 학생 --><!-- 권한 : 관리자, 학생 --><!-- 권한 : 관리자, 학생 -->
 <th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
   <div class="div-w">
+  <form action="DeleteWRForm" method="post">
   	<div>
 	    <h3 style="padding-right: 71px;">후기페이지</h3>
     </div>
     
     <div class="search-wrap-w">
         <div class="info-search-w">
-			<input type="text" id="input-w" placeholder="이름 입력">
+			<input type="text" id="input-w" placeholder="제목 입력">
 			<button type="button" class="Btn-w" id="Btn-w">검색</button>
         </div>
     </div>
@@ -48,6 +49,7 @@
                </tr>
                </tbody>
            </table>
+           </form>
        </div>
     </th:block>
     
@@ -69,14 +71,16 @@
 		});
 	});
 	//////////////////////////////////////////////////
-    //삭제버튼
-	var deleteBtn = document.getElementById("deleteBtn-w")
-	deleteBtn.onclick = function(){ 
+	/////////////////////////////////////////////
+	//삭제버튼
+	var deleteBtn = document.getElementById("deleteBtn-w");
+	deleteBtn.onclick = function() {
 		event.preventDefault();
-		if(confirm("삭제 후에는 데이터 복구가 불가합니다.") == false){
+		if(confirm("삭제하시겠습니까?") == false ) {
+			return;
 		}
-		document.actionForm.action = "deleteForm";
-		document.actionForm.submit();
+		document.DeleteWRForm.action = "DeleteWRForm";
+		document.DeleteWRForm.submit();
 	}
 	/////////////////////////////////////////////
 	</script>

@@ -1,0 +1,80 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap');
+
+:root {
+    --footer-background: white;
+    --text-color: #111420;
+    --text-gray: #e1e1e1;
+    --text-heading-gray: #b9b9b9;
+}
+
+
+
+/*? Footer bottom */
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #283d3b;
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 16px 0px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-bottom > small {
+    font-size: 16px;
+    margin: 0 4px;
+}
+
+.footer-headline > h2 {
+    margin: 0px;
+}
+
+.footer-headline > p {
+    margin: 12px 0px;
+}
+
+/*? socials */
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease-in-out;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+/*? mobile */
+
+@media (max-width: 800px) {
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px 8px 32px 8px;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: space-between;
+        justify-content: center;
+        margin: 0 auto;
+    }
+}
+
+
+

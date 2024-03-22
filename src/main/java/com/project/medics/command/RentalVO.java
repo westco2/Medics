@@ -23,6 +23,8 @@ public class RentalVO {
     private String studentId;
     private Integer ren_No;
     private String ren_Status;
+    private Integer RENTALNUMBER;
+    
     
 }
 

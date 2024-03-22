@@ -1,10 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+     <!-- remix icon cdn link  -->
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    
+     <!-- font awesome cdn link  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
+     <!-- custom css file link  -->
 
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style1.css}">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style2.css}">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style3.css}">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style copy.css}">
+     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+ 
+
+  </head>
+  <body>
+    <body class="body_y">
+
+      <!-- header section starts  -->
+      <header class="header_y">
+          <div class="icons_y">
+              <div id="menu_btn" class="ri-menu-line"></div>
+          </div>
+  
+          
+            <div><a href="home.html" class="logo_y"><i class="ri-shield-cross-line"></i>Medics</a></div>
+                   
+  
+              <div class="icons_y">
+                
+                  <div id="aed_btn" class="ri-heart-pulse-line"></div>
+                  <div id="login_btn" class="ri-user-3-line"></div>
+                  
+  
+  
+              </div>
+  
+      
+      </header>
+      <!-- header section ends  -->
+  
+  
+      <!-- closer btn  -->
+      <div id="closer" class="ri-close-line"></div>
+      <div id="closer_left" class="ri-close-line"></div>
+  
+      <!-- navbar start  -->
+      <nav class="navbar_yy">
+          <a href="/">home</a>
+          <a href="/">about</a>
+          <a href="/">clinic</a>
+          <a href="/">rental</a>
+          <a href="/">More</a>
+      </nav>
+      
+  
+      <!-- navbar end  -->
+  
+  
+      <!-- aed_cart start  -->
+     <div class="aed_cart">
+      <div class="heading_yy">
+          <span>How to use an AED</span>
+          <h1>With 3 Simple Steps</h1>
+      </div>
+          <div class="box_y">
+              
+              <img src="/img/aed1.png" art="">
+              <div class="content_y">
+                  <h3>STEP 01</h3>
+                  <span class="step">두 개의 패드 부착</span>
+              </div>
+          </div>
+  
+          <div class="box_y">
+              
+              <img src="/img/aed2.png" art="">
+              <div class="content_y">
+                  <h3>STEP 02</h3>
+                  <span class="step">심장리듬 분석</span>
+              </div>
+          </div>
+  
+          <div class="box_y">
+              
+              <img src="/img/aed3.png" art="">
+              <div class="content_y">
+                  <h3>STEP 03</h3>
+                  <span class="step">심장충격(제세동) 시행</span>
+              </div>
+          </div>
+  
+          <div class="box_y">
+              
+              <img src="/img/aed4.png" art="">
+              <div class="content_y">
+                  <h3>STEP 04</h3>
+                  <span class="step">즉시 심폐소생술 다시 시행</span>
+              </div>
+          </div>
+      </div>
+      <!-- shopping cart end  -->
+  
+  
+      <!-- login form start  -->
+      
+          <div class="login_form">
+              <form action="#">
+                  <h3>Login</h3>
+                  <input type="text" placeholder="Enter your student ID" id="box_y2">
+                  <input type="password" placeholder="Enter your password" id="box_y2">
+                      <input type="submit" value="login now" class="btn">
+                      <p>forget password?</p>
+              </form>
+          </div>
+     
+    <!-- login form ends -->
+
+    <!-- main body starts -->
+    <div class="slider-part">
+      <div class="swiper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-1"></div>
+              <div class="swiper-slide swiper-2"></div>
+              <div class="swiper-slide swiper-3"></div>
+              <!-- Add more swiper slides here -->
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+      </div>
+  </div>
+  
+  <!-- main body ends -->
+  <div class="tabs-container">
+    <ul class="tabs">
+        <li>
+            <a id="tab1" title="Your Idea & Vision" href="#tab1">
+                <i class="ri-checkbox-circle-line" style="color: #199a8e;"></i>
+                금연클리닉
+            </a>
+        </li>
+        <li>
+            <a id="tab2" title="Product Specification" href="#tab2">
+                <i class="ri-checkbox-circle-line" style="color: #199a8e;"></i>
+                비만클리닉
+            </a>
+        </li>
+        <li>
+            <a id="tab3" title="UX/UI Design" href="#tab3">
+                <i class="ri-checkbox-circle-line" style="color: #199a8e;"></i>
+                금주클리닉
+            </a>
+        </li>
+        
+    </ul>
+    <div class="tab-content-wrapper">
+        <section id="tab1-content" class="tab-content">
+        
+        
+          <img src="/img/금연.jpg" alt="idea">
+        </section>
+        <section id="tab2-content" class="tab-content">
+        
+          <img src="/img/비만.jpg" alt="product">
+        </section>
+        <section id="tab3-content" class="tab-content">
+        
+          <img src="/img/건전한음주문화.jpg" alt="ui">
+        
+        </section>
+        
+    </div>
+  </div>
+  <!-- custom js file link  -->
+  <div class="faq-container">
+    <details class="m-y">
+      <summary>
+        <span class="faq-title">
+          오프라인 개인상담 신청은 언제 할 수 있나요?
+        </span>
+        <img src="/img/plus.svg" class="expand-icon" alt="Plus">
+      </summary>        
+      <div class="faq-content">
+        오프라인 심리상담은 2학기에 운영할 예정이며,
+
+자세한 일정은 추후 학교 대표 홈페이지 등을 통해 안내드릴 예정입니다.
+      </div>
+    </details>
+    <details class="m-y">
+      <summary>
+        <span class="faq-title">
+          건강검진 대기자 모집중이라고 하는데 어떻게 신청할 수 있을까요?
+        </span>
+        <img src="/img/plus.svg" class="expand-icon" alt="Plus">
+      </summary>        
+      <div class="faq-content">
+        선착순 조기에 마감되어 대기자 접수를 받고 현재는 더 이상 신청 접수를 하지 않고 있습니다.
+      </div>
+    </details>
+    <details class="m-y">
+      <summary>
+        <span class="faq-title">	자살예방지킴이 교육 시간 어떻게 확인할까요?</span>
+        <img src="/img/plus.svg" class="expand-icon" alt="Plus">
+      </summary>        
+      <div class="faq-content">홈페이지 신청시 공지해드린 일정이 정확한 일정입니다.기타 다른 문의사항이 있으시면 언제든지 저희 상담실로 전화 (02-3668-4490) 주시면 
+        자세히 안내해 드리겠습니다.</div>
+    </details>
+    
+
+<!-- footer section start  -->
+<div class="footer-bottom">
+  <div class="footer-description">
+    <h1><i class="ri-shield-cross-line" style="color: #199a8e;"></i> <span id="year">Medic 대학교</span></h1>
+  </div>
+  <small>
+    
+    <span id="year">Copyright ©2024 MEDICS NATIONAL UNIVERSITY OF EDUCATION,  All rights reserved.</span>
+  </small>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper', {
+            slidesPerView: 1, // 한 번에 보여지는 슬라이드 수
+            spaceBetween: 30, // 슬라이드 사이의 간격
+            loop: true, // 무한 루프
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true, // 사용자가 페이지 번호를 클릭하여 슬라이드로 이동할 수 있도록 함
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+  <script src="/js/script1.js"></script>
+  <script src="/js/script2.js"></script>
+  <script src="/js/script3.js"></script>
+  <script src="script4.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </div>
+    </body>
 </body>
 </html>

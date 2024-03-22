@@ -1,6 +1,6 @@
 package com.project.medics.command;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,7 @@ public class ClinicWVO {
     private String cli_ntc_ttl; //제목
     private String cli_ntc_cn; //내용
     private String cli_use_plc_nm; //장소
-    private Date cli_ntc_ymd; //날짜
+    private String cli_ntc_ymd; //날짜
     private String cli_prgrs_hr; //진행시간
     private Integer cli_now_nope; //현재인원
     private Integer cli_max_nope; //최대인원
@@ -32,12 +32,12 @@ public class ClinicWVO {
     private String cli_wri_cn; //내용
     private String cli_wri_yn; //여부
     //가데이터
-    private String studentid;
-    private String grade;
-    private String enrollment; 
-    private String user_brdt;
-    private String gndr_nm;
-    private String idfr_telno;
+    private String studentid; //학번
+    private String grade; //학년
+    private String enrollment; //상태
+    private String user_brdt; //생년월일
+    private String gndr_nm; //성별
+    private String idfr_telno; //연락처
     private String mbr_eml_addr;
     private String scsbjt_nm;
     private String korn_flnm;

@@ -7,6 +7,7 @@
 <!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 --><!-- 권한 : 관리자 -->
 	<th:block th:replace="~{./include/baselayout :: setContent( ~{ :: .div-w})}">
 		<div class="div-w">
+		<form name="DeleteWSForm" action="DeleteWSForm" method="post">
 			<h3 style="padding-right: 71px;">신청학생정보</h3>
 			<div class="search-wrap-w">
 				<div class="info-search-w">
@@ -34,8 +35,8 @@
 				<div class="table-content-w" style="height: 300px;">
 					<table cellpadding="0" cellspacing="0">
 						<tbody class="body-line-w">
-							<tr th:each="vo, status : ${status}">
-								<td>[[${status.count}]]</td>
+							<tr th:each="vo  : ${status}">
+								<td>[[${vo.cli_sn}]]</td>
 								<td>[[${vo.korn_flnm}]]</td> 
 								<td>[[${vo.studentid}]]</td>
 								<td>[[${vo.scsbjt_nm}]]</td>
@@ -67,20 +68,21 @@
 				<div class="table-content-w" style="height: 400px;">
 					<table cellpadding="0" cellspacing="0">
 						<tbody class="body-line-w">
-							<tr th:each="vo, status : ${status}">
-								<td>[[${status.count}]]</td>
+							<tr th:each="vo : ${status}">
+								<td>[[${vo.cli_sn}]]</td>
 								<td>[[${vo.korn_flnm}]]</td>
 								<td>[[${vo.cli_clsf_nm}]]</td>
-								<td>[[${vo.cli_ntc_cn}]]</td>
+								<td>[[${vo.cli_ntc_ttl}]]</td>
 								<td>[[${vo.cli_ntc_ymd}]]</td>
 								<td>[[${vo.studentid}]]</td>
 								<td>
-									<button type="button" class="Btn-w" id="deleteBtn-w">삭제</button>
-								</td>
+									<button type="submit" class="Btn-w" id="deleteBtn-w">삭제</button>
+								</td> 
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</form>
+			</div>
 	</th:block>
 	
 	<script>
@@ -102,6 +104,7 @@
 		});
 	});
 	/////////////////////////////////////////////
+	/////////////////////////////////////////////
 	//삭제버튼
 	var deleteBtn = document.getElementById("deleteBtn-w");
 	deleteBtn.onclick = function() {
@@ -109,10 +112,11 @@
 		if(confirm("삭제하시겠습니까?") == false ) {
 			return;
 		}
-		document.actionForm.action = "deleteForm";
-		document.actionForm.submit();
+		document.DeleteWSForm.action = "DeleteWSForm";
+		document.DeleteWSForm.submit();
 	}
 	/////////////////////////////////////////////
+	
 	</script>
 	
 </body>

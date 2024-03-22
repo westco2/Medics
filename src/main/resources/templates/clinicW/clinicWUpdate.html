@@ -72,7 +72,7 @@
 									<table cellpadding="0" cellspacing="0">
 										<tbody class="body-line-w">
 											<tr>
-												<td><textarea name="cli_ntc_cn" th:value=${vo.cli_ntc_cn} id="textarea-w" placeholder="상세내용 입력"></textarea>
+												<td><textarea name="cli_ntc_cn" th:value="${vo.cli_ntc_cn}" id="textarea-w" placeholder="상세내용 입력"></textarea>
 												</td>
 											</tr>
 										</tbody>
@@ -104,8 +104,8 @@
 		if(confirm("삭제하시겠습니까?") == false ) {
 			return;
 		}
-		document.actionForm.action = "deleteForm";
-		document.actionForm.submit();
+		document.UpdateWForm.action = "DeleteWUForm";
+		document.UpdateWForm.submit();
 	}
 	/////////////////////////////////////////////
 	</script>

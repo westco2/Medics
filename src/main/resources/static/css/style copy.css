@@ -1,0 +1,157 @@
+:root {
+    --white: #FFF;
+    --gray: #363638;
+    --gray-mid: #9D9D9D;
+    --gray-dark: #3e3e3e;
+    --gray-hover: #F7F7F7;
+    --body-background: #1F192D;
+    --primary: #e0fbfc;
+    --primary-border: #f7f7ff;
+    --text: #CEC0E0;
+    --widget-background: #f7f7ff;
+}
+
+/* body {
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 16px;
+    background-color: var(--body-background);
+} */
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.tabs-container {
+    padding: 24px; /* 내부 패딩을 16px에서 24px로 늘림 */
+    width: 100%;
+    max-width: 800px; /* 최대 너비를 480px에서 600px로 늘림 */
+    min-width: 560px; /* 최소 너비를 320px에서 360px로 늘림 */
+    display: flex;
+    margin: 20px auto; /* 상하 마진을 조금 더 주고, 좌우 마진은 자동으로 유지 */
+    border-radius: 16px;
+    background-color: var(--widget-background);
+    border: 1px solid var(--primary-border);
+}
+
+
+
+.tab-content-wrapper {
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 300px;
+    transition: all 0.45s ease-in-out;
+    padding: 0 16px;
+}
+
+.tab-content h2 {
+    color: #1F192D;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+
+.tab-content {
+    font-size: 0.8rem;
+    min-height: 300px;
+    min-width: 240px;
+    
+    color: #1F192D;
+    overflow-x: auto;
+    transition: all 0.45s ease-in-out;
+}
+
+.tab-content img {
+    width: 100%;
+    height: auto;
+    
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--gray);
+    list-style-type: none;
+    padding-right: 16px;
+    gap: 8px;
+}
+
+.tabs a {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 8px;
+    justify-content: start;
+    padding: 12px;
+    align-items: center;
+    gap: 8px;
+    color: #1F192D;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: all 0.45s ease-in-out;
+}
+
+.tabs a img {
+    height: 20px;
+    width: 20px;
+}
+
+.tabs .active,
+.tabs a:hover {
+    outline: none;
+    background-color: var(--primary);
+    border: 1px solid var(--primary-border);
+}
+
+
+.tabs a svg {
+    stroke: var(--white);
+}
+
+.tabs .active svg {
+    stroke: var(--white);
+}
+
+.tabs a:hover svg {
+    stroke: var(--white);
+}
+
+/* 아티클 */
+* { box-sizing: border-box; }
+        #art { height: auto; }
+        .slider-part { width: 100%; height: 37vh; }
+        .swiper { width: 100%; height: 100%; }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide img { display: block; width: 50%; height: auto; object-fit: cover; }
+        .swiper-slide { width: 90%; background-position: center; background-size: cover; }
+        .swiper-slide-prev::before, .swiper-slide-next::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* 회색 필터 */
+        }
+        .swiper-1 { background-image: url("../img/header-1300x300-1.png");}
+        .swiper-2 { background-image: url("../img/HW_page-header_CC-home-1300x300.webp"); }
+        .swiper-3 { background-image: url("../img/EDEXBlogHeader-1300x300.png"); }
+       

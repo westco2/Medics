@@ -8,28 +8,36 @@
 	<h3>대여리스트</h3>
     <div id="box2">
         <form id="searchItemForm">
-            <label for="searchDateTime">신청일시:</label>
-            <input type="date" id="searchDateTime" name="searchDateTime">
+            <label for="searchDateTime">학번조회:</label>
+            <input type="text" id="searchDateTime" name="searchDateTime">
             <button type="submit" id="btn3">검색</button>
         </form>
     </div>
     <div id="itemStock">
         <form id="addItemForm" action="/rentalJY/approval" method="post">
+            <label for="selectedLoanNum">대여번호:</label>
+            <input type="number" id="loannumber" name="loan_No" readonly>
+            
             <label for="itemName">물품명:</label>
-            <input type="text" id="itemName" name="itemName" required>
+            <input type="text" id="selectedItem" name="pro_Nm" readonly>
+            
             <label for="itemDescription">물품코드:</label>
-            <input type="text" id="itemDescription" name="itemDescription" required>
+            <input type="text" id="selectedItemCode" name="pro_No" readonly>
+            
             <label for="itemQuantity">수량:</label>
-            <input type="number" id="itemQuantity" name="itemQuantity" required min="0">
+            <input type="number" id="itemQuantity" name="pro_Qty" required min="0">
+            
             <label for="customerName">학번:</label>
-            <input type="text" id="customerName" name="customerName" readonly>
+            <input type="text" id="customerName" name="studentId" readonly>
+            
             <label for="returnDateTime">반납일시:</label>
-            <input type="date" id="returnDateTime" name="returnDateTime" required>
+            <input type="date" id="returnDateTime" name="ret_YMD" required>
+            
             <label for="rentalStatus">대여상태:</label>
-            <select id="rentalStatus" name="rentalStatus">
+            <select id="rentalStatus" name="loan_Status">
                 <option value="대여중">대여중</option>
-                <option value="대여중">대여취소</option>
-                <option value="대여가능">반품완료</option>
+                <option value="대여취소">대여취소</option>
+                <option value="반납완료">반납완료</option>
             </select><br>
             <button type="submit" id="btn5">업데이트</button>
         </form>
@@ -40,6 +48,7 @@
             <thead>
             <tr>
             	<th>선택</th>
+            	<th>대여번호</th>
                 <th>물품명</th>
                 <th>물품코드</th>
                 <th>수량</th>
@@ -56,9 +65,10 @@
             	 <th:block th:each="i: ${list}">
      				 <tr>
 		             	<td class="checkbox-container"><input type="checkbox" id="check1"><label class="checkbox-label" for="check1"></label></td>
+		         		<td>[[${i.loan_No}]]</td>
 		         		<td>[[${i.pro_Nm}]]</td>
 		            	<td>[[${i.pro_No}]]</td>
-		            	<td>[[${i.pro_Qty}]]</td>
+		            	<td>[[${i.RENTALNUMBER}]]</td>
 		            	<td>[[${i.studentId}]]</td>
 		            	<td>[[${i.ret_YMD}]]</td>
 		            	<td>[[${i.loan_Status}]]</td>
@@ -70,59 +80,60 @@
 </div>
 </th:block>
 <script>
-    $(document).ready(function() {
-        // 대여일시 입력란이 변경될 때 이벤트 발생
-        $('#rentalDateTime').change(function() {
-            // 선택된 대여일시 값을 가져옴
-            var selectedDate = $(this).val();
+//검색 폼 제출 이벤트
+$('#searchItemForm').submit(function(event) {
+    event.preventDefault(); // 기본 동작 방지
 
-            // AJAX를 사용하여 선택된 날짜에 해당하는 데이터를 서버로부터 받아옴
-            $.ajax({
-                url: '/rentalJY/getDataByDate', // 서버 요청을 처리할 URL
-                type: 'GET',
-                data: { rentalDate: selectedDate }, // 선택된 날짜를 서버에 전달
-                dataType: 'json', // 받아올 데이터의 타입
-                success: function(response) {
-                    // 서버로부터 받아온 데이터를 처리하여 화면에 출력
-                    // 이 부분은
-                    // 예를 들어, 받아온 데이터를 테이블에 추가하거나 화면의 다른 요소에 반영하는 등의 작업을 수행할 수 있습니다.
-                    updateDataOnPage(response);
-                },
-                error: function(xhr, status, error) {
-                    // 오류 발생 시 처리
-                    console.error('Error occurred: ' + error);
-                }
-            });
-        });
+    // 검색어 가져오기
+    var searchDateTime = $('#searchDateTime').val().trim();
 
-        // 체크박스 클릭 이벤트
-        $('input[type="checkbox"]').click(function() {
-            if($(this).is(":checked")) {
-                // 클릭한 체크박스의 부모(tr)를 찾고 그 다음 형제(tr)의 자식(td)들을 찾아서 값을 가져와 입력 칸에 채움
-                var $tr = $(this).closest('tr');
-                var proNm = $tr.find('td:eq(1)').text().trim();
-                var proNo = $tr.find('td:eq(2)').text().trim();
-                var studentId = $tr.find('td:eq(3)').text().trim();
-                var quantity = $tr.find('td:eq(4)').text().trim();
-
-                $('#selectedItem').val(proNm);
-                $('#selectedItemCode').val(proNo);
-                $('#customerName').val(studentId);
-                $('#quantity').val(quantity);
-            } else {
-                // 체크 해제 시 입력 칸 비우기
-                $('#selectedItem').val('');
-                $('#selectedItemCode').val('');
-                $('#customerName').val('');
-                $('#quantity').val('');
-            }
-        });
+    // AJAX를 사용하여 서버에 검색어 전송
+    $.ajax({
+        url: '/rentalJY/searchByStudentId', // 서버 요청을 처리할 URL
+        type: 'GET',
+        data: { studentId: searchDateTime }, // 검색어를 서버에 전달
+        dataType: 'json', // 받아올 데이터의 타입
+        success: function(response) {
+            // 서버로부터 받아온 데이터를 처리하여 화면에 출력
+            updateDataOnPage(response);
+        },
+        error: function(xhr, status, error) {
+            // 오류 발생 시 처리
+            console.error('Error occurred: ' + error);
+        }
     });
+});
 
-    // 서버에서 받아온 데이터를 화면에 업데이트하는 함수
-    function updateDataOnPage(response) {
-       
+$('input[type="checkbox"]').click(function() {
+    if ($(this).is(":checked")) {
+        // 클릭한 체크박스의 부모(tr)를 찾고 그 다음 형제(tr)의 자식(td)들을 찾아서 값을 가져와 입력 칸에 채움
+        var $tr = $(this).closest('tr');
+        var loan_No = $tr.find('td:eq(1)').text().trim();
+        var proNm = $tr.find('td:eq(2)').text().trim();
+        var proNo = $tr.find('td:eq(3)').text().trim();
+        var pro_Qty = $tr.find('td:eq(4)').text().trim();
+        var studentId = $tr.find('td:eq(5)').text().trim();
+        var quantity = $tr.find('td:eq(6)').text().trim();
+
+        // 해당 값들을 입력 칸에 설정
+        $('#loannumber').val(loan_No);
+        $('#selectedItem').val(proNm);
+        $('#selectedItemCode').val(proNo);
+        $('#itemQuantity').val(pro_Qty);
+        $('#customerName').val(studentId);
+        $('#quantity').val(quantity);
+    } else {
+        // 체크 해제 시 입력 칸 비우기
+        $('#loannumber').val('');
+        $('#selectedItem').val('');
+        $('#selectedItemCode').val('');
+        $('#itemQuantity').val('');
+        $('#customerName').val('');
+        $('#quantity').val('');
     }
+});
+
+    
 </script>
 </body>
 </html>

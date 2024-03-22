@@ -23,12 +23,13 @@
 </head>
     <body>
     <div class="main-bar">
-        <div class="main-logo">
-            <a class="logo" href="../mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+        <div class="main-logo" onclick="sessionStorage.removeItem('smallTitleContent')">
+            <a sec:authorize="hasRole('ROLE_USER')" class="logo" href="/mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="logo" href="/mdexmM/adminM"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
         </div>
         <div class="main-user">
             <p sec:authorize="isAuthenticated()">[[${#authentication.principal.KORN_FLNM}]] 님</p>
-            <i class="ri-user-line mypage_icon"></i>
+            <i sec:authorize="hasRole('ROLE_USER')" class="ri-user-line mypage_icon"></i>
             <i class="ri-logout-box-r-line logout_icon"></i>
         </div>
     </div>
@@ -37,7 +38,7 @@
             <h4>Medics <span style="color: #d7c37a; font-size: 14px;">보건시스템</span></h4>
         </div>
         <div class="small-title">
-            <h4>마이페이지</h4>
+<!--            <h4>마이페이지</h4>-->
         </div>
     </div>
     <div class="mid">
@@ -63,9 +64,6 @@
                 <h3>코드관리</h3>
             </div>
             </th:block>
-            <div class="sidebarOption sidebarOption6">
-                <h3>contact</h3>
-            </div>
 
             <div class="sidebarOption sidebarOption7">
                 <h3>More</h3>
@@ -84,19 +82,22 @@
     document.addEventListener("DOMContentLoaded", function() {
         const smallTitleZ = document.querySelector('.small-title');
 
-        // 페이지가 로드될 때 세션 스토리지에서 small-title의 내용을 가져와 설정
+        // 세션스토리지에서 'smallTitleContent' 값이 존재하는지 확인
         if (sessionStorage.getItem('smallTitleContent')) {
+            // 세션스토리지에서 'smallTitleContent' 값 가져와서 smallTitleZ에 설정
             smallTitleZ.innerHTML = sessionStorage.getItem('smallTitleContent');
-        }
 
+        }
         const communityOption1 = document.querySelector('.sidebarOption1');
         const communityOption2 = document.querySelector('.sidebarOption2');
         const communityOption3 = document.querySelector('.sidebarOption3');
         const communityOption4 = document.querySelector('.sidebarOption4')
         const communityOption5 = document.querySelector('.sidebarOption5');
-        const communityOption6 = document.querySelector('.sidebarOption6');
+
         const communityOption7 = document.querySelector('.sidebarOption7');
         const mypageicon = document.querySelector('.mypage_icon');
+
+
         const logouticonZ = document.querySelector('.logout_icon');
 
         if(communityOption1 != null){
@@ -118,7 +119,6 @@
             console.log(communityOption2);
             smallTitleZ.innerHTML = `
                 <h4>공지사항</h4>
-                <h4>후기 보기</h4>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -126,14 +126,14 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption2.classList.add('sidebarOption__active');
-            window.location.href = '/postY/index';
+            window.location.href = '/index';
         });
 
         communityOption3.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
-                <h4>클리닉 게시판</h4>
-                <h4>신청학생 정보</h4>
-                <h4>후기 페이지</h4>
+                <a href="/clinicWPage"><h4>클리닉 게시판</h4></a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/clinicWStatus"><h4>신청학생 정보</h4></a>
+                <a href="/clinicWReview"><h4>후기 페이지</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -141,14 +141,14 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption3.classList.add('sidebarOption__active');
-            window.location.href = '/clinicW/ClinicWPage';
+            window.location.href = '/clinicWPage';
         });
 
         communityOption4.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
-                <h4>대여신청</h4>
-                <h4>대여승인요청</h4>
-                <h4>물품재고관리</h4>
+            	<a href="/rentalJY/rentalApp"><h4>대여신청</h4></a>
+                <a th:sec:authorize="hasRole('ROLE_ADMIN')" href="/rentalJY/approval"><h4>대여신청리스트</h4></a>
+                <a th:sec:authorize="hasRole('ROLE_ADMIN')" href="/rentalJY/rentalList"><h4>물품재고관리</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -174,15 +174,19 @@
             window.location.href = '/mdexmM/dssM';
         });
         }
-        mypageicon.addEventListener('click', function() {
-            smallTitleZ.innerHTML = `
+        if(mypageicon != null) {
+            mypageicon.addEventListener('click', function () {
+                smallTitleZ.innerHTML = `
                 <h4>마이페이지</h4>
             `;
-            sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
-            window.location.href = '/mypage/mypageZ';
-        });
+                sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
+                window.location.href = '/mypage/mypageZ';
+            });
+        }
+
 
         logouticonZ.addEventListener('click', function () {
+            sessionStorage.removeItem('smallTitleContent');
             window.location.href = '/logout';
         });
 
