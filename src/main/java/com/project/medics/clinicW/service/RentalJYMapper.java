@@ -14,10 +14,12 @@ public interface RentalJYMapper {
     public List<RentalVO> rentalapp();
     public List<RentalVO> appovalc();
     public void insertRentalApp(RentalVO rental);
+    public void insertRentalApp2(RentalVO rental);
     void decreaseQuantity(RentalVO vo);
     public void appolist (RentalVO rental);
     void updateRentalApp (RentalVO vo);
     public void apprental (RentalVO rental);
+    public void listplusapp (RentalVO rental);
     void listapp (RentalVO vo);
 	public void apprabs(RentalVO rental);
     }

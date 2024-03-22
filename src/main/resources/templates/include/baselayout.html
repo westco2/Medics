@@ -145,9 +145,9 @@
 
         communityOption4.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
-                <h4>대여신청</h4>
-                <h4>대여승인요청</h4>
-                <h4>물품재고관리</h4>
+            	<a href="/rentalJY/rentalApp"><h4>대여신청</h4></a>
+                <a href="/rentalJY/approval"><h4>대여신청리스트</h4></a>
+                <a href="/rentalJY/rentalList"><h4>물품재고관리</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');

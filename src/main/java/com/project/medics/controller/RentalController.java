@@ -44,7 +44,7 @@ public class RentalController  {
 	
 	@PostMapping("/rentalList")
     public String apprabs (RentalVO rental) {
-		rentalService.listapp(rental);
+		rentalService.listplusapp(rental);
         return "redirect:/rentalJY/rentalList";
     }
 	

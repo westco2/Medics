@@ -17,5 +17,6 @@ public interface RentalItemService {
 	void appolist(RentalVO rental);
 	void sarental(RentalVO rental);
 	void listapp(RentalVO rental);
+	void listplusapp(RentalVO rental);
 	void sarebds(RentalVO rental);
 }

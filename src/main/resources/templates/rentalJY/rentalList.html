@@ -9,7 +9,7 @@
             <div id="box4">
                 <form id="seaForm">
                     <label for="searchDateTime">물품명:</label>
-                    <input type="text" id="itemName" name="itemName" required>
+                    <input type="text" id="itemName2" name="itemName" required>
                     <button type="submit" id="btn7">검색</button>
                 </form>
             </div>
@@ -94,13 +94,17 @@
                 var $tr = $(this).closest('tr');
                 var proNm = $tr.find('td:eq(1)').text().trim();
                 var proNo = $tr.find('td:eq(2)').text().trim();
-
-                $('#selectedItem').val(proNm);
-                $('#selectedItemCode').val(proNo);
+                var proQty = $tr.find('td:eq(3)').text().trim();
+                
+				console.log(proQty);
+                $('#itemName').val(proNm);
+                $('#itemDescription').val(proNo);
+                $('#itemQuantity').val(proQty);
             } else {
                 // 체크 해제 시 입력 칸 비우기
-                $('#selectedItem').val('');
-                $('#selectedItemCode').val('');
+                $('#itemName').val('');
+                $('#itemDescription').val('');
+                $('#itemQuantity').val('');
             }
         });
     });
