@@ -6,7 +6,7 @@
 <!-- 인터페이스 위치, 인터페이스 위에는 @Mapper명시 -->
 <mapper namespace="com.project.medics.clinicW.service.RentalJYMapper">
 	<select id="rentallist" resultType="RentalVO">
-		select * from RENTALLIST
+		select * from RENTALAPP
     </select>  
     
     <select id="rentalapp" resultType="RentalVO">
@@ -14,12 +14,22 @@
     </select>  
     
     <select id="appovalc" resultType="RentalVO">
-    	select * from APPROVAL
+    	SELECT A.*, R.*
+	    FROM APPROVAL2 A
+	    LEFT JOIN RENTALAPP R ON A.PRO_NO = R.PRO_NO
+    	
     </select>  
     
     <insert id="insertRentalApp" parameterType="RentalVO">
+        
         INSERT INTO APPROVAL ( LOAN_STATUS, PRO_NO, STUDENTID) 
-		VALUES ( '대여신청', #{pro_No}, #{studentId})
+		VALUES ( '대여신청', #{pro_No}, #{studentId});
+    </insert>
+    
+    <insert id="insertRentalApp2" parameterType="RentalVO">
+        
+        INSERT INTO APPROVAL2 ( LOAN_STATUS, PRO_NO, STUDENTID, RENTALNUMBER) 
+		VALUES ( '대여신청', #{pro_No}, #{studentId}, #{pro_Qty});
     </insert>
     
     <update id="decreaseQuantity">
@@ -28,9 +38,11 @@
         WHERE pro_No = #{pro_No}
     </update>
     
-    <insert id="appolist" parameterType="RentalVO">
-        select * from from APPROVAL
-    </insert>
+    <update id="appolist" parameterType="RentalVO">
+        UPDATE APPROVAL2
+        SET ret_YMD = #{ret_YMD}, loan_Status = #{loan_Status}
+        WHERE loan_No = #{loan_No};
+    </update>
     
     <update id="updateRentalApp" parameterType="RentalVO">
         UPDATE APPROVAL
@@ -43,9 +55,13 @@
     </insert>
     
     <update id="listapp">
-        UPDATE RENTALLIST
-        SET pro_Qty = pro_Qty + #{pro_Qty}
+        UPDATE RENTALAPP
+        SET pro_Qty = #{pro_Qty}
         WHERE pro_No = #{pro_No}
     </update>
-                                         
+                       
+    <insert id="listplusapp">
+    	INSERT INTO RENTALAPP ( PRO_NO, PRO_QTY, PRO_NM) 
+		VALUES ( #{pro_No}, #{pro_Qty}, #{pro_Nm});
+    </insert> 
 </mapper>

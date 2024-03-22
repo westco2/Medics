@@ -32,6 +32,8 @@ public class RentalItemServiceImpl implements RentalItemService {
     @Override
     public void saveRentalApp(RentalVO rental) {
         rentalJYMapper.insertRentalApp(rental);
+        rentalJYMapper.insertRentalApp2(rental);
+        rentalJYMapper.decreaseQuantity(rental);
     }
 
 	@Override
@@ -59,10 +61,13 @@ public class RentalItemServiceImpl implements RentalItemService {
 
 	@Override
 	public void listapp(RentalVO rental) {
-		// TODO Auto-generated method stub
+		rentalJYMapper.listapp(rental);
 		
 	}
 		
+	public void listplusapp (RentalVO rental) {
+		rentalJYMapper.listplusapp(rental);
+	}
     
 
 
