@@ -85,6 +85,18 @@
         where m1.mdcn_tp = "약품"
         order by f1.flctn_ymd desc
     </select>
+    <select id="getflctnwr" resultType="FlctnVO">
+        select f1.*, m1.mdcn_nm
+        from FLCTN f1
+                 left join MDCN m1
+                           on f1.mdcn_code = m1.mdcn_code
+        where m1.mdcn_tp = "약품"
+        <if test="startDate != '' and startDate != null">
+            <![CDATA[ and str_to_date(flctn_ymd, '%Y-%m-%d') >= str_to_date(#{startDate}, '%Y-%m-%d') ]]>
+            <![CDATA[ and str_to_date(flctn_ymd, '%Y-%m-%d') <= str_to_date(#{endDate}, '%Y-%m-%d') ]]>
+        </if>
+        order by f1.flctn_ymd desc
+    </select>
 
 
     <delete id="delmdcn">

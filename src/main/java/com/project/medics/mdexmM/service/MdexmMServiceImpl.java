@@ -65,6 +65,11 @@ public class MdexmMServiceImpl implements MdexmMService{
     }
 
     @Override
+    public List<FlctnVO> getflut(CriteriaM cri) {
+        return mdexmMMapper.getflctnwr(cri);
+    }
+
+    @Override
     public void changeflctn(FlctnVO vo) {
         mdexmMMapper.changeflctn(vo);
     }
