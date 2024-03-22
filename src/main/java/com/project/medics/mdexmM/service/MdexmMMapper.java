@@ -35,5 +35,6 @@ public interface MdexmMMapper {
     public List<TotalMVO> weekvi();
     public List<TotalMVO> mdcnbest();
     public List<TotalMVO> totalInfo();
+    public List<FlctnVO> getflctnwr(CriteriaM cri);
 
 }

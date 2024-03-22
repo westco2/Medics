@@ -88,6 +88,14 @@ public class RestMController {
         return new ResponseEntity<>(mdexmMService.getmdx(vo), headers, HttpStatus.OK);
     }
 
+    @PostMapping("/getflut")
+    public ResponseEntity<List<FlctnVO>> getflut(@RequestBody CriteriaM cri){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json"); //내가 보내는 컨텐츠 타입
+
+        return new ResponseEntity<>(mdexmMService.getflut(cri), headers, HttpStatus.OK);
+    }
+
     @PostMapping("/getflt")
     public ResponseEntity<List<FlctnVO>> getflt(@RequestBody FlctnVO vo){
         HttpHeaders headers = new HttpHeaders();

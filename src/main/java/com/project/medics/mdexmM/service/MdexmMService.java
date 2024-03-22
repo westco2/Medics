@@ -25,6 +25,7 @@ public interface MdexmMService {
     public void updatemdcn(FlctnVO vo);
     //의약품 입고 기록
     public void regflctn(MdcnVO vo);
+    public List<FlctnVO> getflut(CriteriaM cri);
 
     public void changeflctn(FlctnVO vo);
     public List<StudentVO> getstdInfo(CriteriaM cri);
