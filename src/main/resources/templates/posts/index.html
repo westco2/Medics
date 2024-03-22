@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
 
@@ -120,7 +120,7 @@ border: none; margin-top: .5rem;}
             <div class = "content-box">
                 <div class="table-box">
                     <div class="buttons is-right">
-                        <button class="button is-light" onclick = "location.href = '/posts/register' ">작성하기</button>
+                        <button sec:authorize="hasRole('ROLE_ADMIN')" class="button is-light" onclick = "location.href = '/posts/register' ">작성하기</button>
                     </div>
     
                     <table class="table">

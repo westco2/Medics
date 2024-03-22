@@ -130,7 +130,7 @@
 /* 아티클 */
 * { box-sizing: border-box; }
         #art { height: auto; }
-        .slider-part { padding: 20px 0; width: 100%; height: 37vh; }
+        .slider-part { width: 100%; height: 37vh; }
         .swiper { width: 100%; height: 100%; }
         .swiper-slide {
             text-align: center;
@@ -151,7 +151,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6); /* 회색 필터 */
         }
-        .swiper-1 { background-image: url(header-1300x300-1.png);}
-        .swiper-2 { background-image: url(HW_page-header_CC-home-1300x300.webp); }
-        .swiper-3 { background-image: url(EDEXBlogHeader-1300x300.png); }
+        .swiper-1 { background-image: url("../img/header-1300x300-1.png");}
+        .swiper-2 { background-image: url("../img/HW_page-header_CC-home-1300x300.webp"); }
+        .swiper-3 { background-image: url("../img/EDEXBlogHeader-1300x300.png"); }
        

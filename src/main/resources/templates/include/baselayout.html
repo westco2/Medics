@@ -23,12 +23,13 @@
 </head>
     <body>
     <div class="main-bar">
-        <div class="main-logo">
-            <a class="logo" href="/mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+        <div class="main-logo" onclick="sessionStorage.removeItem('smallTitleContent')">
+            <a sec:authorize="hasRole('ROLE_USER')" class="logo" href="/mypage/mypageZ"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="logo" href="/mdexmM/adminM"><span style="font-size: 18px; font-weight: 600; color: #31483d;"><i class="ri-shield-cross-line" style="color: #31483d; font-size: 20px;"></i>Medics</span> <span>university</span></a>
         </div>
         <div class="main-user">
             <p sec:authorize="isAuthenticated()">[[${#authentication.principal.KORN_FLNM}]] 님</p>
-            <i class="ri-user-line mypage_icon"></i>
+            <i sec:authorize="hasRole('ROLE_USER')" class="ri-user-line mypage_icon"></i>
             <i class="ri-logout-box-r-line logout_icon"></i>
         </div>
     </div>
@@ -96,6 +97,7 @@
         const communityOption7 = document.querySelector('.sidebarOption7');
         const mypageicon = document.querySelector('.mypage_icon');
 
+
         const logouticonZ = document.querySelector('.logout_icon');
 
         if(communityOption1 != null){
@@ -117,7 +119,6 @@
             console.log(communityOption2);
             smallTitleZ.innerHTML = `
                 <h4>공지사항</h4>
-                <h4>후기 보기</h4>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -125,13 +126,13 @@
                 option.classList.remove('sidebarOption__active');
             });
             communityOption2.classList.add('sidebarOption__active');
-            window.location.href = '/postY/index';
+            window.location.href = '/index';
         });
 
         communityOption3.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
                 <a href="/clinicWPage"><h4>클리닉 게시판</h4></a>
-                <a href="/clinicWStatus"><h4>신청학생 정보</h4></a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/clinicWStatus"><h4>신청학생 정보</h4></a>
                 <a href="/clinicWReview"><h4>후기 페이지</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
@@ -146,8 +147,8 @@
         communityOption4.addEventListener('click', function() {
             smallTitleZ.innerHTML = `
             	<a href="/rentalJY/rentalApp"><h4>대여신청</h4></a>
-                <a href="/rentalJY/approval"><h4>대여신청리스트</h4></a>
-                <a href="/rentalJY/rentalList"><h4>물품재고관리</h4></a>
+                <a th:sec:authorize="hasRole('ROLE_ADMIN')" href="/rentalJY/approval"><h4>대여신청리스트</h4></a>
+                <a th:sec:authorize="hasRole('ROLE_ADMIN')" href="/rentalJY/rentalList"><h4>물품재고관리</h4></a>
             `;
             sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
             const sidebarOptions = document.querySelectorAll('.sidebarOption');
@@ -173,14 +174,15 @@
             window.location.href = '/mdexmM/dssM';
         });
         }
-        mypageicon.addEventListener('click', function() {
-
-            smallTitleZ.innerHTML = `
+        if(mypageicon != null) {
+            mypageicon.addEventListener('click', function () {
+                smallTitleZ.innerHTML = `
                 <h4>마이페이지</h4>
             `;
-            sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
-            window.location.href = '/mypage/mypageZ';
-        });
+                sessionStorage.setItem('smallTitleContent', smallTitleZ.innerHTML);
+                window.location.href = '/mypage/mypageZ';
+            });
+        }
 
 
         logouticonZ.addEventListener('click', function () {

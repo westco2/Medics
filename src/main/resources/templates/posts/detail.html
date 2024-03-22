@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
 
@@ -135,17 +135,17 @@
                       <span id="writer">작성자명</span> <span class="create-date" id="create-date">2021-06-30</span>
                       <div class="field is-grouped is-grouped-right">
                           <p class="control">
-                              <a class="button is-light" href="/static">
+                              <a class="button is-light" href="/index">
                                   목록
                               </a>
                           </p>
                           <p class="control">
-                              <a class="button is-light del" onclick="updatePost()">
+                              <a sec:authorize="hasRole('ROLE_ADMIN')" class="button is-light del" onclick="updatePost()">
                                   수정
                               </a>
                           </p>
                           <p class="control">
-                              <a class="button is-light del" onclick="deletePost()">
+                              <a sec:authorize="hasRole('ROLE_ADMIN')" class="button is-light del" onclick="deletePost()">
                                   삭제
                               </a>
                           </p>
